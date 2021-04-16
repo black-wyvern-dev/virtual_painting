@@ -1,0 +1,88 @@
+<% if(messages.error){ %>
+  <div class="container error">
+      <%= messages.error%>
+  </div>
+<% } %>
+<section id = "clients" class="clients section-bg">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-3 col-md-4 col-6 d-flex align-items-center justify-content-center">
+        <img src="/img/client-1.png" class="img-fluid" alt=""/>
+      </div>
+      <div class="col-lg-3 col-md-4 col-6 d-flex align-items-center justify-content-center">
+        <img src="/img/client-2.png" class="img-fluid" alt=""/>
+      </div>
+      <div class="col-lg-3 col-md-4 col-6 d-flex align-items-center justify-content-center">
+        <img src="/img/client-3.png" class="img-fluid" alt=""/>
+      </div>
+      <div class="col-lg-3 col-md-4 col-6 d-flex align-items-center justify-content-center">
+        <img src="/img/client-4.png" class="img-fluid" alt=""/>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="about" class="about">
+  <div class="container">
+    <div class="row content">
+      <div class="service_item">
+        <h4>Live accurate odds</h4>
+      </div>
+    </div>
+    <div class="row content">
+      <div class="service_item">
+        <h4>Expert compiled daily tissue prices</h4>
+      </div>
+    </div>
+    <div class="row content">
+      <div class="service_item">
+        <h4>Exclusive 'next race' odds</h4>
+      </div>
+    </div>
+    <div class="row content">
+      <div class="service_item">
+        <h4>Race cards, analysis and tips</h4>
+      </div>
+    </div>
+    <div class="row content">
+      <div class="service_item">
+        <h4>Live betting information tickers</h4>
+      </div>
+    </div>
+    <br>
+    <br>
+    <div class="service_item">
+      <h5>Register now for free one week trial</h5>
+    </div>
+  </div>
+  <div class="container">
+    <div class="register_panel">
+      <h2>Register</h2>
+      <form id="register_form" action="/register" method="POST">
+        <input type="hidden" name="remember" value="true">
+        <label for="full-name">Full Name:</label>
+        <input id="full-name" value="<%= messages.name %>" name="name" type="text" autocomplete="name" class="form-control" placeholder="Full Name">
+        <br>
+        <label for="email-address">Email address:</label>
+        <input id="email-address" value="<%= messages.email %>" name="email" type="email" autocomplete="email" class="form-control" placeholder="Email address">
+        <br>
+        <label for="company">Company:</label>
+        <input id="company" value="<%= messages.name %>" name="company" type="text" autocomplete="company" class="form-control" placeholder="Company">
+        <br>
+        <label for="user-name">User Name:</label>
+        <input id="user-name" value="<%= messages.name %>" name="username" type="text" autocomplete="username" class="form-control" placeholder="User Name">
+        <br>
+        <label for="password">Password:</label>
+        <input id="password" name="password" type="password" autocomplete="current-password" class="form-control" placeholder="Password">
+        <br>
+        <input id="remember_me" name="remember_me" type="checkbox" class="">
+        <label for="remember_me" class="">
+          Remember me
+        </label>
+        <button type="submit" class="form-control btn-get-started">
+          Register
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>

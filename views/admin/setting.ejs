@@ -1,0 +1,375 @@
+<div id="message-box" class="container error <%= messages.error ? 'show' : 'hide' %>">
+    <%= messages.error%>
+</div>
+<section id="features order px-12 py-12" class="features">
+    <div class="container">
+
+        <div class="section-title">
+            <h2>Settings</h2>
+            <p>Update to new informations</p>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-3">
+                <ul class="nav nav-tabs flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link show active" data-toggle="tab" href="#tab-1">Users</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#tab-2">Resource Urls</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#tab-3">Current Race</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#tab-4">Next Race</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#tab-5">Betting Info</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#tab-6">Feedback Info</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#tab-7">Tips and Information</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#tab-8">Odds</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-lg-9 mt-4 mt-lg-0">
+                <div class="tab-content">
+                    <div class="tab-pane show active" id="tab-1">
+                        <div class="row">
+                            <div class="col-lg-12 details order-2 order-lg-1">
+                                <h3>User Information</h3>
+                                <table class="w-full table-auto bg-white">
+                                    <thead>
+                                        <tr>
+                                            <th class="border px-4 py-2 ">Orders</th>
+                                            <th class="border px-4 py-2 ">Customer</th>
+                                            <th class="border px-4 py-2 ">Address</th>
+                                            <th class="border px-4 py-2 ">Status</th>
+                                            <th class="border px-4 py-2 ">Placed At</th>
+                                            <th class="border px-4 py-2 ">Payment Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="tab-2">
+                        <div class="row">
+                            <div class="col-lg-12 details order-2 order-lg-1">
+                                <h3>Live Stream URL:</h3>
+                                <div class="row">
+                                    <input id="stream_url" value="<%= resource['stream_url']%>" type="text" class="col-md-8 form-control" placeholder="Stream URL">
+                                    <button type="button" class="col-md-2 form-control" id="view_stream">View</button>
+                                    <button type="button" class="col-md-2 form-control" id="stream_url_save">Save</button>
+                                </div>
+                                <div class="row">
+                                    <iframe id="stream_preview" src="<%= resource['stream_url']%>" width="100%" height="100%" frameborder="0" scrolling="no" allow="autoplay" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen>
+                                    </iframe>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 details order-2 order-lg-1">
+                                <h3>Cards Information:</h3>
+                                <div class="row">
+                                    <div class="col-lg-12 details order-2 order-lg-1">
+                                        <label class="col-lg-2">Card Title:</label>
+                                        <input class="col-lg-7" id="card_title" type="text" value="<%= resource['card_title'] %>" placeholder="Card Title"/>
+                                        <button type="button" class="col-lg-2" id="card_title_save">Save</button>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="row">
+                                    <!-- <form action="/admin/setting/pdf_upload" method="post" enctype="multipart/form-data"> -->
+                                        <div class="col-lg-12 details order-2 order-lg-1">
+                                            <label class="col-lg-4">Select PDF to upload:</label>
+                                            <input class="col-lg-5" type="file" name="file" id="pdf_file" accept="application/pdf">
+                                            <button class="col-lg-2" type="button" id="pdf_upload_button">Upload</button>
+                                        </div>
+                                    <!-- </form> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="tab-3">
+                        <div class="row">
+                            <div class="col-lg-12 details order-2 order-lg-1">
+                                <h3>Current Race Information</h3>
+                                <div class="row action-area">
+                                    <div class="col-lg-6">
+                                        <label>Race Time:</label>
+                                        <input id="cur_race_time" type="text" value="<%= resource['cur_race_time'] %>" placeholder="Race Time"/>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <label>Race Name:</label>
+                                        <input id="cur_race_name" type="text" value="<%= resource['cur_race_name'] %>" placeholder="Race Name"/>
+                                    </div>
+                                </div>
+                                <table class="w-full table-auto bg-white full-width">
+                                    <thead>
+                                        <tr>
+                                            <th class="border px-4 py-2 ">No</th>
+                                            <th class="border px-4 py-2 ">Name</th>
+                                            <th class="border px-4 py-2 ">SP</th>
+                                            <th class="border px-4 py-2 ">Color</th>
+                                            <th class="border px-4 py-2 ">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="cur_race_info_table">
+                                        <% for(var i=0; i<curRaceData.length; i++) { %>
+                                            <tr>
+                                                <td class="border px-4 py-2 row_num">
+                                                    <%= i+1 %>
+                                                </td>
+                                                <td class="border px-4 py-2">
+                                                    <input class="info_name" name="name" type="text" value="<%= curRaceData[i].name %>" placeholder="Name"/>
+                                                </td>
+                                                <td class="border px-4 py-2">
+                                                    <input class="info_sp" name="sp" type="text" value="<%= curRaceData[i].sp %>" placeholder="SP"/>
+                                                </td>
+                                                <td class="border px-4 py-2">
+                                                    <select class="info_color">
+                                                        <option class = "Color_None" value="Color_None" <%= curRaceData[i].color == 'Color_None' ? 'selected' : '' %>>None</option>
+                                                        <option class = "Color_Blue" value="Color_Blue" <%= curRaceData[i].color == 'Color_Blue' ? 'selected' : '' %>>Blue</option>
+                                                        <option class = "Color_Red" value="Color_Red" <%= curRaceData[i].color == 'Color_Red' ? 'selected' : '' %>>Red</option>
+                                                      </select>
+                                                </td>
+                                                <td class="border px-4 py-2">
+                                                    <button type="button" class="Cur-Race-Delete">Delete</button>
+                                                </td>
+                                            </tr>
+                                        <% } %>
+                                    </tbody>
+                                </table>
+                                <div class="row action-area">
+                                    <button class="offset-lg-3 col-lg-3" type="button" id="cur_race_info_clear">Clear</button>
+                                    <button class="col-lg-3" type="button" id="cur_race_info_add">Add</button>
+                                    <button class="col-lg-3" id="cur_race_info_save">Save</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="tab-4">
+                        <div class="row">
+                            <div class="col-lg-12 details order-2 order-lg-1">
+                                <h3>Next Race Information</h3>
+                                <div class="row action-area">
+                                    <div class="col-lg-6">
+                                        <label>Race Time:</label>
+                                        <input id="next_race_time" type="text" value="<%= resource['next_race_time'] %>" placeholder="Race Time"/>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <label>Race Name:</label>
+                                        <input id="next_race_name" type="text" value="<%= resource['next_race_name'] %>" placeholder="Race Name"/>
+                                    </div>
+                                </div>
+                                <table class="w-full table-auto bg-white full-width">
+                                    <thead>
+                                        <tr>
+                                            <th class="border px-4 py-2 ">No</th>
+                                            <th class="border px-4 py-2 ">Name</th>
+                                            <th class="border px-4 py-2 ">SP</th>
+                                            <th class="border px-4 py-2 ">Color</th>
+                                            <th class="border px-4 py-2 ">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="next_race_info_table">
+                                        <% for(var i=0; i<nextRaceData.length; i++) { %>
+                                            <tr>
+                                                <td class="border px-4 py-2 row_num">
+                                                    <%= i+1 %>
+                                                </td>
+                                                <td class="border px-4 py-2">
+                                                    <input class="info_name" name="name" type="text" value="<%= nextRaceData[i].name %>" placeholder="Name"/>
+                                                </td>
+                                                <td class="border px-4 py-2">
+                                                    <input class="info_sp" name="sp" type="text" value="<%= nextRaceData[i].sp %>" placeholder="SP"/>
+                                                </td>
+                                                <td class="border px-4 py-2">
+                                                    <select class="info_color">
+                                                        <option class = "Color_None" value="Color_None" <%= nextRaceData[i].color == 'Color_None' ? 'selected' : '' %>>None</option>
+                                                        <option class = "Color_Blue" value="Color_Blue" <%= nextRaceData[i].color == 'Color_Blue' ? 'selected' : '' %>>Blue</option>
+                                                        <option class = "Color_Red" value="Color_Red" <%= nextRaceData[i].color == 'Color_Red' ? 'selected' : '' %>>Red</option>
+                                                      </select>
+                                                </td>
+                                                <td class="border px-4 py-2">
+                                                    <button type="button" class="Next-Race-Delete">Delete</button>
+                                                </td>
+                                            </tr>
+                                        <% } %>
+                                    </tbody>
+                                </table>
+                                <div class="row action-area">
+                                    <button class="offset-lg-3 col-lg-3" type="button" id="next_race_info_clear">Clear</button>
+                                    <button class="col-lg-3" type="button" id="next_race_info_add">Add</button>
+                                    <button class="col-lg-3" id="next_race_info_save">Save</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="tab-5">
+                        <div class="row">
+                            <div class="col-lg-12 details order-2 order-lg-1">
+                                <h3>Betting Information</h3>
+                                <table class="w-full table-auto bg-white full-width">
+                                    <thead>
+                                        <tr>
+                                            <th class="border px-4 py-2 ">No</th>
+                                            <th class="border px-4 py-2 ">Time</th>
+                                            <th class="border px-4 py-2 ">Name</th>
+                                            <th class="border px-4 py-2 ">Text</th>
+                                            <th class="border px-4 py-2 ">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="betting_info_table">
+                                        <% for(let i=0; i<bettinginfo.length; i++) { %>
+                                            <tr>
+                                                <td class="border px-4 py-2 row_num">
+                                                    <%= i+1 %>
+                                                </td>
+                                                <td class="border px-4 py-2">
+                                                    <input class="info_time" type="text" value="<%= bettinginfo[i].time %>" placeholder="Time" readonly/>
+                                                </td>
+                                                <td class="border px-4 py-2">
+                                                    <input class="info_name" type="text" value="<%= bettinginfo[i].name %>" placeholder="Name"  readonly/>
+                                                </td>
+                                                <td class="border px-4 py-2">
+                                                    <textarea class="info_text" value="<%= bettinginfo[i].text %>" placeholder="Description"  readonly></textarea>
+                                                </td>
+                                                <td class="border px-4 py-2">
+                                                    <button type="button" class="Betting-Update">Update</button>
+                                                    <button type="button" class="Betting-Delete">Delete</button>
+                                                    <button type="button" class="Betting-Save hide">Save</button>
+                                                    <button type="button" class="Betting-Cancel hide">Cancel</button>
+                                                </td>
+                                            </tr>
+                                        <% } %>
+                                    </tbody>
+                                </table>
+                                <div class="row action-area">
+                                    <button class="offset-lg-6 col-lg-3" type="button" id="betting_info_add">Add</button>
+                                    <button class="col-lg-3" id="betting_info_save">Save</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="tab-6">
+                        <div class="row">
+                            <div class="col-lg-12 details order-2 order-lg-1">
+                                <h3>Est eveniet ipsam sindera pad rone matrelat sando reda</h3>
+                                <!-- <p class="font-italic">Omnis blanditiis saepe eos autem qui sunt debitis porro quia.</p>
+                                <p>Exercitationem nostrum omnis. Ut reiciendis repudiandae minus. Omnis recusandae ut non quam ut quod eius qui. Ipsum quia odit vero atque qui quibusdam amet. Occaecati sed est sint aut vitae molestiae voluptate vel</p> -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="tab-7">
+                        <div class="row">
+                            <div class="col-lg-12 details order-2 order-lg-1">
+                                <h3>Tips and Information</h3>
+                                <div class="row action-area">
+                                    <div class="col-lg-12 details order-2 order-lg-1">
+                                        <label>Tip Source:</label>
+                                        <input class="col-lg-8" id="tips_source" type="text" value="<%= resource['tip_source'] %>" placeholder="Tip Source"/>
+                                    </div>
+                                </div>
+                                <table class="w-full table-auto bg-white full-width">
+                                    <thead>
+                                        <tr>
+                                            <th class="border py-2">Race</th>
+                                            <th class="border py-2">Selection</th>
+                                            <th class="border py-2">Price</th>
+                                            <th class="border py-2">Notes</th>
+                                            <th class="border py-2">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tips_info_table">
+                                        <% for(var i=0; i<tipsinfo.length; i++) { %>
+                                            <tr>
+                                                <td class="border py-2">
+                                                    <input class="info_race" type="text" value="<%= tipsinfo[i].race %>" placeholder="Name"/>
+                                                </td>
+                                                <td class="border py-2">
+                                                    <input class="info_selection" type="text" value="<%= tipsinfo[i].selection %>" placeholder="Name"/>
+                                                </td>
+                                                <td class="border py-2">
+                                                    <input class="info_price" type="text" value="<%= tipsinfo[i].price %>" placeholder="SP"/>
+                                                </td>
+                                                <td class="border py-2">
+                                                    <input class="info_notes" type="text" value="<%= tipsinfo[i].notes %>" placeholder="SP"/>
+                                                </td>
+                                                <td class="border py-2">
+                                                    <button type="button" class="Tips-Info-Delete">Delete</button>
+                                                </td>
+                                            </tr>
+                                        <% } %>
+                                    </tbody>
+                                </table>
+                                <div class="row action-area">
+                                    <button class="offset-lg-3 col-lg-3" type="button" id="tips_info_clear">Clear</button>
+                                    <button class="col-lg-3" type="button" id="tips_info_add">Add</button>
+                                    <button class="col-lg-3" id="tips_info_save">Save</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="tab-8">
+                        <div class="row">
+                            <div class="col-lg-12 details order-2 order-lg-1">
+                                <h3>Odds Information</h3>
+                                <table class="w-full table-auto bg-white full-width">
+                                    <thead>
+                                        <tr>
+                                            <th class="border px-4 py-2 ">Race</th>
+                                            <th class="border px-4 py-2 ">Selection</th>
+                                            <th class="border px-4 py-2 ">Price</th>
+                                            <th class="border px-4 py-2 ">Notes</th>
+                                            <th class="border px-4 py-2 ">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tips_info_table">
+                                        <% for(var i=0; i<tipsinfo.length; i++) { %>
+                                            <tr>
+                                                <td class="border px-4 py-2">
+                                                    <input class="info_race" type="text" value="<%= tipsinfo[i].race %>" placeholder="Name"/>
+                                                </td>
+                                                <td class="border px-4 py-2">
+                                                    <input class="info_selection" type="text" value="<%= tipsinfo[i].selection %>" placeholder="Name"/>
+                                                </td>
+                                                <td class="border px-4 py-2">
+                                                    <input class="info_price" type="text" value="<%= tipsinfo[i].price %>" placeholder="SP"/>
+                                                </td>
+                                                <td class="border px-4 py-2">
+                                                    <input class="info_notes" type="text" value="<%= tipsinfo[i].notes %>" placeholder="SP"/>
+                                                </td>
+                                                <td class="border px-4 py-2">
+                                                    <button type="button" class="Tips-Info-Delete">Delete</button>
+                                                </td>
+                                            </tr>
+                                        <% } %>
+                                    </tbody>
+                                </table>
+                                <div class="row action-area">
+                                    <button class="col-lg-3" type="button" id="tips_info_add">Add</button>
+                                    <button class="col-lg-3" id="tips_info_save">Save</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+<script>
+    var join_events = [];
+</script>
+<!-- </div>
+</section> -->

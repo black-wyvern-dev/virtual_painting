@@ -1,0 +1,102 @@
+<section class="sp_panel">
+    <div class="container">
+        <div class="row content">
+            <button id="stream_toggle" style="margin-left:auto; margin-right: auto; margin-top: 20px; margin-bottom: 20px;" width="600px" height="50px" type="button">
+                Live Stream
+            </button>
+        </div>
+        <div class="row content">
+            <iframe id="stream_preview" src="<%= resource['stream_url']%>" css="fade-in fade-out" style="margin-left:auto; margin-right: auto; margin-top: 20px; margin-bottom: 20px;" width="600px" height="400px" frameborder="0" scrolling="no" allow="autoplay" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen>
+            </iframe>
+        </div>
+
+        <div class="row content">
+            <div class="col-lg-6">
+                <table class="w-full table-auto bg-white full-width">
+                    <thead>
+                      <tr>
+                        <th class="border px-4 py-2 text-left">No</th>
+                        <th class="border px-4 py-2 text-left" id="cur_race_title"><%= resource['cur_race_time'] + '' + resource['cur_race_name']%></th>
+                        <th class="border px-4 py-2 text-left">Projected SP</th>
+                      </tr>
+                    </thead>
+                    <tbody id="cur_race_info_table">
+                        <% for(var i=0; i<curRaceData.length; i++) { %>
+                            <tr>
+                                <td class="border px-4 py-2 row_num">
+                                    <%= i+1 %>
+                                </td>
+                                <td class="border px-4 py-2">
+                                    <%= curRaceData[i].name %>
+                                <td class="border px-4 py-2 <%= curRaceData[i].color %>">
+                                    <%= curRaceData[i].sp %>
+                                </td>
+                            </tr>
+                        <% } %>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-lg-6">
+                <table class="w-full table-auto bg-white full-width">
+                    <thead>
+                      <tr>
+                        <th class="border px-4 py-2 text-left">No</th>
+                        <th class="border px-4 py-2 text-left" id="next_race_title"><%= resource['next_race_time'] + '' + resource['next_race_name']%></th>
+                        <th class="border px-4 py-2 text-left">Projected SP</th>
+                      </tr>
+                    </thead>
+                    <tbody id="next_race_info_table">
+                        <% for(var i=0; i<nextRaceData.length; i++) { %>
+                            <tr>
+                                <td class="border px-4 py-2 row_num">
+                                    <%= i+1 %>
+                                </td>
+                                <td class="border px-4 py-2">
+                                    <%= nextRaceData[i].name %>
+                                <td class="border px-4 py-2 <%= nextRaceData[i].color %>">
+                                    <%= nextRaceData[i].sp %>
+                                </td>
+                            </tr>
+                        <% } %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="bet_info_panel">
+    <div class="container">
+        <div class="row content">
+            <div class="panel_title">
+                LIVE BETTING INFORMATION
+            </div>
+            <div class="panel_content">
+                <% for(let i=0; i<bettinginfo.length; i++) { %>
+                    <div class="bet_info_item">
+                        <p>
+                            <%= bettinginfo[i].time + ' ' + bettinginfo[i].name + ' ' + bettinginfo[i].text %>
+                        </p>
+                    </div>
+                <% } %>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="live_result_panel">
+    <div class="container">
+        <div class="row content">
+            <div class="panel_title">
+                LIVE RESULT
+            </div>
+            <div class="panel_content">
+                <a class="twitter-timeline" href="https://twitter.com/V_Sporting?ref_src=twsrc%5Etfw">Tweets by V_Sporting</a>
+                <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+    var join_events = ['cur_race', 'stream_url', 'next_race'];
+</script>
