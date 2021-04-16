@@ -645,6 +645,8 @@ function (Layer/*, segmentation*/, morph, Domtoimage, Detection) {
     for ( var i = 0; i < region.length; i++) {
         offsets.push(4 * region[i]);
     }
+    this.lastHighlightColor = this.colormap[annotator.currentLabel].concat(this.visualizationAlpha);
+    console.log(this.lastHighlightColor);
     annotator._updateAnnotation(offsets, annotator.currentLabel);
     return true;
   };
@@ -705,6 +707,8 @@ function (Layer/*, segmentation*/, morph, Domtoimage, Detection) {
       }
     }
 
+    this.lastHighlightColor = this.colormap[annotator.currentLabel].concat(this.visualizationAlpha);
+    console.log(this.lastHighlightColor);
     this.boundaries.push(boundary);
     this.regions.push(region);
     // update annotation.
