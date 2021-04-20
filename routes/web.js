@@ -1,8 +1,10 @@
-// const homeController = require('../app/http/controllers/homeController');
-// const cardsController = require('../app/http/controllers/cardsController');
-// const oddsController = require('../app/http/controllers/oddsController');
-// const tipsController = require('../app/http/controllers/tipsController');
-const authController = require('../app/http/controllers/authController');
+const roomController = require('../app/http/controllers/roomController');
+const colorController = require('../app/http/controllers/colorController');
+const colorFamiliesController = require('../app/http/controllers/colorFamiliesController');
+const colorCollectionController = require('../app/http/controllers/colorCollectionController');
+const photoController = require('../app/http/controllers/photoController');
+const uploadController = require('../app/http/controllers/uploadController');
+// const authController = require('../app/http/controllers/authController');
 // const adminSettingController = require('../app/http/controllers/admin/settingController');
 
 //Middelwares
@@ -13,7 +15,7 @@ const authController = require('../app/http/controllers/authController');
 
 
 function initRoute(app) {
-    app.get('/', authController().login)
+    // app.get('/', authController().login)
     // app.get('/login', authController().login)
     // app.get('/register', authController().login)
     // app.post('/login', authController().postLogin)
@@ -21,10 +23,15 @@ function initRoute(app) {
     // app.post('/logout', authController().logout);
 
     //Customer Routes
-    // app.get('/home', auth, homeController().index)
-    // app.get('/cards', auth, cardsController().index)
-    // app.get('/odds', auth, oddsController().index)
-    // app.get('/tips', auth, tipsController().index)
+    // app.get('/home', homeController().index)
+    app.get('/color', colorController().index)
+    app.get('/families', colorFamiliesController().index)
+    app.get('/collection', colorCollectionController().index)
+    app.get('/', photoController().index)
+    app.get('/photo', photoController().index)
+    app.get('/upload', uploadController().index)
+    app.get('/room', roomController().index)
+    // app.get('/tips', tipsController().index)
 
     //Admin Routes
     // app.get('/admin/setting', admin, adminSettingController().index);

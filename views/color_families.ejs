@@ -1,0 +1,342 @@
+<color-families class="ng-scope ng-isolate-scope"><page-header class="color-family-header ng-isolate-scope" headline="Browse Paint Colors" subheadline="Beiges" backlinktext="Explore Different Colors" data-backurl="/Colors"><div id="PageHeader">
+    <!-- ngIf: model.backlinktext --><a id="HeaderBackLink" ng-click="model.BackAction()" ng-if="model.backlinktext" gtm-event="['ux', 'backButton', model.backlinktext]" class="ng-scope ng-isolate-scope" data-t="ux" data-d1="backButton" data-d2="Explore Different Colors">
+        <span id="HeaderLeftArrow" class="material-icons">keyboard_arrow_left</span>
+        <span id="HeaderBackLinkText" class="ng-binding" data-url="/color">Explore Different Colors</span>
+    </a><!-- end ngIf: model.backlinktext -->
+    <h1 id="HeaderPageTitle" class="ng-binding">Browse Paint Colors</h1>
+    <!-- ngIf: model.subheadline --><span id="HeaderPageSubTitle" ng-if="model.subheadline" class="ng-binding ng-scope">Beiges</span><!-- end ngIf: model.subheadline -->
+</div></page-header>
+<div id="MainContentLeftPane">
+    <div id="ColorFamilyFamilies">
+        <!-- ngRepeat: collection in model.Collections --><div ng-repeat="collection in model.Collections" class="ng-scope">
+            <a id="ColorFamSelector" ng-click="model.GoToFamily(collection.CollectionName)" title="Reds" ng-style="{'background-color': model.GetDisplayAs(collection.DisplayAs)}" gtm-event="['ux', 'colorCircles', collection.CollectionName]" class="ng-isolate-scope" data-t="ux" data-d1="colorCircles" data-d2="Reds" style="background-color: rgb(194, 13, 0);">
+                <span class="material-icons isDark" ng-class="model.GetIsDarkCss(collection)">check_circle</span>
+            </a>
+        </div><!-- end ngRepeat: collection in model.Collections --><div ng-repeat="collection in model.Collections" class="ng-scope">
+            <a id="ColorFamSelector" ng-click="model.GoToFamily(collection.CollectionName)" title="Oranges" ng-style="{'background-color': model.GetDisplayAs(collection.DisplayAs)}" gtm-event="['ux', 'colorCircles', collection.CollectionName]" class="ng-isolate-scope" data-t="ux" data-d1="colorCircles" data-d2="Oranges" style="background-color: rgb(217, 81, 0);">
+                <span class="material-icons isDark" ng-class="model.GetIsDarkCss(collection)">check_circle</span>
+            </a>
+        </div><!-- end ngRepeat: collection in model.Collections --><div ng-repeat="collection in model.Collections" class="ng-scope">
+            <a id="ColorFamSelector" ng-click="model.GoToFamily(collection.CollectionName)" title="Yellows" ng-style="{'background-color': model.GetDisplayAs(collection.DisplayAs)}" gtm-event="['ux', 'colorCircles', collection.CollectionName]" class="ng-isolate-scope" data-t="ux" data-d1="colorCircles" data-d2="Yellows" style="background-color: rgb(228, 157, 0);">
+                <span class="material-icons" ng-class="model.GetIsDarkCss(collection)">check_circle</span>
+            </a>
+        </div><!-- end ngRepeat: collection in model.Collections --><div ng-repeat="collection in model.Collections" class="ng-scope">
+            <a id="ColorFamSelector" ng-click="model.GoToFamily(collection.CollectionName)" title="Greens" ng-style="{'background-color': model.GetDisplayAs(collection.DisplayAs)}" gtm-event="['ux', 'colorCircles', collection.CollectionName]" class="ng-isolate-scope" data-t="ux" data-d1="colorCircles" data-d2="Greens" style="background-color: rgb(0, 181, 7);">
+                <span class="material-icons" ng-class="model.GetIsDarkCss(collection)">check_circle</span>
+            </a>
+        </div><!-- end ngRepeat: collection in model.Collections --><div ng-repeat="collection in model.Collections" class="ng-scope">
+            <a id="ColorFamSelector" ng-click="model.GoToFamily(collection.CollectionName)" title="Blues" ng-style="{'background-color': model.GetDisplayAs(collection.DisplayAs)}" gtm-event="['ux', 'colorCircles', collection.CollectionName]" class="ng-isolate-scope" data-t="ux" data-d1="colorCircles" data-d2="Blues" style="background-color: rgb(0, 115, 192);">
+                <span class="material-icons isDark" ng-class="model.GetIsDarkCss(collection)">check_circle</span>
+            </a>
+        </div><!-- end ngRepeat: collection in model.Collections --><div ng-repeat="collection in model.Collections" class="ng-scope">
+            <a id="ColorFamSelector" ng-click="model.GoToFamily(collection.CollectionName)" title="Aquas" ng-style="{'background-color': model.GetDisplayAs(collection.DisplayAs)}" gtm-event="['ux', 'colorCircles', collection.CollectionName]" class="ng-isolate-scope" data-t="ux" data-d1="colorCircles" data-d2="Aquas" style="background-color: rgb(44, 207, 232);">
+                <span class="material-icons" ng-class="model.GetIsDarkCss(collection)">check_circle</span>
+            </a>
+        </div><!-- end ngRepeat: collection in model.Collections --><div ng-repeat="collection in model.Collections" class="ng-scope">
+            <a id="ColorFamSelector" ng-click="model.GoToFamily(collection.CollectionName)" title="Purples" ng-style="{'background-color': model.GetDisplayAs(collection.DisplayAs)}" gtm-event="['ux', 'colorCircles', collection.CollectionName]" class="ng-isolate-scope" data-t="ux" data-d1="colorCircles" data-d2="Purples" style="background-color: rgb(127, 0, 190);">
+                <span class="material-icons isDark" ng-class="model.GetIsDarkCss(collection)">check_circle</span>
+            </a>
+        </div><!-- end ngRepeat: collection in model.Collections --><div ng-repeat="collection in model.Collections" class="ng-scope">
+            <a id="ColorFamSelector" ng-click="model.GoToFamily(collection.CollectionName)" title="Neutrals" ng-style="{'background-color': model.GetDisplayAs(collection.DisplayAs)}" gtm-event="['ux', 'colorCircles', collection.CollectionName]" class="ng-isolate-scope" data-t="ux" data-d1="colorCircles" data-d2="Neutrals" style="background-color: rgb(183, 169, 147);">
+                <span class="material-icons" ng-class="model.GetIsDarkCss(collection)">check_circle</span>
+            </a>
+        </div><!-- end ngRepeat: collection in model.Collections --><div ng-repeat="collection in model.Collections" class="ng-scope">
+            <a id="ColorFamSelector" ng-click="model.GoToFamily(collection.CollectionName)" title="Beiges" ng-style="{'background-color': model.GetDisplayAs(collection.DisplayAs)}" gtm-event="['ux', 'colorCircles', collection.CollectionName]" class="ng-isolate-scope" data-t="ux" data-d1="colorCircles" data-d2="Beiges" style="background-color: rgb(222, 201, 180);">
+                <span class="material-icons  isSelected" ng-class="model.GetIsDarkCss(collection)">check_circle</span>
+            </a>
+        </div><!-- end ngRepeat: collection in model.Collections --><div ng-repeat="collection in model.Collections" class="ng-scope">
+            <a id="ColorFamSelector" ng-click="model.GoToFamily(collection.CollectionName)" title="Off-Whites" ng-style="{'background-color': model.GetDisplayAs(collection.DisplayAs)}" gtm-event="['ux', 'colorCircles', collection.CollectionName]" class="ng-isolate-scope" data-t="ux" data-d1="colorCircles" data-d2="Off-Whites" style="background-color: rgb(252, 238, 222);">
+                <span class="material-icons" ng-class="model.GetIsDarkCss(collection)">check_circle</span>
+            </a>
+        </div><!-- end ngRepeat: collection in model.Collections --><div ng-repeat="collection in model.Collections" class="ng-scope">
+            <a id="ColorFamSelector" ng-click="model.GoToFamily(collection.CollectionName)" title="Grays &amp; Blacks" ng-style="{'background-color': model.GetDisplayAs(collection.DisplayAs)}" gtm-event="['ux', 'colorCircles', collection.CollectionName]" class="ng-isolate-scope" data-t="ux" data-d1="colorCircles" data-d2="Grays &amp; Blacks" style="background-color: rgb(162, 161, 159);">
+                <span class="material-icons" ng-class="model.GetIsDarkCss(collection)">check_circle</span>
+            </a>
+        </div><!-- end ngRepeat: collection in model.Collections -->
+    </div>
+    <div id="ColorFamilyColorsList">
+        <!-- ngRepeat: row in model.Colors --><div id="ColorFamilyColorsListRow" ng-repeat="row in model.Colors" class="ng-scope">
+            <!-- ngRepeat: colorid in row --><!-- ngIf: model.Colors --><color-swatch colorid="colorid" gtm-type="model.currentTab.TextKey.toLowerCase()" gtm-from="model.collectionName" index="$index" columncount="row.length" ng-repeat="colorid in row" ng-if="model.Colors" ng-class="model.GetStripeClass(row)" class="ng-scope ng-isolate-scope columns count-1"><div id="ColorSwatch" ng-style="{'background-color': model.color.CssColor}" title="SARSAPARILLA - PPG1018-7" ng-click="model.AddColor();" ng-class="model.colorIsDark(model.color)" class="IsDark" style="background-color: rgb(91, 76, 68);">  
+    <!-- ngIf: model.ShowFirstColor -->
+    <span class="material-icons" ng-class="model.color.InMyColors ? 'isSelected' : ''">check_circle</span>
+</div>
+</color-swatch><!-- end ngIf: model.Colors --><!-- end ngRepeat: colorid in row -->
+        </div><!-- end ngRepeat: row in model.Colors --><div id="ColorFamilyColorsListRow" ng-repeat="row in model.Colors" class="ng-scope">
+            <!-- ngRepeat: colorid in row --><!-- ngIf: model.Colors --><color-swatch colorid="colorid" gtm-type="model.currentTab.TextKey.toLowerCase()" gtm-from="model.collectionName" index="$index" columncount="row.length" ng-repeat="colorid in row" ng-if="model.Colors" ng-class="model.GetStripeClass(row)" class="ng-scope ng-isolate-scope columns count-1"><div id="ColorSwatch" ng-style="{'background-color': model.color.CssColor}" title="STONEHENGE GREIGE - PPG1024-5" ng-click="model.AddColor();" ng-class="model.colorIsDark(model.color)" style="background-color: rgb(167, 157, 141);">  
+    <!-- ngIf: model.ShowFirstColor -->
+    <span class="material-icons" ng-class="model.color.InMyColors ? 'isSelected' : ''">check_circle</span>
+</div>
+</color-swatch><!-- end ngIf: model.Colors --><!-- end ngRepeat: colorid in row -->
+        </div><!-- end ngRepeat: row in model.Colors --><div id="ColorFamilyColorsListRow" ng-repeat="row in model.Colors" class="ng-scope">
+            <!-- ngRepeat: colorid in row --><!-- ngIf: model.Colors --><color-swatch colorid="colorid" gtm-type="model.currentTab.TextKey.toLowerCase()" gtm-from="model.collectionName" index="$index" columncount="row.length" ng-repeat="colorid in row" ng-if="model.Colors" ng-class="model.GetStripeClass(row)" class="ng-scope ng-isolate-scope columns count-4"><div id="ColorSwatch" ng-style="{'background-color': model.color.CssColor}" title="TAUPE TAPESTRY - PPG1072-4" ng-click="model.AddColor();" ng-class="model.colorIsDark(model.color)" style="background-color: rgb(195, 167, 154);">  
+    <!-- ngIf: model.ShowFirstColor -->
+    <span class="material-icons" ng-class="model.color.InMyColors ? 'isSelected' : ''">check_circle</span>
+</div>
+</color-swatch><!-- end ngIf: model.Colors --><!-- end ngRepeat: colorid in row --><!-- ngIf: model.Colors --><color-swatch colorid="colorid" gtm-type="model.currentTab.TextKey.toLowerCase()" gtm-from="model.collectionName" index="$index" columncount="row.length" ng-repeat="colorid in row" ng-if="model.Colors" ng-class="model.GetStripeClass(row)" class="ng-scope ng-isolate-scope columns count-4"><div id="ColorSwatch" ng-style="{'background-color': model.color.CssColor}" title="TATTERED TEDDY - PPG1072-5" ng-click="model.AddColor();" ng-class="model.colorIsDark(model.color)" style="background-color: rgb(162, 128, 111);">  
+    <!-- ngIf: model.ShowFirstColor -->
+    <span class="material-icons" ng-class="model.color.InMyColors ? 'isSelected' : ''">check_circle</span>
+</div>
+</color-swatch><!-- end ngIf: model.Colors --><!-- end ngRepeat: colorid in row --><!-- ngIf: model.Colors --><color-swatch colorid="colorid" gtm-type="model.currentTab.TextKey.toLowerCase()" gtm-from="model.collectionName" index="$index" columncount="row.length" ng-repeat="colorid in row" ng-if="model.Colors" ng-class="model.GetStripeClass(row)" class="ng-scope ng-isolate-scope columns count-4"><div id="ColorSwatch" ng-style="{'background-color': model.color.CssColor}" title="SUEDE LEATHER - PPG1072-6" ng-click="model.AddColor();" ng-class="model.colorIsDark(model.color)" class="IsDark" style="background-color: rgb(137, 103, 87);">  
+    <!-- ngIf: model.ShowFirstColor -->
+    <span class="material-icons" ng-class="model.color.InMyColors ? 'isSelected' : ''">check_circle</span>
+</div>
+</color-swatch><!-- end ngIf: model.Colors --><!-- end ngRepeat: colorid in row --><!-- ngIf: model.Colors --><color-swatch colorid="colorid" gtm-type="model.currentTab.TextKey.toLowerCase()" gtm-from="model.collectionName" index="$index" columncount="row.length" ng-repeat="colorid in row" ng-if="model.Colors" ng-class="model.GetStripeClass(row)" class="ng-scope ng-isolate-scope columns count-4"><div id="ColorSwatch" ng-style="{'background-color': model.color.CssColor}" title="BIRD HOUSE BROWN - PPG1072-7" ng-click="model.AddColor();" ng-class="model.colorIsDark(model.color)" class="IsDark" style="background-color: rgb(108, 72, 58);">  
+    <!-- ngIf: model.ShowFirstColor -->
+    <span class="material-icons" ng-class="model.color.InMyColors ? 'isSelected' : ''">check_circle</span>
+</div>
+</color-swatch><!-- end ngIf: model.Colors --><!-- end ngRepeat: colorid in row -->
+        </div><!-- end ngRepeat: row in model.Colors --><div id="ColorFamilyColorsListRow" ng-repeat="row in model.Colors" class="ng-scope">
+            <!-- ngRepeat: colorid in row --><!-- ngIf: model.Colors --><color-swatch colorid="colorid" gtm-type="model.currentTab.TextKey.toLowerCase()" gtm-from="model.collectionName" index="$index" columncount="row.length" ng-repeat="colorid in row" ng-if="model.Colors" ng-class="model.GetStripeClass(row)" class="ng-scope ng-isolate-scope columns count-5"><div id="ColorSwatch" ng-style="{'background-color': model.color.CssColor}" title="PALE TAUPE - PPG1073-3" ng-click="model.AddColor();" ng-class="model.colorIsDark(model.color)" style="background-color: rgb(227, 209, 200);">  
+    <!-- ngIf: model.ShowFirstColor -->
+    <span class="material-icons" ng-class="model.color.InMyColors ? 'isSelected' : ''">check_circle</span>
+</div>
+</color-swatch><!-- end ngIf: model.Colors --><!-- end ngRepeat: colorid in row --><!-- ngIf: model.Colors --><color-swatch colorid="colorid" gtm-type="model.currentTab.TextKey.toLowerCase()" gtm-from="model.collectionName" index="$index" columncount="row.length" ng-repeat="colorid in row" ng-if="model.Colors" ng-class="model.GetStripeClass(row)" class="ng-scope ng-isolate-scope columns count-5"><div id="ColorSwatch" ng-style="{'background-color': model.color.CssColor}" title="PUEBLO - PPG1073-4" ng-click="model.AddColor();" ng-class="model.colorIsDark(model.color)" style="background-color: rgb(208, 187, 176);">  
+    <!-- ngIf: model.ShowFirstColor -->
+    <span class="material-icons" ng-class="model.color.InMyColors ? 'isSelected' : ''">check_circle</span>
+</div>
+</color-swatch><!-- end ngIf: model.Colors --><!-- end ngRepeat: colorid in row --><!-- ngIf: model.Colors --><color-swatch colorid="colorid" gtm-type="model.currentTab.TextKey.toLowerCase()" gtm-from="model.collectionName" index="$index" columncount="row.length" ng-repeat="colorid in row" ng-if="model.Colors" ng-class="model.GetStripeClass(row)" class="ng-scope ng-isolate-scope columns count-5"><div id="ColorSwatch" ng-style="{'background-color': model.color.CssColor}" title="TANGLEWOOD - PPG1073-5" ng-click="model.AddColor();" ng-class="model.colorIsDark(model.color)" style="background-color: rgb(165, 143, 133);">  
+    <!-- ngIf: model.ShowFirstColor -->
+    <span class="material-icons" ng-class="model.color.InMyColors ? 'isSelected' : ''">check_circle</span>
+</div>
+</color-swatch><!-- end ngIf: model.Colors --><!-- end ngRepeat: colorid in row --><!-- ngIf: model.Colors --><color-swatch colorid="colorid" gtm-type="model.currentTab.TextKey.toLowerCase()" gtm-from="model.collectionName" index="$index" columncount="row.length" ng-repeat="colorid in row" ng-if="model.Colors" ng-class="model.GetStripeClass(row)" class="ng-scope ng-isolate-scope columns count-5"><div id="ColorSwatch" ng-style="{'background-color': model.color.CssColor}" title="DERBY BROWN - PPG1073-6" ng-click="model.AddColor();" ng-class="model.colorIsDark(model.color)" class="IsDark" style="background-color: rgb(138, 114, 101);">  
+    <!-- ngIf: model.ShowFirstColor -->
+    <span class="material-icons" ng-class="model.color.InMyColors ? 'isSelected' : ''">check_circle</span>
+</div>
+</color-swatch><!-- end ngIf: model.Colors --><!-- end ngRepeat: colorid in row --><!-- ngIf: model.Colors --><color-swatch colorid="colorid" gtm-type="model.currentTab.TextKey.toLowerCase()" gtm-from="model.collectionName" index="$index" columncount="row.length" ng-repeat="colorid in row" ng-if="model.Colors" ng-class="model.GetStripeClass(row)" class="ng-scope ng-isolate-scope columns count-5"><div id="ColorSwatch" ng-style="{'background-color': model.color.CssColor}" title="FUDGE - PPG1073-7" ng-click="model.AddColor();" ng-class="model.colorIsDark(model.color)" class="IsDark" style="background-color: rgb(99, 73, 62);">  
+    <!-- ngIf: model.ShowFirstColor -->
+    <span class="material-icons" ng-class="model.color.InMyColors ? 'isSelected' : ''">check_circle</span>
+</div>
+</color-swatch><!-- end ngIf: model.Colors --><!-- end ngRepeat: colorid in row -->
+        </div><!-- end ngRepeat: row in model.Colors --><div id="ColorFamilyColorsListRow" ng-repeat="row in model.Colors" class="ng-scope">
+            <!-- ngRepeat: colorid in row --><!-- ngIf: model.Colors --><color-swatch colorid="colorid" gtm-type="model.currentTab.TextKey.toLowerCase()" gtm-from="model.collectionName" index="$index" columncount="row.length" ng-repeat="colorid in row" ng-if="model.Colors" ng-class="model.GetStripeClass(row)" class="ng-scope ng-isolate-scope columns count-4"><div id="ColorSwatch" ng-style="{'background-color': model.color.CssColor}" title="NOTORIOUS - PPG1074-4" ng-click="model.AddColor();" ng-class="model.colorIsDark(model.color)" style="background-color: rgb(189, 169, 152);">  
+    <!-- ngIf: model.ShowFirstColor -->
+    <span class="material-icons" ng-class="model.color.InMyColors ? 'isSelected' : ''">check_circle</span>
+</div>
+</color-swatch><!-- end ngIf: model.Colors --><!-- end ngRepeat: colorid in row --><!-- ngIf: model.Colors --><color-swatch colorid="colorid" gtm-type="model.currentTab.TextKey.toLowerCase()" gtm-from="model.collectionName" index="$index" columncount="row.length" ng-repeat="colorid in row" ng-if="model.Colors" ng-class="model.GetStripeClass(row)" class="ng-scope ng-isolate-scope columns count-4"><div id="ColorSwatch" ng-style="{'background-color': model.color.CssColor}" title="PEPPERED PECAN - PPG1074-5" ng-click="model.AddColor();" ng-class="model.colorIsDark(model.color)" style="background-color: rgb(149, 125, 111);">  
+    <!-- ngIf: model.ShowFirstColor -->
+    <span class="material-icons" ng-class="model.color.InMyColors ? 'isSelected' : ''">check_circle</span>
+</div>
+</color-swatch><!-- end ngIf: model.Colors --><!-- end ngRepeat: colorid in row --><!-- ngIf: model.Colors --><color-swatch colorid="colorid" gtm-type="model.currentTab.TextKey.toLowerCase()" gtm-from="model.collectionName" index="$index" columncount="row.length" ng-repeat="colorid in row" ng-if="model.Colors" ng-class="model.GetStripeClass(row)" class="ng-scope ng-isolate-scope columns count-4"><div id="ColorSwatch" ng-style="{'background-color': model.color.CssColor}" title="CARAMELIZED WALNUT - PPG1074-6" ng-click="model.AddColor();" ng-class="model.colorIsDark(model.color)" class="IsDark" style="background-color: rgb(110, 86, 74);">  
+    <!-- ngIf: model.ShowFirstColor -->
+    <span class="material-icons" ng-class="model.color.InMyColors ? 'isSelected' : ''">check_circle</span>
+</div>
+</color-swatch><!-- end ngIf: model.Colors --><!-- end ngRepeat: colorid in row --><!-- ngIf: model.Colors --><color-swatch colorid="colorid" gtm-type="model.currentTab.TextKey.toLowerCase()" gtm-from="model.collectionName" index="$index" columncount="row.length" ng-repeat="colorid in row" ng-if="model.Colors" ng-class="model.GetStripeClass(row)" class="ng-scope ng-isolate-scope columns count-4"><div id="ColorSwatch" ng-style="{'background-color': model.color.CssColor}" title="LITTLE BEAR - PPG1074-7" ng-click="model.AddColor();" ng-class="model.colorIsDark(model.color)" class="IsDark" style="background-color: rgb(96, 75, 66);">  
+    <!-- ngIf: model.ShowFirstColor -->
+    <span class="material-icons" ng-class="model.color.InMyColors ? 'isSelected' : ''">check_circle</span>
+</div>
+</color-swatch><!-- end ngIf: model.Colors --><!-- end ngRepeat: colorid in row -->
+        </div><!-- end ngRepeat: row in model.Colors --><div id="ColorFamilyColorsListRow" ng-repeat="row in model.Colors" class="ng-scope">
+            <!-- ngRepeat: colorid in row --><!-- ngIf: model.Colors --><color-swatch colorid="colorid" gtm-type="model.currentTab.TextKey.toLowerCase()" gtm-from="model.collectionName" index="$index" columncount="row.length" ng-repeat="colorid in row" ng-if="model.Colors" ng-class="model.GetStripeClass(row)" class="ng-scope ng-isolate-scope columns count-4"><div id="ColorSwatch" ng-style="{'background-color': model.color.CssColor}" title="THUMPER - PPG1075-4" ng-click="model.AddColor();" ng-class="model.colorIsDark(model.color)" style="background-color: rgb(189, 173, 164);">  
+    <!-- ngIf: model.ShowFirstColor -->
+    <span class="material-icons" ng-class="model.color.InMyColors ? 'isSelected' : ''">check_circle</span>
+</div>
+</color-swatch><!-- end ngIf: model.Colors --><!-- end ngRepeat: colorid in row --><!-- ngIf: model.Colors --><color-swatch colorid="colorid" gtm-type="model.currentTab.TextKey.toLowerCase()" gtm-from="model.collectionName" index="$index" columncount="row.length" ng-repeat="colorid in row" ng-if="model.Colors" ng-class="model.GetStripeClass(row)" class="ng-scope ng-isolate-scope columns count-4"><div id="ColorSwatch" ng-style="{'background-color': model.color.CssColor}" title="RANCH MINK - PPG1075-5" ng-click="model.AddColor();" ng-class="model.colorIsDark(model.color)" style="background-color: rgb(150, 131, 121);">  
+    <!-- ngIf: model.ShowFirstColor -->
+    <span class="material-icons" ng-class="model.color.InMyColors ? 'isSelected' : ''">check_circle</span>
+</div>
+</color-swatch><!-- end ngIf: model.Colors --><!-- end ngRepeat: colorid in row --><!-- ngIf: model.Colors --><color-swatch colorid="colorid" gtm-type="model.currentTab.TextKey.toLowerCase()" gtm-from="model.collectionName" index="$index" columncount="row.length" ng-repeat="colorid in row" ng-if="model.Colors" ng-class="model.GetStripeClass(row)" class="ng-scope ng-isolate-scope columns count-4"><div id="ColorSwatch" ng-style="{'background-color': model.color.CssColor}" title="POPPY PODS - PPG1075-6" ng-click="model.AddColor();" ng-class="model.colorIsDark(model.color)" class="IsDark" style="background-color: rgb(115, 97, 87);">  
+    <!-- ngIf: model.ShowFirstColor -->
+    <span class="material-icons" ng-class="model.color.InMyColors ? 'isSelected' : ''">check_circle</span>
+</div>
+</color-swatch><!-- end ngIf: model.Colors --><!-- end ngRepeat: colorid in row --><!-- ngIf: model.Colors --><color-swatch colorid="colorid" gtm-type="model.currentTab.TextKey.toLowerCase()" gtm-from="model.collectionName" index="$index" columncount="row.length" ng-repeat="colorid in row" ng-if="model.Colors" ng-class="model.GetStripeClass(row)" class="ng-scope ng-isolate-scope columns count-4"><div id="ColorSwatch" ng-style="{'background-color': model.color.CssColor}" title="FUDGE TRUFFLE - PPG1075-7" ng-click="model.AddColor();" ng-class="model.colorIsDark(model.color)" class="IsDark" style="background-color: rgb(96, 74, 63);">  
+    <!-- ngIf: model.ShowFirstColor -->
+    <span class="material-icons" ng-class="model.color.InMyColors ? 'isSelected' : ''">check_circle</span>
+</div>
+</color-swatch><!-- end ngIf: model.Colors --><!-- end ngRepeat: colorid in row -->
+        </div><!-- end ngRepeat: row in model.Colors --><div id="ColorFamilyColorsListRow" ng-repeat="row in model.Colors" class="ng-scope">
+            <!-- ngRepeat: colorid in row --><!-- ngIf: model.Colors --><color-swatch colorid="colorid" gtm-type="model.currentTab.TextKey.toLowerCase()" gtm-from="model.collectionName" index="$index" columncount="row.length" ng-repeat="colorid in row" ng-if="model.Colors" ng-class="model.GetStripeClass(row)" class="ng-scope ng-isolate-scope columns count-5"><div id="ColorSwatch" ng-style="{'background-color': model.color.CssColor}" title="SOURDOUGH - PPG1084-3" ng-click="model.AddColor();" ng-class="model.colorIsDark(model.color)" style="background-color: rgb(221, 207, 188);">  
+    <!-- ngIf: model.ShowFirstColor -->
+    <span class="material-icons" ng-class="model.color.InMyColors ? 'isSelected' : ''">check_circle</span>
+</div>
+</color-swatch><!-- end ngIf: model.Colors --><!-- end ngRepeat: colorid in row --><!-- ngIf: model.Colors --><color-swatch colorid="colorid" gtm-type="model.currentTab.TextKey.toLowerCase()" gtm-from="model.collectionName" index="$index" columncount="row.length" ng-repeat="colorid in row" ng-if="model.Colors" ng-class="model.GetStripeClass(row)" class="ng-scope ng-isolate-scope columns count-5"><div id="ColorSwatch" ng-style="{'background-color': model.color.CssColor}" title="HAPPY TRAILS - PPG1084-4" ng-click="model.AddColor();" ng-class="model.colorIsDark(model.color)" style="background-color: rgb(205, 182, 155);">  
+    <!-- ngIf: model.ShowFirstColor -->
+    <span class="material-icons" ng-class="model.color.InMyColors ? 'isSelected' : ''">check_circle</span>
+</div>
+</color-swatch><!-- end ngIf: model.Colors --><!-- end ngRepeat: colorid in row --><!-- ngIf: model.Colors --><color-swatch colorid="colorid" gtm-type="model.currentTab.TextKey.toLowerCase()" gtm-from="model.collectionName" index="$index" columncount="row.length" ng-repeat="colorid in row" ng-if="model.Colors" ng-class="model.GetStripeClass(row)" class="ng-scope ng-isolate-scope columns count-5"><div id="ColorSwatch" ng-style="{'background-color': model.color.CssColor}" title="COFFEE KISS - PPG1084-5" ng-click="model.AddColor();" ng-class="model.colorIsDark(model.color)" style="background-color: rgb(177, 149, 118);">  
+    <!-- ngIf: model.ShowFirstColor -->
+    <span class="material-icons" ng-class="model.color.InMyColors ? 'isSelected' : ''">check_circle</span>
+</div>
+</color-swatch><!-- end ngIf: model.Colors --><!-- end ngRepeat: colorid in row --><!-- ngIf: model.Colors --><color-swatch colorid="colorid" gtm-type="model.currentTab.TextKey.toLowerCase()" gtm-from="model.collectionName" index="$index" columncount="row.length" ng-repeat="colorid in row" ng-if="model.Colors" ng-class="model.GetStripeClass(row)" class="ng-scope ng-isolate-scope columns count-5"><div id="ColorSwatch" ng-style="{'background-color': model.color.CssColor}" title="COCOA PECAN - PPG1084-6" ng-click="model.AddColor();" ng-class="model.colorIsDark(model.color)" class="IsDark" style="background-color: rgb(150, 123, 93);">  
+    <!-- ngIf: model.ShowFirstColor -->
+    <span class="material-icons" ng-class="model.color.InMyColors ? 'isSelected' : ''">check_circle</span>
+</div>
+</color-swatch><!-- end ngIf: model.Colors --><!-- end ngRepeat: colorid in row --><!-- ngIf: model.Colors --><color-swatch colorid="colorid" gtm-type="model.currentTab.TextKey.toLowerCase()" gtm-from="model.collectionName" index="$index" columncount="row.length" ng-repeat="colorid in row" ng-if="model.Colors" ng-class="model.GetStripeClass(row)" class="ng-scope ng-isolate-scope columns count-5"><div id="ColorSwatch" ng-style="{'background-color': model.color.CssColor}" title="MAPLE SYRUP - PPG1084-7" ng-click="model.AddColor();" ng-class="model.colorIsDark(model.color)" class="IsDark" style="background-color: rgb(117, 88, 61);">  
+    <!-- ngIf: model.ShowFirstColor -->
+    <span class="material-icons" ng-class="model.color.InMyColors ? 'isSelected' : ''">check_circle</span>
+</div>
+</color-swatch><!-- end ngIf: model.Colors --><!-- end ngRepeat: colorid in row -->
+        </div><!-- end ngRepeat: row in model.Colors --><div id="ColorFamilyColorsListRow" ng-repeat="row in model.Colors" class="ng-scope">
+            <!-- ngRepeat: colorid in row --><!-- ngIf: model.Colors --><color-swatch colorid="colorid" gtm-type="model.currentTab.TextKey.toLowerCase()" gtm-from="model.collectionName" index="$index" columncount="row.length" ng-repeat="colorid in row" ng-if="model.Colors" ng-class="model.GetStripeClass(row)" class="ng-scope ng-isolate-scope columns count-5"><div id="ColorSwatch" ng-style="{'background-color': model.color.CssColor}" title="SERIOUSLY SAND - PPG1085-3" ng-click="model.AddColor();" ng-class="model.colorIsDark(model.color)" style="background-color: rgb(220, 204, 180);">  
+    <!-- ngIf: model.ShowFirstColor -->
+    <span class="material-icons" ng-class="model.color.InMyColors ? 'isSelected' : ''">check_circle</span>
+</div>
+</color-swatch><!-- end ngIf: model.Colors --><!-- end ngRepeat: colorid in row --><!-- ngIf: model.Colors --><color-swatch colorid="colorid" gtm-type="model.currentTab.TextKey.toLowerCase()" gtm-from="model.collectionName" index="$index" columncount="row.length" ng-repeat="colorid in row" ng-if="model.Colors" ng-class="model.GetStripeClass(row)" class="ng-scope ng-isolate-scope columns count-5"><div id="ColorSwatch" ng-style="{'background-color': model.color.CssColor}" title="BEST BEIGE - PPG1085-4" ng-click="model.AddColor();" ng-class="model.colorIsDark(model.color)" style="background-color: rgb(198, 180, 156);">  
+    <!-- ngIf: model.ShowFirstColor -->
+    <span class="material-icons" ng-class="model.color.InMyColors ? 'isSelected' : ''">check_circle</span>
+</div>
+</color-swatch><!-- end ngIf: model.Colors --><!-- end ngRepeat: colorid in row --><!-- ngIf: model.Colors --><color-swatch colorid="colorid" gtm-type="model.currentTab.TextKey.toLowerCase()" gtm-from="model.collectionName" index="$index" columncount="row.length" ng-repeat="colorid in row" ng-if="model.Colors" ng-class="model.GetStripeClass(row)" class="ng-scope ng-isolate-scope columns count-5"><div id="ColorSwatch" ng-style="{'background-color': model.color.CssColor}" title="SAUTEED MUSHROOM - PPG1085-5" ng-click="model.AddColor();" ng-class="model.colorIsDark(model.color)" style="background-color: rgb(171, 147, 120);">  
+    <!-- ngIf: model.ShowFirstColor -->
+    <span class="material-icons" ng-class="model.color.InMyColors ? 'isSelected' : ''">check_circle</span>
+</div>
+</color-swatch><!-- end ngIf: model.Colors --><!-- end ngRepeat: colorid in row --><!-- ngIf: model.Colors --><color-swatch colorid="colorid" gtm-type="model.currentTab.TextKey.toLowerCase()" gtm-from="model.collectionName" index="$index" columncount="row.length" ng-repeat="colorid in row" ng-if="model.Colors" ng-class="model.GetStripeClass(row)" class="ng-scope ng-isolate-scope columns count-5"><div id="ColorSwatch" ng-style="{'background-color': model.color.CssColor}" title="HAT BOX BROWN - PPG1085-6" ng-click="model.AddColor();" ng-class="model.colorIsDark(model.color)" class="IsDark" style="background-color: rgb(143, 119, 93);">  
+    <!-- ngIf: model.ShowFirstColor -->
+    <span class="material-icons" ng-class="model.color.InMyColors ? 'isSelected' : ''">check_circle</span>
+</div>
+</color-swatch><!-- end ngIf: model.Colors --><!-- end ngRepeat: colorid in row --><!-- ngIf: model.Colors --><color-swatch colorid="colorid" gtm-type="model.currentTab.TextKey.toLowerCase()" gtm-from="model.collectionName" index="$index" columncount="row.length" ng-repeat="colorid in row" ng-if="model.Colors" ng-class="model.GetStripeClass(row)" class="ng-scope ng-isolate-scope columns count-5"><div id="ColorSwatch" ng-style="{'background-color': model.color.CssColor}" title="FIG BRANCHES - PPG1085-7" ng-click="model.AddColor();" ng-class="model.colorIsDark(model.color)" class="IsDark" style="background-color: rgb(122, 99, 77);">  
+    <!-- ngIf: model.ShowFirstColor -->
+    <span class="material-icons" ng-class="model.color.InMyColors ? 'isSelected' : ''">check_circle</span>
+</div>
+</color-swatch><!-- end ngIf: model.Colors --><!-- end ngRepeat: colorid in row -->
+        </div><!-- end ngRepeat: row in model.Colors --><div id="ColorFamilyColorsListRow" ng-repeat="row in model.Colors" class="ng-scope">
+            <!-- ngRepeat: colorid in row --><!-- ngIf: model.Colors --><color-swatch colorid="colorid" gtm-type="model.currentTab.TextKey.toLowerCase()" gtm-from="model.collectionName" index="$index" columncount="row.length" ng-repeat="colorid in row" ng-if="model.Colors" ng-class="model.GetStripeClass(row)" class="ng-scope ng-isolate-scope columns count-7"><div id="ColorSwatch" ng-style="{'background-color': model.color.CssColor}" title="HORSERADISH - PPG1086-1" ng-click="model.AddColor();" ng-class="model.colorIsDark(model.color)" style="background-color: rgb(238, 234, 221);">  
+    <!-- ngIf: model.ShowFirstColor -->
+    <span class="material-icons" ng-class="model.color.InMyColors ? 'isSelected' : ''">check_circle</span>
+</div>
+</color-swatch><!-- end ngIf: model.Colors --><!-- end ngRepeat: colorid in row --><!-- ngIf: model.Colors --><color-swatch colorid="colorid" gtm-type="model.currentTab.TextKey.toLowerCase()" gtm-from="model.collectionName" index="$index" columncount="row.length" ng-repeat="colorid in row" ng-if="model.Colors" ng-class="model.GetStripeClass(row)" class="ng-scope ng-isolate-scope columns count-7"><div id="ColorSwatch" ng-style="{'background-color': model.color.CssColor}" title="BRANDIED PEARS - PPG1086-2" ng-click="model.AddColor();" ng-class="model.colorIsDark(model.color)" style="background-color: rgb(234, 226, 209);">  
+    <!-- ngIf: model.ShowFirstColor -->
+    <span class="material-icons" ng-class="model.color.InMyColors ? 'isSelected' : ''">check_circle</span>
+</div>
+</color-swatch><!-- end ngIf: model.Colors --><!-- end ngRepeat: colorid in row --><!-- ngIf: model.Colors --><color-swatch colorid="colorid" gtm-type="model.currentTab.TextKey.toLowerCase()" gtm-from="model.collectionName" index="$index" columncount="row.length" ng-repeat="colorid in row" ng-if="model.Colors" ng-class="model.GetStripeClass(row)" class="ng-scope ng-isolate-scope columns count-7"><div id="ColorSwatch" ng-style="{'background-color': model.color.CssColor}" title="ALMOND CREAM - PPG1086-3" ng-click="model.AddColor();" ng-class="model.colorIsDark(model.color)" style="background-color: rgb(225, 207, 178);">  
+    <!-- ngIf: model.ShowFirstColor -->
+    <span class="material-icons" ng-class="model.color.InMyColors ? 'isSelected' : ''">check_circle</span>
+</div>
+</color-swatch><!-- end ngIf: model.Colors --><!-- end ngRepeat: colorid in row --><!-- ngIf: model.Colors --><color-swatch colorid="colorid" gtm-type="model.currentTab.TextKey.toLowerCase()" gtm-from="model.collectionName" index="$index" columncount="row.length" ng-repeat="colorid in row" ng-if="model.Colors" ng-class="model.GetStripeClass(row)" class="ng-scope ng-isolate-scope columns count-7"><div id="ColorSwatch" ng-style="{'background-color': model.color.CssColor}" title="PONY TAIL - PPG1086-4" ng-click="model.AddColor();" ng-class="model.colorIsDark(model.color)" style="background-color: rgb(210, 188, 155);">  
+    <!-- ngIf: model.ShowFirstColor -->
+    <span class="material-icons" ng-class="model.color.InMyColors ? 'isSelected' : ''">check_circle</span>
+</div>
+</color-swatch><!-- end ngIf: model.Colors --><!-- end ngRepeat: colorid in row --><!-- ngIf: model.Colors --><color-swatch colorid="colorid" gtm-type="model.currentTab.TextKey.toLowerCase()" gtm-from="model.collectionName" index="$index" columncount="row.length" ng-repeat="colorid in row" ng-if="model.Colors" ng-class="model.GetStripeClass(row)" class="ng-scope ng-isolate-scope columns count-7"><div id="ColorSwatch" ng-style="{'background-color': model.color.CssColor}" title="EARTHY OCHER - PPG1086-5" ng-click="model.AddColor();" ng-class="model.colorIsDark(model.color)" style="background-color: rgb(184, 158, 120);">  
+    <!-- ngIf: model.ShowFirstColor -->
+    <span class="material-icons" ng-class="model.color.InMyColors ? 'isSelected' : ''">check_circle</span>
+</div>
+</color-swatch><!-- end ngIf: model.Colors --><!-- end ngRepeat: colorid in row --><!-- ngIf: model.Colors --><color-swatch colorid="colorid" gtm-type="model.currentTab.TextKey.toLowerCase()" gtm-from="model.collectionName" index="$index" columncount="row.length" ng-repeat="colorid in row" ng-if="model.Colors" ng-class="model.GetStripeClass(row)" class="ng-scope ng-isolate-scope columns count-7"><div id="ColorSwatch" ng-style="{'background-color': model.color.CssColor}" title="COFFEE WITH CREAM - PPG1086-6" ng-click="model.AddColor();" ng-class="model.colorIsDark(model.color)" style="background-color: rgb(166, 137, 102);">  
+    <!-- ngIf: model.ShowFirstColor -->
+    <span class="material-icons" ng-class="model.color.InMyColors ? 'isSelected' : ''">check_circle</span>
+</div>
+</color-swatch><!-- end ngIf: model.Colors --><!-- end ngRepeat: colorid in row --><!-- ngIf: model.Colors --><color-swatch colorid="colorid" gtm-type="model.currentTab.TextKey.toLowerCase()" gtm-from="model.collectionName" index="$index" columncount="row.length" ng-repeat="colorid in row" ng-if="model.Colors" ng-class="model.GetStripeClass(row)" class="ng-scope ng-isolate-scope columns count-7"><div id="ColorSwatch" ng-style="{'background-color': model.color.CssColor}" title="COCOA CUPCAKE - PPG1086-7" ng-click="model.AddColor();" ng-class="model.colorIsDark(model.color)" class="IsDark" style="background-color: rgb(150, 120, 89);">  
+    <!-- ngIf: model.ShowFirstColor -->
+    <span class="material-icons" ng-class="model.color.InMyColors ? 'isSelected' : ''">check_circle</span>
+</div>
+</color-swatch><!-- end ngIf: model.Colors --><!-- end ngRepeat: colorid in row -->
+        </div><!-- end ngRepeat: row in model.Colors --><div id="ColorFamilyColorsListRow" ng-repeat="row in model.Colors" class="ng-scope">
+            <!-- ngRepeat: colorid in row --><!-- ngIf: model.Colors --><color-swatch colorid="colorid" gtm-type="model.currentTab.TextKey.toLowerCase()" gtm-from="model.collectionName" index="$index" columncount="row.length" ng-repeat="colorid in row" ng-if="model.Colors" ng-class="model.GetStripeClass(row)" class="ng-scope ng-isolate-scope columns count-1"><div id="ColorSwatch" ng-style="{'background-color': model.color.CssColor}" title="GOLDEN ECRU - PPG1095-4" ng-click="model.AddColor();" ng-class="model.colorIsDark(model.color)" style="background-color: rgb(216, 195, 159);">  
+    <!-- ngIf: model.ShowFirstColor -->
+    <span class="material-icons" ng-class="model.color.InMyColors ? 'isSelected' : ''">check_circle</span>
+</div>
+</color-swatch><!-- end ngIf: model.Colors --><!-- end ngRepeat: colorid in row -->
+        </div><!-- end ngRepeat: row in model.Colors --><div id="ColorFamilyColorsListRow" ng-repeat="row in model.Colors" class="ng-scope">
+            <!-- ngRepeat: colorid in row --><!-- ngIf: model.Colors --><color-swatch colorid="colorid" gtm-type="model.currentTab.TextKey.toLowerCase()" gtm-from="model.collectionName" index="$index" columncount="row.length" ng-repeat="colorid in row" ng-if="model.Colors" ng-class="model.GetStripeClass(row)" class="ng-scope ng-isolate-scope columns count-2"><div id="ColorSwatch" ng-style="{'background-color': model.color.CssColor}" title="TOASTED ALMOND - PPG1097-3" ng-click="model.AddColor();" ng-class="model.colorIsDark(model.color)" style="background-color: rgb(218, 207, 186);">  
+    <!-- ngIf: model.ShowFirstColor -->
+    <span class="material-icons" ng-class="model.color.InMyColors ? 'isSelected' : ''">check_circle</span>
+</div>
+</color-swatch><!-- end ngIf: model.Colors --><!-- end ngRepeat: colorid in row --><!-- ngIf: model.Colors --><color-swatch colorid="colorid" gtm-type="model.currentTab.TextKey.toLowerCase()" gtm-from="model.collectionName" index="$index" columncount="row.length" ng-repeat="colorid in row" ng-if="model.Colors" ng-class="model.GetStripeClass(row)" class="ng-scope ng-isolate-scope columns count-2"><div id="ColorSwatch" ng-style="{'background-color': model.color.CssColor}" title="DUSTY TRAIL - PPG1097-4" ng-click="model.AddColor();" ng-class="model.colorIsDark(model.color)" style="background-color: rgb(201, 187, 163);">  
+    <!-- ngIf: model.ShowFirstColor -->
+    <span class="material-icons" ng-class="model.color.InMyColors ? 'isSelected' : ''">check_circle</span>
+</div>
+</color-swatch><!-- end ngIf: model.Colors --><!-- end ngRepeat: colorid in row -->
+        </div><!-- end ngRepeat: row in model.Colors --><div id="ColorFamilyColorsListRow" ng-repeat="row in model.Colors" class="ng-scope">
+            <!-- ngRepeat: colorid in row --><!-- ngIf: model.Colors --><color-swatch colorid="colorid" gtm-type="model.currentTab.TextKey.toLowerCase()" gtm-from="model.collectionName" index="$index" columncount="row.length" ng-repeat="colorid in row" ng-if="model.Colors" ng-class="model.GetStripeClass(row)" class="ng-scope ng-isolate-scope columns count-2"><div id="ColorSwatch" ng-style="{'background-color': model.color.CssColor}" title="SAND FOSSIL - PPG1098-3" ng-click="model.AddColor();" ng-class="model.colorIsDark(model.color)" style="background-color: rgb(222, 207, 179);">  
+    <!-- ngIf: model.ShowFirstColor -->
+    <span class="material-icons" ng-class="model.color.InMyColors ? 'isSelected' : ''">check_circle</span>
+</div>
+</color-swatch><!-- end ngIf: model.Colors --><!-- end ngRepeat: colorid in row --><!-- ngIf: model.Colors --><color-swatch colorid="colorid" gtm-type="model.currentTab.TextKey.toLowerCase()" gtm-from="model.collectionName" index="$index" columncount="row.length" ng-repeat="colorid in row" ng-if="model.Colors" ng-class="model.GetStripeClass(row)" class="ng-scope ng-isolate-scope columns count-2"><div id="ColorSwatch" ng-style="{'background-color': model.color.CssColor}" title="SPICED VINEGAR - PPG1098-4" ng-click="model.AddColor();" ng-class="model.colorIsDark(model.color)" style="background-color: rgb(205, 186, 153);">  
+    <!-- ngIf: model.ShowFirstColor -->
+    <span class="material-icons" ng-class="model.color.InMyColors ? 'isSelected' : ''">check_circle</span>
+</div>
+</color-swatch><!-- end ngIf: model.Colors --><!-- end ngRepeat: colorid in row -->
+        </div><!-- end ngRepeat: row in model.Colors --><div id="ColorFamilyColorsListRow" ng-repeat="row in model.Colors" class="ng-scope">
+            <!-- ngRepeat: colorid in row --><!-- ngIf: model.Colors --><color-swatch colorid="colorid" gtm-type="model.currentTab.TextKey.toLowerCase()" gtm-from="model.collectionName" index="$index" columncount="row.length" ng-repeat="colorid in row" ng-if="model.Colors" ng-class="model.GetStripeClass(row)" class="ng-scope ng-isolate-scope columns count-1"><div id="ColorSwatch" ng-style="{'background-color': model.color.CssColor}" title="DISTANT VALLEY - PPG11-19" ng-click="model.AddColor();" ng-class="model.colorIsDark(model.color)" style="background-color: rgb(194, 183, 154);">  
+    <!-- ngIf: model.ShowFirstColor -->
+    <span class="material-icons" ng-class="model.color.InMyColors ? 'isSelected' : ''">check_circle</span>
+</div>
+</color-swatch><!-- end ngIf: model.Colors --><!-- end ngRepeat: colorid in row -->
+        </div><!-- end ngRepeat: row in model.Colors --><div id="ColorFamilyColorsListRow" ng-repeat="row in model.Colors" class="ng-scope">
+            <!-- ngRepeat: colorid in row --><!-- ngIf: model.Colors --><color-swatch colorid="colorid" gtm-type="model.currentTab.TextKey.toLowerCase()" gtm-from="model.collectionName" index="$index" columncount="row.length" ng-repeat="colorid in row" ng-if="model.Colors" ng-class="model.GetStripeClass(row)" class="ng-scope ng-isolate-scope columns count-5"><div id="ColorSwatch" ng-style="{'background-color': model.color.CssColor}" title="DESERT CAMEL - PPG12-16" ng-click="model.AddColor();" ng-class="model.colorIsDark(model.color)" style="background-color: rgb(194, 174, 136);">  
+    <!-- ngIf: model.ShowFirstColor -->
+    <span class="material-icons" ng-class="model.color.InMyColors ? 'isSelected' : ''">check_circle</span>
+</div>
+</color-swatch><!-- end ngIf: model.Colors --><!-- end ngRepeat: colorid in row --><!-- ngIf: model.Colors --><color-swatch colorid="colorid" gtm-type="model.currentTab.TextKey.toLowerCase()" gtm-from="model.collectionName" index="$index" columncount="row.length" ng-repeat="colorid in row" ng-if="model.Colors" ng-class="model.GetStripeClass(row)" class="ng-scope ng-isolate-scope columns count-5"><div id="ColorSwatch" ng-style="{'background-color': model.color.CssColor}" title="ANTIQUITY - PPG12-19" ng-click="model.AddColor();" ng-class="model.colorIsDark(model.color)" style="background-color: rgb(193, 168, 124);">  
+    <!-- ngIf: model.ShowFirstColor -->
+    <span class="material-icons" ng-class="model.color.InMyColors ? 'isSelected' : ''">check_circle</span>
+</div>
+</color-swatch><!-- end ngIf: model.Colors --><!-- end ngRepeat: colorid in row --><!-- ngIf: model.Colors --><color-swatch colorid="colorid" gtm-type="model.currentTab.TextKey.toLowerCase()" gtm-from="model.collectionName" index="$index" columncount="row.length" ng-repeat="colorid in row" ng-if="model.Colors" ng-class="model.GetStripeClass(row)" class="ng-scope ng-isolate-scope columns count-5"><div id="ColorSwatch" ng-style="{'background-color': model.color.CssColor}" title="CANVAS SATCHEL - PPG12-20" ng-click="model.AddColor();" ng-class="model.colorIsDark(model.color)" style="background-color: rgb(204, 184, 141);">  
+    <!-- ngIf: model.ShowFirstColor -->
+    <span class="material-icons" ng-class="model.color.InMyColors ? 'isSelected' : ''">check_circle</span>
+</div>
+</color-swatch><!-- end ngIf: model.Colors --><!-- end ngRepeat: colorid in row --><!-- ngIf: model.Colors --><color-swatch colorid="colorid" gtm-type="model.currentTab.TextKey.toLowerCase()" gtm-from="model.collectionName" index="$index" columncount="row.length" ng-repeat="colorid in row" ng-if="model.Colors" ng-class="model.GetStripeClass(row)" class="ng-scope ng-isolate-scope columns count-5"><div id="ColorSwatch" ng-style="{'background-color': model.color.CssColor}" title="FOOTHILLS - PPG12-21" ng-click="model.AddColor();" ng-class="model.colorIsDark(model.color)" style="background-color: rgb(225, 207, 165);">  
+    <!-- ngIf: model.ShowFirstColor -->
+    <span class="material-icons" ng-class="model.color.InMyColors ? 'isSelected' : ''">check_circle</span>
+</div>
+</color-swatch><!-- end ngIf: model.Colors --><!-- end ngRepeat: colorid in row --><!-- ngIf: model.Colors --><color-swatch colorid="colorid" gtm-type="model.currentTab.TextKey.toLowerCase()" gtm-from="model.collectionName" index="$index" columncount="row.length" ng-repeat="colorid in row" ng-if="model.Colors" ng-class="model.GetStripeClass(row)" class="ng-scope ng-isolate-scope columns count-5"><div id="ColorSwatch" ng-style="{'background-color': model.color.CssColor}" title="ASSATEAGUE SAND - PPG12-26" ng-click="model.AddColor();" ng-class="model.colorIsDark(model.color)" style="background-color: rgb(225, 208, 178);">  
+    <!-- ngIf: model.ShowFirstColor -->
+    <span class="material-icons" ng-class="model.color.InMyColors ? 'isSelected' : ''">check_circle</span>
+</div>
+</color-swatch><!-- end ngIf: model.Colors --><!-- end ngRepeat: colorid in row -->
+        </div><!-- end ngRepeat: row in model.Colors --><div id="ColorFamilyColorsListRow" ng-repeat="row in model.Colors" class="ng-scope">
+            <!-- ngRepeat: colorid in row --><!-- ngIf: model.Colors --><color-swatch colorid="colorid" gtm-type="model.currentTab.TextKey.toLowerCase()" gtm-from="model.collectionName" index="$index" columncount="row.length" ng-repeat="colorid in row" ng-if="model.Colors" ng-class="model.GetStripeClass(row)" class="ng-scope ng-isolate-scope columns count-7"><div id="ColorSwatch" ng-style="{'background-color': model.color.CssColor}" title="STATIC - PPG14-11" ng-click="model.AddColor();" ng-class="model.colorIsDark(model.color)" style="background-color: rgb(213, 211, 195);">  
+    <!-- ngIf: model.ShowFirstColor -->
+    <span class="material-icons" ng-class="model.color.InMyColors ? 'isSelected' : ''">check_circle</span>
+</div>
+</color-swatch><!-- end ngIf: model.Colors --><!-- end ngRepeat: colorid in row --><!-- ngIf: model.Colors --><color-swatch colorid="colorid" gtm-type="model.currentTab.TextKey.toLowerCase()" gtm-from="model.collectionName" index="$index" columncount="row.length" ng-repeat="colorid in row" ng-if="model.Colors" ng-class="model.GetStripeClass(row)" class="ng-scope ng-isolate-scope columns count-7"><div id="ColorSwatch" ng-style="{'background-color': model.color.CssColor}" title="GAIA - PPG14-18" ng-click="model.AddColor();" ng-class="model.colorIsDark(model.color)" style="background-color: rgb(211, 188, 158);">  
+    <!-- ngIf: model.ShowFirstColor -->
+    <span class="material-icons" ng-class="model.color.InMyColors ? 'isSelected' : ''">check_circle</span>
+</div>
+</color-swatch><!-- end ngIf: model.Colors --><!-- end ngRepeat: colorid in row --><!-- ngIf: model.Colors --><color-swatch colorid="colorid" gtm-type="model.currentTab.TextKey.toLowerCase()" gtm-from="model.collectionName" index="$index" columncount="row.length" ng-repeat="colorid in row" ng-if="model.Colors" ng-class="model.GetStripeClass(row)" class="ng-scope ng-isolate-scope columns count-7"><div id="ColorSwatch" ng-style="{'background-color': model.color.CssColor}" title="ALPACA WOOL - PPG14-19" ng-click="model.AddColor();" ng-class="model.colorIsDark(model.color)" style="background-color: rgb(228, 213, 188);">  
+    <!-- ngIf: model.ShowFirstColor -->
+    <span class="material-icons" ng-class="model.color.InMyColors ? 'isSelected' : ''">check_circle</span>
+</div>
+</color-swatch><!-- end ngIf: model.Colors --><!-- end ngRepeat: colorid in row --><!-- ngIf: model.Colors --><color-swatch colorid="colorid" gtm-type="model.currentTab.TextKey.toLowerCase()" gtm-from="model.collectionName" index="$index" columncount="row.length" ng-repeat="colorid in row" ng-if="model.Colors" ng-class="model.GetStripeClass(row)" class="ng-scope ng-isolate-scope columns count-7"><div id="ColorSwatch" ng-style="{'background-color': model.color.CssColor}" title="WHEAT SHEAF - PPG14-21" ng-click="model.AddColor();" ng-class="model.colorIsDark(model.color)" style="background-color: rgb(223, 212, 196);">  
+    <!-- ngIf: model.ShowFirstColor -->
+    <span class="material-icons" ng-class="model.color.InMyColors ? 'isSelected' : ''">check_circle</span>
+</div>
+</color-swatch><!-- end ngIf: model.Colors --><!-- end ngRepeat: colorid in row --><!-- ngIf: model.Colors --><color-swatch colorid="colorid" gtm-type="model.currentTab.TextKey.toLowerCase()" gtm-from="model.collectionName" index="$index" columncount="row.length" ng-repeat="colorid in row" ng-if="model.Colors" ng-class="model.GetStripeClass(row)" class="ng-scope ng-isolate-scope columns count-7"><div id="ColorSwatch" ng-style="{'background-color': model.color.CssColor}" title="HIDEAWAY - PPG14-26" ng-click="model.AddColor();" ng-class="model.colorIsDark(model.color)" style="background-color: rgb(200, 192, 170);">  
+    <!-- ngIf: model.ShowFirstColor -->
+    <span class="material-icons" ng-class="model.color.InMyColors ? 'isSelected' : ''">check_circle</span>
+</div>
+</color-swatch><!-- end ngIf: model.Colors --><!-- end ngRepeat: colorid in row --><!-- ngIf: model.Colors --><color-swatch colorid="colorid" gtm-type="model.currentTab.TextKey.toLowerCase()" gtm-from="model.collectionName" index="$index" columncount="row.length" ng-repeat="colorid in row" ng-if="model.Colors" ng-class="model.GetStripeClass(row)" class="ng-scope ng-isolate-scope columns count-7"><div id="ColorSwatch" ng-style="{'background-color': model.color.CssColor}" title="TRUE KHAKI - PPG14-27" ng-click="model.AddColor();" ng-class="model.colorIsDark(model.color)" style="background-color: rgb(184, 174, 152);">  
+    <!-- ngIf: model.ShowFirstColor -->
+    <span class="material-icons" ng-class="model.color.InMyColors ? 'isSelected' : ''">check_circle</span>
+</div>
+</color-swatch><!-- end ngIf: model.Colors --><!-- end ngRepeat: colorid in row --><!-- ngIf: model.Colors --><color-swatch colorid="colorid" gtm-type="model.currentTab.TextKey.toLowerCase()" gtm-from="model.collectionName" index="$index" columncount="row.length" ng-repeat="colorid in row" ng-if="model.Colors" ng-class="model.GetStripeClass(row)" class="ng-scope ng-isolate-scope columns count-7"><div id="ColorSwatch" ng-style="{'background-color': model.color.CssColor}" title="ALDABRA - PPG14-28" ng-click="model.AddColor();" ng-class="model.colorIsDark(model.color)" style="background-color: rgb(170, 164, 146);">  
+    <!-- ngIf: model.ShowFirstColor -->
+    <span class="material-icons" ng-class="model.color.InMyColors ? 'isSelected' : ''">check_circle</span>
+</div>
+</color-swatch><!-- end ngIf: model.Colors --><!-- end ngRepeat: colorid in row -->
+        </div><!-- end ngRepeat: row in model.Colors --><div id="ColorFamilyColorsListRow" ng-repeat="row in model.Colors" class="ng-scope">
+            <!-- ngRepeat: colorid in row --><!-- ngIf: model.Colors --><color-swatch colorid="colorid" gtm-type="model.currentTab.TextKey.toLowerCase()" gtm-from="model.collectionName" index="$index" columncount="row.length" ng-repeat="colorid in row" ng-if="model.Colors" ng-class="model.GetStripeClass(row)" class="ng-scope ng-isolate-scope columns count-7"><div id="ColorSwatch" ng-style="{'background-color': model.color.CssColor}" title="RABBIT - PPG15-11" ng-click="model.AddColor();" ng-class="model.colorIsDark(model.color)" style="background-color: rgb(200, 172, 137);">  
+    <!-- ngIf: model.ShowFirstColor -->
+    <span class="material-icons" ng-class="model.color.InMyColors ? 'isSelected' : ''">check_circle</span>
+</div>
+</color-swatch><!-- end ngIf: model.Colors --><!-- end ngRepeat: colorid in row --><!-- ngIf: model.Colors --><color-swatch colorid="colorid" gtm-type="model.currentTab.TextKey.toLowerCase()" gtm-from="model.collectionName" index="$index" columncount="row.length" ng-repeat="colorid in row" ng-if="model.Colors" ng-class="model.GetStripeClass(row)" class="ng-scope ng-isolate-scope columns count-7"><div id="ColorSwatch" ng-style="{'background-color': model.color.CssColor}" title="KANGAROO - PPG15-12" ng-click="model.AddColor();" ng-class="model.colorIsDark(model.color)" style="background-color: rgb(196, 173, 146);">  
+    <!-- ngIf: model.ShowFirstColor -->
+    <span class="material-icons" ng-class="model.color.InMyColors ? 'isSelected' : ''">check_circle</span>
+</div>
+</color-swatch><!-- end ngIf: model.Colors --><!-- end ngRepeat: colorid in row --><!-- ngIf: model.Colors --><color-swatch colorid="colorid" gtm-type="model.currentTab.TextKey.toLowerCase()" gtm-from="model.collectionName" index="$index" columncount="row.length" ng-repeat="colorid in row" ng-if="model.Colors" ng-class="model.GetStripeClass(row)" class="ng-scope ng-isolate-scope columns count-7"><div id="ColorSwatch" ng-style="{'background-color': model.color.CssColor}" title="BEST BEIGE - PPG15-16" ng-click="model.AddColor();" ng-class="model.colorIsDark(model.color)" style="background-color: rgb(198, 180, 156);">  
+    <!-- ngIf: model.ShowFirstColor -->
+    <span class="material-icons" ng-class="model.color.InMyColors ? 'isSelected' : ''">check_circle</span>
+</div>
+</color-swatch><!-- end ngIf: model.Colors --><!-- end ngRepeat: colorid in row --><!-- ngIf: model.Colors --><color-swatch colorid="colorid" gtm-type="model.currentTab.TextKey.toLowerCase()" gtm-from="model.collectionName" index="$index" columncount="row.length" ng-repeat="colorid in row" ng-if="model.Colors" ng-class="model.GetStripeClass(row)" class="ng-scope ng-isolate-scope columns count-7"><div id="ColorSwatch" ng-style="{'background-color': model.color.CssColor}" title="INTROSPECTIVE - PPG15-18" ng-click="model.AddColor();" ng-class="model.colorIsDark(model.color)" class="IsDark" style="background-color: rgb(109, 96, 83);">  
+    <!-- ngIf: model.ShowFirstColor -->
+    <span class="material-icons" ng-class="model.color.InMyColors ? 'isSelected' : ''">check_circle</span>
+</div>
+</color-swatch><!-- end ngIf: model.Colors --><!-- end ngRepeat: colorid in row --><!-- ngIf: model.Colors --><color-swatch colorid="colorid" gtm-type="model.currentTab.TextKey.toLowerCase()" gtm-from="model.collectionName" index="$index" columncount="row.length" ng-repeat="colorid in row" ng-if="model.Colors" ng-class="model.GetStripeClass(row)" class="ng-scope ng-isolate-scope columns count-7"><div id="ColorSwatch" ng-style="{'background-color': model.color.CssColor}" title="RAPID ROCK - PPG15-19" ng-click="model.AddColor();" ng-class="model.colorIsDark(model.color)" style="background-color: rgb(163, 146, 129);">  
+    <!-- ngIf: model.ShowFirstColor -->
+    <span class="material-icons" ng-class="model.color.InMyColors ? 'isSelected' : ''">check_circle</span>
+</div>
+</color-swatch><!-- end ngIf: model.Colors --><!-- end ngRepeat: colorid in row --><!-- ngIf: model.Colors --><color-swatch colorid="colorid" gtm-type="model.currentTab.TextKey.toLowerCase()" gtm-from="model.collectionName" index="$index" columncount="row.length" ng-repeat="colorid in row" ng-if="model.Colors" ng-class="model.GetStripeClass(row)" class="ng-scope ng-isolate-scope columns count-7"><div id="ColorSwatch" ng-style="{'background-color': model.color.CssColor}" title="GHOST SHIP - PPG15-20" ng-click="model.AddColor();" ng-class="model.colorIsDark(model.color)" class="IsDark" style="background-color: rgb(136, 123, 110);">  
+    <!-- ngIf: model.ShowFirstColor -->
+    <span class="material-icons" ng-class="model.color.InMyColors ? 'isSelected' : ''">check_circle</span>
+</div>
+</color-swatch><!-- end ngIf: model.Colors --><!-- end ngRepeat: colorid in row --><!-- ngIf: model.Colors --><color-swatch colorid="colorid" gtm-type="model.currentTab.TextKey.toLowerCase()" gtm-from="model.collectionName" index="$index" columncount="row.length" ng-repeat="colorid in row" ng-if="model.Colors" ng-class="model.GetStripeClass(row)" class="ng-scope ng-isolate-scope columns count-7"><div id="ColorSwatch" ng-style="{'background-color': model.color.CssColor}" title="CURLEW - PPG15-21" ng-click="model.AddColor();" ng-class="model.colorIsDark(model.color)" class="IsDark" style="background-color: rgb(118, 104, 89);">  
+    <!-- ngIf: model.ShowFirstColor -->
+    <span class="material-icons" ng-class="model.color.InMyColors ? 'isSelected' : ''">check_circle</span>
+</div>
+</color-swatch><!-- end ngIf: model.Colors --><!-- end ngRepeat: colorid in row -->
+        </div><!-- end ngRepeat: row in model.Colors --><div id="ColorFamilyColorsListRow" ng-repeat="row in model.Colors" class="ng-scope">
+            <!-- ngRepeat: colorid in row --><!-- ngIf: model.Colors --><color-swatch colorid="colorid" gtm-type="model.currentTab.TextKey.toLowerCase()" gtm-from="model.collectionName" index="$index" columncount="row.length" ng-repeat="colorid in row" ng-if="model.Colors" ng-class="model.GetStripeClass(row)" class="ng-scope ng-isolate-scope columns count-1"><div id="ColorSwatch" ng-style="{'background-color': model.color.CssColor}" title="ROASTED CHESTNUT - PPG15-30" ng-click="model.AddColor();" ng-class="model.colorIsDark(model.color)" style="background-color: rgb(157, 140, 124);">  
+    <!-- ngIf: model.ShowFirstColor -->
+    <span class="material-icons" ng-class="model.color.InMyColors ? 'isSelected' : ''">check_circle</span>
+</div>
+</color-swatch><!-- end ngIf: model.Colors --><!-- end ngRepeat: colorid in row -->
+        </div><!-- end ngRepeat: row in model.Colors -->
+    </div>
+</div></color-families>

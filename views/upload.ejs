@@ -1,0 +1,122 @@
+<upload-photo class="ng-scope ng-isolate-scope"><page-header backlinktext="Explore Different Photos" data-backurl="/" class="ng-isolate-scope"><div id="PageHeader">
+    <!-- ngIf: model.backlinktext --><a id="HeaderBackLink" ng-click="model.BackAction()" ng-if="model.backlinktext" gtm-event="['ux', 'backButton', model.backlinktext]" class="ng-scope ng-isolate-scope" data-t="ux" data-d1="backButton" data-d2="Explore Different Photos" style="">
+        <span id="HeaderLeftArrow" class="material-icons">keyboard_arrow_left</span>
+        <span id="HeaderBackLinkText" class="ng-binding" data-url="/photo">Explore Different Photos</span>
+    </a><!-- end ngIf: model.backlinktext -->
+    <h1 id="HeaderPageTitle" class="ng-binding"></h1>
+    <!-- ngIf: model.subheadline -->
+</div></page-header>
+<div id="MainContentLeftPane" style="width: 100%">
+    <section id="UploadMainContent">
+        <div id="UploadPhotoDesktop">
+            <div id="UploadTop">
+                <a class="material-icons UploadCheckBox UploadCheckBoxChecked" ng-class="model.termsChecked ? 'UploadCheckBoxChecked' : 'UploadCheckBoxUnchecked'" ng-click="model.UpdateCheckBox();" style=""></a>
+                <div id="UploadPhotoTerms">
+                    <span class="UploadRoboMedium ng-binding" style="font-size: 14px;">I Accept PPG's Terms of Use</span>
+                    <a id="UploadViewTerms" class="UploadLink UploadRoboMedium ng-binding ng-isolate-scope" ng-href="http://www.ppgac.com/privacy-policy/" target="_blank" gtm-event="['userPhoto', 'viewTerms']" data-t="userPhoto" data-d1="viewTerms" href="http://www.ppgac.com/privacy-policy/">View Full Terms of Use</a>
+                </div>
+                <div id="UploadPhotoButton" ng-class="model.termsChecked ? 'Active' : ''" ng-click="model.GetImage()" class="Active" style="">
+                    <div id="UploadPhotoButtonContainer">
+                        <div id="UploadPhotoButtonIcon">
+                            <span class="material-icons" id="UploadPhotoImg">add_a_photo</span>
+                        </div>
+                        <div id="UploadPhotoText" class="ng-binding">Select Photo to Upload</div>
+                    </div>
+                </div>
+            </div>
+            <div id="UploadBottom">
+                <page-header headline="Tips for Uploading Your Photo" class="ng-isolate-scope"><div id="PageHeader">
+    <!-- ngIf: model.backlinktext -->
+    <h1 id="HeaderPageTitle" class="ng-binding">Tips for Uploading Your Photo</h1>
+    <!-- ngIf: model.subheadline -->
+</div></page-header>
+                <div id="UploadTips">
+                    <div id="UploadWellLit" class="UploadRoboMedium">
+                        <span class="UploadTipSpan ng-binding">Your photo should be well-lit.</span>
+                        <div class="UploadTipImageLeft">
+                            <img ng-src="https://visualizecolor.blob.core.windows.net/voc/good.jpg" src="https://visualizecolor.blob.core.windows.net/voc/good.jpg">
+                        </div>
+                        <div class="UploadTipImageRight">
+                            <img ng-src="https://visualizecolor.blob.core.windows.net/voc/dark.jpg" src="https://visualizecolor.blob.core.windows.net/voc/dark.jpg">
+                            <div class="UploadTipDont">
+                                <span class="material-icons">not_interested</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="UploadWall" class="UploadRoboMedium">
+                        <span class="UploadTipSpan ng-binding">Take your photo 5ft-8ft from your wall.</span>
+                        <div class="UploadTipImageLeft">
+                            <img ng-src="https://visualizecolor.blob.core.windows.net/voc/good.jpg" src="https://visualizecolor.blob.core.windows.net/voc/good.jpg">
+                        </div>
+                        <div class="UploadTipImageRight">
+                            <img ng-src="https://visualizecolor.blob.core.windows.net/voc/tooFar.jpg" src="https://visualizecolor.blob.core.windows.net/voc/tooFar.jpg">
+                            <div class="UploadTipDont">
+                                <span class="material-icons">not_interested</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="UploadPhotoMobile">
+            <div>
+                <color-selector page-data="model.PageData.Data" class="ng-isolate-scope"><span id="ColorSelectorSelectedColor" class="ng-binding">SLATE PEBBLE&nbsp;&nbsp;PPG1005-4</span>
+<div id="ColorSelector">
+    <!-- ngIf: model.SavedColorsCount > 5 --><div id="ColorSelectorPrev" class="ColorSelectorButton ng-scope" ng-if="model.SavedColorsCount > 5" ng-class="model.CurrentPage > 0 ? 'enabled' : ''" style="">
+        <a ng-click="model.PrevPage()">
+            <span class="material-icons">keyboard_arrow_left</span>
+        </a>
+    </div><!-- end ngIf: model.SavedColorsCount > 5 -->
+    <div id="ColorSelectorContainer" color-selector-resize="">
+        <!-- ngRepeat: color in model.DisplayedColors --><div ng-repeat="color in model.DisplayedColors" ng-class="model.ItemsCss()" class="ng-scope columns count-3" style="">
+            <div id="ColorSelectorSwatchA" ng-click="model.SelectColor(color)">
+                <div id="ColorSelectorSwatch" ng-style="{'background-color': color.CssColor}" data-ppg-name="SLATE PEBBLE" data-ppg-number="PPG1005-4" title="SLATE PEBBLE - PPG1005-4" style="background-color: rgb(180, 173, 169);">
+                    <!-- ngIf: model.pageData.SelectedColor.ColorID === color.ColorID --><span class="material-icons ng-scope" ng-class="model.GetIsDarkCss(color)" ng-if="model.pageData.SelectedColor.ColorID === color.ColorID">check_circle</span><!-- end ngIf: model.pageData.SelectedColor.ColorID === color.ColorID -->
+                </div>
+            </div>
+        </div><!-- end ngRepeat: color in model.DisplayedColors --><div ng-repeat="color in model.DisplayedColors" ng-class="model.ItemsCss()" class="ng-scope columns count-3">
+            <div id="ColorSelectorSwatchA" ng-click="model.SelectColor(color)">
+                <div id="ColorSelectorSwatch" ng-style="{'background-color': color.CssColor}" data-ppg-name="ELEPHANT GRAY" data-ppg-number="PPG1005-5" title="ELEPHANT GRAY - PPG1005-5" style="background-color: rgb(141, 132, 127);">
+                    <!-- ngIf: model.pageData.SelectedColor.ColorID === color.ColorID -->
+                </div>
+            </div>
+        </div><!-- end ngRepeat: color in model.DisplayedColors --><div ng-repeat="color in model.DisplayedColors" ng-class="model.ItemsCss()" class="ng-scope columns count-3">
+            <div id="ColorSelectorSwatchA" ng-click="model.SelectColor(color)">
+                <div id="ColorSelectorSwatch" ng-style="{'background-color': color.CssColor}" data-ppg-name="IRIS MAUVE" data-ppg-number="PPG1016-5" title="IRIS MAUVE - PPG1016-5" style="background-color: rgb(179, 155, 148);">
+                    <!-- ngIf: model.pageData.SelectedColor.ColorID === color.ColorID -->
+                </div>
+            </div>
+        </div><!-- end ngRepeat: color in model.DisplayedColors -->
+    </div>
+    <!-- ngIf: model.SavedColorsCount > 5 --><div id="ColorSelectorNext" class="ColorSelectorButton ng-scope enabled" ng-if="model.SavedColorsCount > 5" ng-class="model.CurrentPage < model.Pages ? 'enabled' : ''" style="">
+        <a ng-click="model.NextPage()">
+            <span class="material-icons">keyboard_arrow_right</span>
+        </a>
+    </div><!-- end ngIf: model.SavedColorsCount > 5 -->
+</div>
+</color-selector>
+            </div>
+            <div id="UploadPhotoDivider"></div>
+            <page-header headline="Upload Your Own Photo" class="ng-isolate-scope"><div id="PageHeader">
+    <!-- ngIf: model.backlinktext -->
+    <h1 id="HeaderPageTitle" class="ng-binding">Upload Your Own Photo</h1>
+    <!-- ngIf: model.subheadline -->
+</div></page-header>
+            <a class="material-icons UploadCheckBox UploadCheckBoxChecked" ng-class="model.termsChecked ? 'UploadCheckBoxChecked' : 'UploadCheckBoxUnchecked'" ng-click="model.UpdateCheckBox();" style=""></a>
+            <div id="UploadPhotoTerms">
+                <span class="UploadRoboMedium ng-binding" style="font-size: 14px;">I Accept PPG's Terms of Use</span>
+                <a id="UploadViewTerms" class="UploadLink UploadRoboMedium ng-binding ng-isolate-scope" ng-href="http://www.ppgac.com/privacy-policy/" target="_blank" gtm-event="['userPhoto', 'viewTerms']" data-t="userPhoto" data-d1="viewTerms" href="http://www.ppgac.com/privacy-policy/">View Full Terms of Use</a>
+            </div>
+            <div id="UploadPhotoButton" ng-class="model.termsChecked ? 'Active' : ''" ng-click="model.OpenUploadModal()" class="Active" style="">
+                <div id="UploadPhotoButtonContainer">
+                    <div id="UploadPhotoButtonIcon">
+                        <span class="material-icons" id="UploadPhotoImg">add_a_photo</span>
+                    </div>
+                    <div id="UploadPhotoText" class="ng-binding">Tap here to upload your own photo.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<input type="file" accept="image/*" style="left: 0px; top: 0px; height: 0px; width: 0px; position: absolute; visibility: hidden;" id="ImagePicker" local-image-selected="" data-path="/UploadPhotoResult">
+</upload-photo>

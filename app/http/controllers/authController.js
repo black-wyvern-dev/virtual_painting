@@ -5,7 +5,7 @@ var request = require('request');
 function authController() {
     return {
         login(req, res) {
-            res.render('auth/login');
+            res.render('color_families');
         },
 
         // postLogin(req, res, next) {

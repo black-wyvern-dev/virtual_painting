@@ -1,0 +1,116 @@
+<home class="ng-scope ng-isolate-scope"><div id="PhotoChooser" data-label="Room Chooser">
+  <h1 id="HomePageTitle" class="ng-binding">Select a Photo to Virtually Paint</h1>
+
+  <div id="HomeExploreHeader">
+      <span class="ng-binding">Please Upload Paintable Photos Such As Following</span>
+  </div>
+
+  <div id="TileContainer">
+      <!-- ngRepeat: room in model.Rooms --><a ng-repeat="room in model.Rooms" ng-click="model.Select(room.Name)" gtm-event="['ux', 'startPhotoType', room.Name]" class="ng-scope ng-isolate-scope" data-t="ux" data-d1="startPhotoType" data-d2="Living Room">
+          <tile data-lazysrc="https://visualizecolor.blob.core.windows.net/dcpstockimages/PPG5982V/PPG5982V_Thumb.jpg" data-lazyalt="Living Room" data-text="Living Room" data-divclass="LazyImage" class="ng-isolate-scope"><div id="TileCell" ng-class="model.cssClass()" class="HasText">
+  <!-- ngIf: model.topcolors -->
+  <div id="TileImageLoading" class="">
+      
+      <img id="TileImage" scroll-loaded-image="" data-lazysrc="https://visualizecolor.blob.core.windows.net/dcpstockimages/PPG5982V/PPG5982V_Thumb.jpg" data-lazyalt="" data-parentclass="TileImageLoader" src="https://visualizecolor.blob.core.windows.net/dcpstockimages/PPG5982V/PPG5982V_Thumb.jpg" alt="">
+  </div>
+  <!-- ngIf: model.text --><h4 ng-if="model.text" name="TileText" class="ng-binding ng-scope">Living Room</h4><!-- end ngIf: model.text -->
+  <!-- ngIf: model.bottomcolors -->
+</div></tile>
+      </a><!-- end ngRepeat: room in model.Rooms --><a ng-repeat="room in model.Rooms" ng-click="model.Select(room.Name)" gtm-event="['ux', 'startPhotoType', room.Name]" class="ng-scope ng-isolate-scope" data-t="ux" data-d1="startPhotoType" data-d2="Bedroom">
+          <tile data-lazysrc="https://visualizecolor.blob.core.windows.net/dcpstockimages/PPG6052/PPG6052_Thumb.jpg" data-lazyalt="Bedroom" data-text="Bedroom" data-divclass="LazyImage" class="ng-isolate-scope"><div id="TileCell" ng-class="model.cssClass()" class="HasText">
+  <!-- ngIf: model.topcolors -->
+  <div id="TileImageLoading" class="">
+      
+      <img id="TileImage" scroll-loaded-image="" data-lazysrc="https://visualizecolor.blob.core.windows.net/dcpstockimages/PPG6052/PPG6052_Thumb.jpg" data-lazyalt="" data-parentclass="TileImageLoader" src="https://visualizecolor.blob.core.windows.net/dcpstockimages/PPG6052/PPG6052_Thumb.jpg" alt="">
+  </div>
+  <!-- ngIf: model.text --><h4 ng-if="model.text" name="TileText" class="ng-binding ng-scope">Bedroom</h4><!-- end ngIf: model.text -->
+  <!-- ngIf: model.bottomcolors -->
+</div></tile>
+      </a><!-- end ngRepeat: room in model.Rooms --><a ng-repeat="room in model.Rooms" ng-click="model.Select(room.Name)" gtm-event="['ux', 'startPhotoType', room.Name]" class="ng-scope ng-isolate-scope" data-t="ux" data-d1="startPhotoType" data-d2="Dining Room">
+          <tile data-lazysrc="https://visualizecolor.blob.core.windows.net/dcpstockimages/PPG6053A/PPG6053A_Thumb.jpg" data-lazyalt="Dining Room" data-text="Dining Room" data-divclass="LazyImage" class="ng-isolate-scope"><div id="TileCell" ng-class="model.cssClass()" class="HasText">
+  <!-- ngIf: model.topcolors -->
+  <div id="TileImageLoading" class="">
+      
+      <img id="TileImage" scroll-loaded-image="" data-lazysrc="https://visualizecolor.blob.core.windows.net/dcpstockimages/PPG6053A/PPG6053A_Thumb.jpg" data-lazyalt="" data-parentclass="TileImageLoader" src="https://visualizecolor.blob.core.windows.net/dcpstockimages/PPG6053A/PPG6053A_Thumb.jpg" alt="">
+  </div>
+  <!-- ngIf: model.text --><h4 ng-if="model.text" name="TileText" class="ng-binding ng-scope">Dining Room</h4><!-- end ngIf: model.text -->
+  <!-- ngIf: model.bottomcolors -->
+</div></tile>
+      </a><!-- end ngRepeat: room in model.Rooms --><a ng-repeat="room in model.Rooms" ng-click="model.Select(room.Name)" gtm-event="['ux', 'startPhotoType', room.Name]" class="ng-scope ng-isolate-scope" data-t="ux" data-d1="startPhotoType" data-d2="Kitchen">
+          <tile data-lazysrc="https://visualizecolor.blob.core.windows.net/dcpstockimages/PPG9252A/PPG9252A_Thumb.jpg" data-lazyalt="Kitchen" data-text="Kitchen" data-divclass="LazyImage" class="ng-isolate-scope"><div id="TileCell" ng-class="model.cssClass()" class="HasText">
+  <!-- ngIf: model.topcolors -->
+  <div id="TileImageLoading" class="">
+      
+      <img id="TileImage" scroll-loaded-image="" data-lazysrc="https://visualizecolor.blob.core.windows.net/dcpstockimages/PPG9252A/PPG9252A_Thumb.jpg" data-lazyalt="" data-parentclass="TileImageLoader" src="https://visualizecolor.blob.core.windows.net/dcpstockimages/PPG9252A/PPG9252A_Thumb.jpg" alt="">
+  </div>
+  <!-- ngIf: model.text --><h4 ng-if="model.text" name="TileText" class="ng-binding ng-scope">Kitchen</h4><!-- end ngIf: model.text -->
+  <!-- ngIf: model.bottomcolors -->
+</div></tile>
+      </a><!-- end ngRepeat: room in model.Rooms --><a ng-repeat="room in model.Rooms" ng-click="model.Select(room.Name)" gtm-event="['ux', 'startPhotoType', room.Name]" class="ng-scope ng-isolate-scope" data-t="ux" data-d1="startPhotoType" data-d2="Bathroom">
+          <tile data-lazysrc="https://visualizecolor.blob.core.windows.net/dcpstockimages/PPG6051/PPG6051_Thumb.jpg" data-lazyalt="Bathroom" data-text="Bathroom" data-divclass="LazyImage" class="ng-isolate-scope"><div id="TileCell" ng-class="model.cssClass()" class="HasText">
+  <!-- ngIf: model.topcolors -->
+  <div id="TileImageLoading" class="">
+      
+      <img id="TileImage" scroll-loaded-image="" data-lazysrc="https://visualizecolor.blob.core.windows.net/dcpstockimages/PPG6051/PPG6051_Thumb.jpg" data-lazyalt="" data-parentclass="TileImageLoader" src="https://visualizecolor.blob.core.windows.net/dcpstockimages/PPG6051/PPG6051_Thumb.jpg" alt="">
+  </div>
+  <!-- ngIf: model.text --><h4 ng-if="model.text" name="TileText" class="ng-binding ng-scope">Bathroom</h4><!-- end ngIf: model.text -->
+  <!-- ngIf: model.bottomcolors -->
+</div></tile>
+      </a><!-- end ngRepeat: room in model.Rooms --><a ng-repeat="room in model.Rooms" ng-click="model.Select(room.Name)" gtm-event="['ux', 'startPhotoType', room.Name]" class="ng-scope ng-isolate-scope" data-t="ux" data-d1="startPhotoType" data-d2="Exterior">
+          <tile data-lazysrc="https://visualizecolor.blob.core.windows.net/dcpstockimages/PPG7825B/PPG7825B_Thumb.jpg" data-lazyalt="Exterior" data-text="Exterior" data-divclass="LazyImage" class="ng-isolate-scope"><div id="TileCell" ng-class="model.cssClass()" class="HasText">
+  <!-- ngIf: model.topcolors -->
+  <div id="TileImageLoading" class="">
+      
+      <img id="TileImage" scroll-loaded-image="" data-lazysrc="https://visualizecolor.blob.core.windows.net/dcpstockimages/PPG7825B/PPG7825B_Thumb.jpg" data-lazyalt="" data-parentclass="TileImageLoader" src="https://visualizecolor.blob.core.windows.net/dcpstockimages/PPG7825B/PPG7825B_Thumb.jpg" alt="">
+  </div>
+  <!-- ngIf: model.text --><h4 ng-if="model.text" name="TileText" class="ng-binding ng-scope">Exterior</h4><!-- end ngIf: model.text -->
+  <!-- ngIf: model.bottomcolors -->
+</div></tile>
+      </a><!-- end ngRepeat: room in model.Rooms --><a ng-repeat="room in model.Rooms" ng-click="model.Select(room.Name)" gtm-event="['ux', 'startPhotoType', room.Name]" class="ng-scope ng-isolate-scope" data-t="ux" data-d1="startPhotoType" data-d2="Commercial">
+          <tile data-lazysrc="https://visualizecolor.blob.core.windows.net/dcpstockimages/Class room_88269286/Class room_88269286_Thumb.jpg" data-lazyalt="Commercial" data-text="Commercial" data-divclass="LazyImage" class="ng-isolate-scope"><div id="TileCell" ng-class="model.cssClass()" class="HasText">
+  <!-- ngIf: model.topcolors -->
+  <div id="TileImageLoading" class="">
+      
+      <img id="TileImage" scroll-loaded-image="" data-lazysrc="https://visualizecolor.blob.core.windows.net/dcpstockimages/Class room_88269286/Class room_88269286_Thumb.jpg" data-lazyalt="" data-parentclass="TileImageLoader" src="https://visualizecolor.blob.core.windows.net/dcpstockimages/Class room_88269286/Class room_88269286_Thumb.jpg" alt="">
+  </div>
+  <!-- ngIf: model.text --><h4 ng-if="model.text" name="TileText" class="ng-binding ng-scope">Commercial</h4><!-- end ngIf: model.text -->
+  <!-- ngIf: model.bottomcolors -->
+</div></tile>
+      </a><!-- end ngRepeat: room in model.Rooms --><a ng-repeat="room in model.Rooms" ng-click="model.Select(room.Name)" gtm-event="['ux', 'startPhotoType', room.Name]" class="ng-scope ng-isolate-scope" data-t="ux" data-d1="startPhotoType" data-d2="Front Door">
+          <tile data-lazysrc="https://visualizecolor.blob.core.windows.net/dcpstockimages/FrontDoor_1/FrontDoor_1_thumb.jpg" data-lazyalt="Front Door" data-text="Front Door" data-divclass="LazyImage" class="ng-isolate-scope"><div id="TileCell" ng-class="model.cssClass()" class="HasText">
+  <!-- ngIf: model.topcolors -->
+  <div id="TileImageLoading" class="">
+      
+      <img id="TileImage" scroll-loaded-image="" data-lazysrc="https://visualizecolor.blob.core.windows.net/dcpstockimages/FrontDoor_1/FrontDoor_1_thumb.jpg" data-lazyalt="" data-parentclass="TileImageLoader" src="https://visualizecolor.blob.core.windows.net/dcpstockimages/FrontDoor_1/FrontDoor_1_thumb.jpg" alt="">
+  </div>
+  <!-- ngIf: model.text --><h4 ng-if="model.text" name="TileText" class="ng-binding ng-scope">Front Door</h4><!-- end ngIf: model.text -->
+  <!-- ngIf: model.bottomcolors -->
+</div></tile>
+      </a><!-- end ngRepeat: room in model.Rooms -->
+  </div>
+
+  <div id="HomeOrHorizontalLine">
+      <div id="HomeOrDiv">
+          <span id="HomeOrSpan" class="ng-binding">OR</span>
+      </div>
+  </div>
+
+  <div id="HomeUploadButtonHolder">
+      <a gtm-event="['ux', 'startPhotoType', 'userPhoto']" class="" data-t="ux" data-d1="startPhotoType" data-d2="userPhoto">
+          <div id="HomeUploadButton">
+              <div id="HomeUploadIcon">
+                  <span class="material-icons" id="HomeAddPhotoImg">add_a_photo</span>
+              </div>
+              <div id="HomeUploadText">
+                  <div id="HomeUploadHeader">
+                      <span class="ng-binding">Upload Your Own Photo</span>
+                  </div>
+                  <div id="HomeUploadDesc">
+                      <span class="ng-binding">Make your project come alive with a photo of your own home.</span>
+                  </div>
+              </div>
+          </div>
+      </a>
+  </div>
+</div>
+</home>
