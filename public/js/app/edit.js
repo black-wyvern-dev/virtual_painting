@@ -5,17 +5,17 @@ define(['../image/layer',
         '../helper/util'],
 function(Layer, Annotator, util) {
   // Create the navigation menu.
-  function createNavigationMenu(params, data, annotator) {
-    var navigationMenu = document.createElement("p"),
-        navigation = createNavigation(params, data),
-        idBlock = document.createElement("div");
-    idBlock.className = "edit-top-menu-block";
-    idBlock.appendChild(
-        document.createTextNode(" ID = " + params.id));
-    navigationMenu.appendChild(navigation);
-    navigationMenu.appendChild(idBlock);
-    return navigationMenu;
-  }
+  // function createNavigationMenu(params, data, annotator) {
+  //   var navigationMenu = document.createElement("p"),
+  //       navigation = createNavigation(params, data),
+  //       idBlock = document.createElement("div");
+  //   idBlock.className = "edit-top-menu-block";
+  //   idBlock.appendChild(
+  //       document.createTextNode(" ID = " + params.id));
+  //   navigationMenu.appendChild(navigation);
+  //   navigationMenu.appendChild(idBlock);
+  //   return navigationMenu;
+  // }
 
   // Create the page navigation.
   function createNavigation(params, data) {
@@ -70,7 +70,7 @@ function(Layer, Annotator, util) {
     // imageContainer.appendChild(imageContainerSpacer);
     // imageContainer.appendChild(imageLayer.canvas);
     annotatorContainer.className = "edit-image-display";
-    annotatorContainer.appendChild(annotatorTopMenu);
+    // annotatorContainer.appendChild(annotatorTopMenu);
     annotatorContainer.appendChild(annotator.container);
     sidebarSpacer.className = "edit-image-top-menu";
     sidebarContainer.className = "edit-image-display";
@@ -79,15 +79,15 @@ function(Layer, Annotator, util) {
     container.className = "edit-main-container";
     container.appendChild(imageContainer);
     container.appendChild(annotatorContainer);
-    container.appendChild(sidebarContainer);
+    // container.appendChild(sidebarContainer);
     return container;
   }
 
   // Create the menu above the editor.
   function createImageTopMenu(params, data, annotator) {
     var container = document.createElement("div"),
-        zoomOutButton = document.createElement("div"),
-        zoomInButton = document.createElement("div"),
+        zoomOutButton = document.getElementById('StockPhotoZoomOut'),
+        zoomInButton = document.getElementById('StockPhotoZoomIn'),
         spacer1 = document.createElement("span"),
         finerButton = document.createElement("div"),
         boundaryButton = document.createElement("div"),
@@ -96,13 +96,13 @@ function(Layer, Annotator, util) {
         alphaMinusButton = document.createElement("div"),
         imageButton = document.createElement("div"),
         alphaPlusButton = document.createElement("div");
-    zoomOutButton.appendChild(document.createTextNode("-"));
-    zoomOutButton.classList.add("edit-image-top-button");
+    // zoomOutButton.appendChild(document.createTextNode("-"));
+    // zoomOutButton.classList.add("edit-image-top-button");
     zoomOutButton.addEventListener("click", function () {
       annotator.zoomOut();
     });
-    zoomInButton.appendChild(document.createTextNode("zoom +"));
-    zoomInButton.classList.add("edit-image-top-button");
+    // zoomInButton.appendChild(document.createTextNode("zoom +"));
+    // zoomInButton.classList.add("edit-image-top-button");
     zoomInButton.addEventListener("click", function () {
       annotator.zoomIn();
     });
@@ -155,8 +155,8 @@ function(Layer, Annotator, util) {
     });
     //
     container.className = "edit-image-top-menu";
-    container.appendChild(zoomOutButton);
-    container.appendChild(zoomInButton);
+    // container.appendChild(zoomOutButton);
+    // container.appendChild(zoomInButton);
     // container.appendChild(spacer1);
     // container.appendChild(finerButton);
     // container.appendChild(boundaryButton);
@@ -192,24 +192,24 @@ function(Layer, Annotator, util) {
   // Create the sidebar.
   function createSidebar(params, data, annotator) {
     var container = document.createElement("div"),
-        labelPicker = createLabelPicker(params, data, annotator),
+        // labelPicker = createLabelPicker(params, data, annotator),
         spacer1 = document.createElement("div"),
-        undoButton = document.createElement("input"),
-        redoButton = document.createElement("input"),
-        resetButton = document.createElement("input"),
+        undoButton = document.getElementById("StockPhotoUndo"),
+        redoButton = document.getElementById("StockPhotoRedo"),
+        resetButton = document.getElementById("StockPhotoReset"),
         spacer2 = document.createElement("div"),
         denoiseButton = document.createElement("div"),
         spacer3 = document.createElement("div"),
-        superpixelToolButton = document.createElement("div"),
+        superpixelToolButton = document.getElementById("StockPhotoPaint"),
         spacer4 = document.createElement("div"),
-        polygonToolButton = document.createElement("div"),
+        polygonToolButton = document.getElementById("StockPhotoPolygon"),
         spacer5 = document.createElement("div"),
-        brushToolButton = document.createElement("div"),
+        brushToolButton = document.getElementById("StockPhotoBrush"),
         spacer6 = document.createElement("div"),
         manualParagraph = document.createElement("p"),
         spacer7 = document.createElement("div"),
         exportButton = document.createElement("input"),
-        exportAsImageButton = document.createElement("input"),
+        exportAsImageButton = document.getElementById("ActionSaveButton"),
         manualText;
     exportButton.type = "button";
     exportButton.value = "export";
@@ -220,27 +220,27 @@ function(Layer, Annotator, util) {
           params.id + ".png";
       downloadURI(annotator.export(), filename);
     });
-    exportAsImageButton.type = "button";
-    exportAsImageButton.value = "exportAsImage";
-    exportAsImageButton.className = "edit-sidebar-submit";
+    // exportAsImageButton.type = "button";
+    // exportAsImageButton.value = "exportAsImage";
+    // exportAsImageButton.className = "edit-sidebar-submit";
     exportAsImageButton.addEventListener("click", function () {
       annotator.exportAsImage();
     });
     spacer1.className = "edit-sidebar-spacer";
-    undoButton.type = "button";
-    undoButton.value = "undo";
-    undoButton.className = " edit-sidebar-submit";
-    undoButton.appendChild(document.createTextNode("undo"));
+    // undoButton.type = "button";
+    // undoButton.value = "undo";
+    // undoButton.className = " edit-sidebar-submit";
+    // undoButton.appendChild(document.createTextNode("undo"));
     undoButton.addEventListener("click", function () { annotator.undo(); });
-    redoButton.type = "button";
-    redoButton.value = "redo";
-    redoButton.className = " edit-sidebar-submit";
-    redoButton.appendChild(document.createTextNode("redo"));
+    // redoButton.type = "button";
+    // redoButton.value = "redo";
+    // redoButton.className = " edit-sidebar-submit";
+    // redoButton.appendChild(document.createTextNode("redo"));
     redoButton.addEventListener("click", function () { annotator.redo(); });
-    resetButton.type = "button";
-    resetButton.value = "reset";
-    resetButton.className = " edit-sidebar-submit";
-    resetButton.appendChild(document.createTextNode("reset"));
+    // resetButton.type = "button";
+    // resetButton.value = "reset";
+    // resetButton.className = " edit-sidebar-submit";
+    // resetButton.appendChild(document.createTextNode("reset"));
     resetButton.addEventListener("click", function () { annotator.reset(); });
     spacer2.className = "edit-sidebar-spacer";
     denoiseButton.className = "edit-sidebar-button";
@@ -248,36 +248,51 @@ function(Layer, Annotator, util) {
     denoiseButton.addEventListener("click", function () {
       annotator.denoise();
     });
-    superpixelToolButton.className = "edit-sidebar-button";
-    superpixelToolButton.appendChild(
-      document.createTextNode("Detection tool"));
+    // superpixelToolButton.className = "edit-sidebar-button";
+    // superpixelToolButton.appendChild(
+    //   document.createTextNode("Detection tool"));
     superpixelToolButton.addEventListener("click", function () {
-      polygonToolButton.classList.remove("edit-sidebar-button-selected");
-      brushToolButton.classList.remove("edit-sidebar-button-selected");
-      superpixelToolButton.classList.add("edit-sidebar-button-selected");
+      // polygonToolButton.classList.remove("edit-sidebar-button-selected");
+      // brushToolButton.classList.remove("edit-sidebar-button-selected");
+      // superpixelToolButton.classList.add("edit-sidebar-button-selected");
       annotator._setMode("detection");
     });
-    superpixelToolButton.classList.add("edit-sidebar-button-selected");
-    polygonToolButton.className = "edit-sidebar-button";
-    polygonToolButton.appendChild(document.createTextNode("Polygon tool"));
+    // superpixelToolButton.classList.add("edit-sidebar-button-selected");
+    // polygonToolButton.className = "edit-sidebar-button";
+    // polygonToolButton.appendChild(document.createTextNode("Polygon tool"));
     polygonToolButton.addEventListener("click", function () {
-      superpixelToolButton.classList.remove("edit-sidebar-button-selected");
-      brushToolButton.classList.remove("edit-sidebar-button-selected");
-      polygonToolButton.classList.add("edit-sidebar-button-selected");
+      // superpixelToolButton.classList.remove("edit-sidebar-button-selected");
+      // brushToolButton.classList.remove("edit-sidebar-button-selected");
+      // polygonToolButton.classList.add("edit-sidebar-button-selected");
       annotator._setMode("polygon");
     });
 
-    brushToolButton.classList.add("edit-sidebar-button-selected");
-    brushToolButton.className = "edit-sidebar-button";
-    brushToolButton.appendChild(document.createTextNode("Brush tool"));
+    // brushToolButton.classList.add("edit-sidebar-button-selected");
+    // brushToolButton.className = "edit-sidebar-button";
+    // brushToolButton.appendChild(document.createTextNode("Brush tool"));
     brushToolButton.addEventListener("click", function () {
-      superpixelToolButton.classList.remove("edit-sidebar-button-selected");
-      polygonToolButton.classList.remove("edit-sidebar-button-selected");
-      brushToolButton.classList.add("edit-sidebar-button-selected");
+      // superpixelToolButton.classList.remove("edit-sidebar-button-selected");
+      // polygonToolButton.classList.remove("edit-sidebar-button-selected");
+      // brushToolButton.classList.add("edit-sidebar-button-selected");
 
       annotator._setMode("brush");
     });
 
+
+    // var colorButtons = document.getElementsByClassName("SavedColorData");
+    // var deleteButtons = document.getElementsByClassName("SavedColorDelete");
+
+    // for (var i = 0; i < colorButtons.length; ++i)
+    //   colorButtons[i].addEventListener("click", function (event) {
+    //     const index = event.target.parentNode('.SavedColorItem');
+    //     // if (globalCurColorIdx == index + 1) {
+    //     // console.log(globalCurColorIdx);
+    //     console.log(index);
+    //     annotator.currentLabel = globalCurColorIdx;
+    //   });
+    $('body').on('click', '.SavedColorData', function(){
+      annotator.currentLabel = globalCurColorIdx;
+    });
 
     spacer3.className = "edit-sidebar-spacer";
     // manualParagraph.appendChild(document.createTextNode("ctrl: toggle mode"));
@@ -299,21 +314,21 @@ function(Layer, Annotator, util) {
     // manualParagraph.appendChild(document.createTextNode("right: abort"));
     spacer4.className = "edit-sidebar-spacer";
     container.className = "edit-sidebar";
-    container.appendChild(labelPicker);
+    // container.appendChild(labelPicker);
     container.appendChild(spacer1);
-    container.appendChild(undoButton);
-    container.appendChild(redoButton);
-    container.appendChild(resetButton);
+    // container.appendChild(undoButton);
+    // container.appendChild(redoButton);
+    // container.appendChild(resetButton);
     container.appendChild(spacer2);
     // container.appendChild(denoiseButton);
-    container.appendChild(polygonToolButton);
-    container.appendChild(superpixelToolButton);
+    // container.appendChild(polygonToolButton);
+    // container.appendChild(superpixelToolButton);
     container.appendChild(spacer3);
-    container.appendChild(brushToolButton);
+    // container.appendChild(brushToolButton);
     container.appendChild(manualParagraph);
     container.appendChild(spacer4);
     // container.appendChild(exportButton);
-    container.appendChild(exportAsImageButton);
+    // container.appendChild(exportAsImageButton);
     return container;
   }
 
@@ -478,6 +493,8 @@ function(Layer, Annotator, util) {
     var annotator = new Annotator(data.imageURLs[id], {
           width: params.width,
           height: params.height,
+          paintwidth: params.paintwidth,
+          paintheight: params.paintheight,
           colormap: data.colormap,
           superpixelOptions: {
             method: "watershed",
@@ -490,22 +507,22 @@ function(Layer, Annotator, util) {
           onload: function () {
             if (data.annotationURLs)
               annotator.import(data.annotationURLs[id]);
-            annotator.show("boundary");
+            // annotator.show("boundary");
             // boundaryFlash();
           },
           onchange: function () {
-            var activeLabels = this.getUniqueLabels(),
-                legendClass = "edit-sidebar-legend-label",
-                legendActiveClass = "edit-sidebar-legend-label-active",
-                elements = document.getElementsByClassName(legendClass),
-                i;
-            for (i = 0; i < elements.length; ++i)
-              elements[i].classList.remove(legendActiveClass);
-            for (i = 0; i < activeLabels.length; ++i)
-              elements[activeLabels[i]].classList.add(legendActiveClass);
+            // var activeLabels = this.getUniqueLabels(),
+            //     legendClass = "edit-sidebar-legend-label",
+            //     legendActiveClass = "edit-sidebar-legend-label-active",
+            //     elements = document.getElementsByClassName(legendClass),
+            //     i;
+            // for (i = 0; i < elements.length; ++i)
+            //   elements[i].classList.remove(legendActiveClass);
+            // for (i = 0; i < activeLabels.length; ++i)
+            //   elements[activeLabels[i]].classList.add(legendActiveClass);
           },
           onrightclick: function (label) {
-            document.getElementById("label-" + label + "-button").click();
+            // document.getElementById("label-" + label + "-button").click();
           },
           onmousemove: highlightLabel
         }),
@@ -513,8 +530,8 @@ function(Layer, Annotator, util) {
           width: params.width,
           height: params.height
         });
-    document.body.appendChild(createNavigationMenu(params, data, annotator));
-    document.body.appendChild(createMainDisplay(params,
+    // document.getElementById("StockPhotoImg").appendChild(createNavigationMenu(params, data, annotator));
+    document.getElementById("StockPhotoImg").appendChild(createMainDisplay(params,
                                                 data,
                                                 annotator,
                                                 imageLayer));

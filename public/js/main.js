@@ -61,22 +61,34 @@ function(indexPage, editPage, colormap, util) {
       // data.colormap = createColormap(params.label, data.labels);
 
       //<-- CUSTOMIZED CODE standard is become comment.
-      data.colormap = colorMapArray;
+      var colorFromServer = [[255, 255, 255]];
+      var items = document.getElementsByClassName("SavedColorItem")
+      for ( var i = 0; i < items.length; i++) {
+        var dataString = items[i].dataset.color.replaceAll(" ", "").split(",");
+        var dataArray = [parseInt(dataString[0]), parseInt(dataString[1]), parseInt(dataString[2])];
+        colorFromServer.push(dataArray);
+      }
+      
+      data.colormap = colorFromServer;
       data.labels = colorMapLabel;
       //-->
+      var w = document.getElementById("StockPhotoMain").clientWidth;
+      var h = document.getElementById("StockPhotoMain").clientHeight;
+      params.paintwidth = w;
       renderer(data, params);
     });
   }
 
   switch(params.view) {
     case "index":
-      renderPage(indexPage);
+      // renderPage(indexPage);
       break;
     case "edit":
       renderPage(editPage);
       break;
     default:
-      params.view = "index";
+      params.view = "edit";
+      params.id = "0";
       window.location = util.makeQueryParams(params);
       break;
   }

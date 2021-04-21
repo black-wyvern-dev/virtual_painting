@@ -47,18 +47,26 @@ define(function() {
   };
 
   Layer.prototype._onImageLoad = function (image, options) {
-    var aimwidth = image.width, aimheight = image.height;
+    var aimwidth = image.width, aimheight = image.height, w = 600, h = 600;
     var ratio = 1.0 * image.width / image.height;
-    if(aimwidth > 800) {
-      aimwidth = 800;
+    if(options.paintwidth != undefined) {
+      w = options.paintwidth;
+    }
+    if(options.paintheight != undefined) {
+      h = options.paintheight;
+    }
+    console.log(w, h, aimwidth, aimheight, ratio);
+    if(aimwidth > w) {
+      aimwidth = w;
       aimheight = Math.ceil(aimwidth / ratio);
     }
-    if(aimheight > 600) {
-      aimheight = 600;
+    if(aimheight > h) {
+      aimheight = h;
       aimwidth = Math.ceil(aimheight * ratio);
     }
-    this.canvas.width = options.width || aimwidth;
-    this.canvas.height = options.height || aimheight;
+    console.log(w, h, aimwidth, aimheight, ratio);
+    this.canvas.width = aimwidth;
+    this.canvas.height = aimheight;
     var context = this.canvas.getContext("2d");
     this._setImageSmoothing(context, options);
     context.drawImage(image, 0, 0, image.width, image.height,

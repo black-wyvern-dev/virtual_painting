@@ -55,6 +55,8 @@ function (Layer/*, segmentation*/, morph, Domtoimage, Detection) {
     this.layers.image.load(imageURL, {
       width: options.width,
       height: options.height,
+      paintwidth: options.paintwidth,
+      paintheight: options.paintheight,
       onload: function () { annotator._initialize(options); },
       onerror: options.onerror
     });

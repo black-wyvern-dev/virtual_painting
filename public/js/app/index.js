@@ -32,8 +32,8 @@ function(Pagination, Viewer, util) {
 
   function render(data, params) {
     var pagination = new Pagination(data.imageURLs.length, params);
-    document.body.appendChild(pagination.render());
-    document.body.appendChild(createLabelOptions(params, data.labels));
+    document.getElementById("StockPhotoImg").appendChild(pagination.render());
+    document.getElementById("StockPhotoImg").appendChild(createLabelOptions(params, data.labels));
     for (var i = pagination.begin(); i < pagination.end(); ++i) {
       var viewer = new Viewer(data.imageURLs[i], data.annotationURLs[i], {
                                 width: (params.width || 240),
@@ -46,7 +46,7 @@ function(Pagination, Viewer, util) {
           anchor = document.createElement("a");
       anchor.appendChild(viewer.container);
       anchor.href = util.makeQueryParams({ view: "edit", id: i });
-      document.body.appendChild(anchor);
+      document.getElementById("StockPhotoImg").appendChild(anchor);
     }
   }
 

@@ -1,4 +1,4 @@
-const Resource = require('../../methods/resource')
+const {colorData, curIndex} = require('../../globaldata')
 
 function colorController(){
     return {
@@ -12,6 +12,8 @@ function colorController(){
                 {current: 'current', allow: 'enabled'},
                 {current: 'enabled', allow: 'enabled'},
             ];
+            resData["colorData"] = colorData;
+            resData["curIndex"] = curIndex;
 
             res.render('color', resData);
         }

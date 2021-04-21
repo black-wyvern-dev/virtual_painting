@@ -49,7 +49,7 @@ if (screen.width >= 970) {
 }
 
 $(window).resize(function(e){
-    console.log(screen.width);
+    // console.log(screen.width);
     if (screen.width >= 970) {
         $('#SavedColorsModal').removeClass('nav-slideUp');
         $('#SavedColorsModal').addClass('nav-slideDown');
@@ -89,6 +89,27 @@ $(window).scroll(function(e){
     } 
 });
 
+$('body').on('click', '.SavedColorDelete', function(){
+    // $(this).closest('tr').remove();
+    // update_row_num('#cur_race_info_table');
+    console.log('ok', globalCurColorIdx);
+})
+
+$('body').on('click', '.SavedColorData', function(){
+    const index = $(this).closest('.SavedColorItem').data('index');
+    if (globalCurColorIdx == index + 1) {
+        $(this).closest('#SavedColorsList').data('current', 0);
+        $(this).children('.SavedColor_Col').first().html("");
+        globalCurColorIdx = 0;
+    } else {
+        $(this).closest('#SavedColorsList').data('current', index + 1);
+        $(".SavedColor_Col").eq(globalCurColorIdx - 1).html("");
+        $(this).children(".SavedColor_Col").first().html("<span id='SavedColor_ColCheck'"+
+            "class='material-icons'>check_circle</span>");
+        globalCurColorIdx = index + 1;
+    }
+    // update_row_num('#cur_race_info_table');
+})
 
 ///OLD
 

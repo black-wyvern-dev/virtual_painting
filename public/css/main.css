@@ -41,7 +41,7 @@
   -moz-transform: scale(1.0);
 }
 .segment-annotator-outer-container {
-  display: inline-block;
+  /* display: inline-block; */
   overflow: auto;
 }
 .segment-annotator-inner-container {
