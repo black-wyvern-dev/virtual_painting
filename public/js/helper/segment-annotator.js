@@ -407,9 +407,13 @@ function (Layer/*, segmentation*/, morph, Domtoimage, Detection) {
             // annotator._updateAnnotation(pixels, annotator.currentLabel)
             ;
           } else if (annotator.mode === "detection") {
-            annotator._updateAnnotationByDetection(
-              annotator._getClickPos(event),
-              annotator.currentLabel);
+            $(".notification-pane").show();
+            setTimeout(function(){
+              annotator._updateAnnotationByDetection(
+                annotator._getClickPos(event),
+                annotator.currentLabel);
+              $(".notification-pane").hide();
+            }, 0);
           }
           annotator._updateBoundaryLayer();
           if (typeof annotator.onleftclick === "function")
@@ -648,7 +652,7 @@ function (Layer/*, segmentation*/, morph, Domtoimage, Detection) {
         offsets.push(4 * region[i]);
     }
     this.lastHighlightColor = this.colormap[annotator.currentLabel].concat(this.visualizationAlpha);
-    console.log(this.lastHighlightColor);
+    // console.log(this.lastHighlightColor);
     annotator._updateAnnotation(offsets, annotator.currentLabel);
     return true;
   };
@@ -710,7 +714,7 @@ function (Layer/*, segmentation*/, morph, Domtoimage, Detection) {
     }
 
     this.lastHighlightColor = this.colormap[annotator.currentLabel].concat(this.visualizationAlpha);
-    console.log(this.lastHighlightColor);
+    // console.log(this.lastHighlightColor);
     this.boundaries.push(boundary);
     this.regions.push(region);
     // update annotation.

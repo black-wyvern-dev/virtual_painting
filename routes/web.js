@@ -28,7 +28,7 @@ function initRoute(app) {
     app.get('/families', colorFamiliesController().index)
     app.get('/collection', colorCollectionController().index)
     app.get('/', photoController().index)
-    app.get('/photo', photoController().index)
+    app.get('/photo', photoController().photo)
     app.get('/upload', uploadController().index)
     app.get('/room', roomController().index)
     // app.get('/tips', tipsController().index)
@@ -37,7 +37,7 @@ function initRoute(app) {
     // app.get('/admin/setting', admin, adminSettingController().index);
 
     //File upload and download
-    // app.post('/admin/setting/pdf_upload', settingController().upload);
+    app.post('/file_upload', uploadController().upload);
 }
 
 

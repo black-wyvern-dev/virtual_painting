@@ -55,7 +55,7 @@ define(function() {
     if(options.paintheight != undefined) {
       h = options.paintheight;
     }
-    console.log(w, h, aimwidth, aimheight, ratio);
+    // console.log(w, h, aimwidth, aimheight, ratio);
     if(aimwidth > w) {
       aimwidth = w;
       aimheight = Math.ceil(aimwidth / ratio);
@@ -64,7 +64,7 @@ define(function() {
       aimheight = h;
       aimwidth = Math.ceil(aimheight * ratio);
     }
-    console.log(w, h, aimwidth, aimheight, ratio);
+    // console.log(w, h, aimwidth, aimheight, ratio);
     this.canvas.width = aimwidth;
     this.canvas.height = aimheight;
     var context = this.canvas.getContext("2d");

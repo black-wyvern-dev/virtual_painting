@@ -53,4 +53,5 @@ const colorData = [
 
 let curIndex = 0;
 
+
 module.exports = {colorData, curIndex};

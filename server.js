@@ -21,9 +21,11 @@ const connection = require('./app/config/dbConnection');
 //Session Store
 let mongoStore = new MongoDBStore({
     mongooseConnection: connection,
-    collection: 'sessions'
+    collection: 'sessions',
+    autoRemove: 'native',
+    // autoRemoveInterval: 10 // In minutes. Default
 });
-
+mongoStore.clear();
 //Session Config
 const appsession = session({
     secret: "virtual-painting",
@@ -77,10 +79,30 @@ console.log = function(d) { //
   log_stdout.write( now.toLocaleTimeString()+ ' ' + util.format(d) + '\n');
 };
 
+const directory = './public/data/images/';
+//Use the unlint() method to delete the file in upload directory 
+function clearPhotoDirectory () {
+    fs.readdir(directory, (err, files) => {
+        if(err) console.error(`Error occured while clear photo files ${err}`);
+        else {
+            for (const file of files) {
+                fs.unlink(directory + file, err => {
+                    if(err) console.error(`Error occured while clear photo files ${err}`);
+                });
+            }
+            console.log('Delete all photos success.');
+        }
+    });
+}
+clearPhotoDirectory();
 //Set Route
 require('./routes/web.js')(app);
+const baseUrl = "192.168.104.56";
 // socketSrc.useSocket(io).then(() => {
-    server.listen(process.env.PORT || 8083, () => {
+    server.listen(process.env.PORT || 8083, baseUrl, () => {
         console.log('Listening on port 8083');
+        setInterval(function() {
+            clearPhotoDirectory();
+        }, 24 * 3600 * 1000);
     })
 // });

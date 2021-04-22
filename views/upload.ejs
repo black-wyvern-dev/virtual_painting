@@ -10,12 +10,12 @@
     <section id="UploadMainContent">
         <div id="UploadPhotoDesktop">
             <div id="UploadTop">
-                <a class="material-icons UploadCheckBox UploadCheckBoxChecked" ng-class="model.termsChecked ? 'UploadCheckBoxChecked' : 'UploadCheckBoxUnchecked'" ng-click="model.UpdateCheckBox();" style=""></a>
+                <a class="material-icons UploadCheckBox UploadCheckBoxUnchecked" ng-class="model.termsChecked ? 'UploadCheckBoxChecked' : 'UploadCheckBoxUnchecked'" ng-click="model.UpdateCheckBox();" style=""></a>
                 <div id="UploadPhotoTerms">
                     <span class="UploadRoboMedium ng-binding" style="font-size: 14px;">I Accept PPG's Terms of Use</span>
                     <a id="UploadViewTerms" class="UploadLink UploadRoboMedium ng-binding ng-isolate-scope" ng-href="http://www.ppgac.com/privacy-policy/" target="_blank" gtm-event="['userPhoto', 'viewTerms']" data-t="userPhoto" data-d1="viewTerms" href="http://www.ppgac.com/privacy-policy/">View Full Terms of Use</a>
                 </div>
-                <div id="UploadPhotoButton" ng-class="model.termsChecked ? 'Active' : ''" ng-click="model.GetImage()" class="Active" style="">
+                <div id="UploadPhotoButton" ng-class="model.termsChecked ? 'Active' : ''" ng-click="model.GetImage()" class="" style="">
                     <div id="UploadPhotoButtonContainer">
                         <div id="UploadPhotoButtonIcon">
                             <span class="material-icons" id="UploadPhotoImg">add_a_photo</span>

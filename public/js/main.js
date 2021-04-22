@@ -79,17 +79,18 @@ function(indexPage, editPage, colormap, util) {
     });
   }
 
-  switch(params.view) {
-    case "index":
-      // renderPage(indexPage);
-      break;
-    case "edit":
+  // switch(params.view) {
+  //   case "index":
+  //     // renderPage(indexPage);
+  //     break;
+  //   case "edit":
       renderPage(editPage);
-      break;
-    default:
-      params.view = "edit";
-      params.id = "0";
-      window.location = util.makeQueryParams(params);
-      break;
-  }
+      // break;
+    // default:
+      // params.view = "edit";
+      // params.id = "0";
+      // window.location = 
+        util.makeQueryParams(params);
+  //     break;
+  // }
 });

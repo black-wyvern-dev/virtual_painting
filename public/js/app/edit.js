@@ -216,8 +216,8 @@ function(Layer, Annotator, util) {
     exportButton.className = "edit-sidebar-submit";
     exportButton.addEventListener("click", function () {
       var filename = (data.annotationURLs) ?
-          data.annotationURLs[params.id].split(/[\\/]/).pop() :
-          params.id + ".png";
+          data.annotationURLs[/*params.id*/0].split(/[\\/]/).pop() :
+          /*params.id*/0 + ".png";
       downloadURI(annotator.export(), filename);
     });
     // exportAsImageButton.type = "button";
@@ -487,10 +487,13 @@ function(Layer, Annotator, util) {
 
   // Entry point.
   function render(data, params) {
-    var id = parseInt(params.id, 10);
+    var id = 0;//parseInt(params.id, 10);
     if (isNaN(id))
       throw("Invalid id");
-    var annotator = new Annotator(data.imageURLs[id], {
+    var srcImg = '/data/images/' + $('#StockPhotoImg').data('source');
+    console.log(srcImg);
+    if (!srcImg || srcImg=='' || srcImg.indexOf('undefined') != -1) throw('Invalid Image Source');
+    var annotator = new Annotator(/*data.imageURLs[id]*/srcImg, {
           width: params.width,
           height: params.height,
           paintwidth: params.paintwidth,
@@ -509,6 +512,7 @@ function(Layer, Annotator, util) {
               annotator.import(data.annotationURLs[id]);
             // annotator.show("boundary");
             // boundaryFlash();
+            $(".notification-pane").hide();
           },
           onchange: function () {
             // var activeLabels = this.getUniqueLabels(),
@@ -526,7 +530,7 @@ function(Layer, Annotator, util) {
           },
           onmousemove: highlightLabel
         }),
-        imageLayer = new Layer(data.imageURLs[id], {
+        imageLayer = new Layer(/*data.imageURLs[id]*/srcImg, {
           width: params.width,
           height: params.height
         });

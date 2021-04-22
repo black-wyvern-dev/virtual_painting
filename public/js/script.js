@@ -111,6 +111,43 @@ $('body').on('click', '.SavedColorData', function(){
     // update_row_num('#cur_race_info_table');
 })
 
+$('.UploadCheckBox').click(function() {
+    $('.UploadCheckBox').toggleClass('UploadCheckBoxChecked');
+    $('.UploadCheckBox').toggleClass('UploadCheckBoxUnchecked');
+    $('#UploadPhotoButton').toggleClass('Active');
+});
+
+$('#UploadPhotoButton').click(function() {
+    $('#ImagePicker').click();
+});
+
+$('#ImagePicker').on('change', function(e) {
+    var formData = new FormData();
+    if($('#ImagePicker').length == 0)
+        return;
+    formData.append('file', $('#ImagePicker')[0].files[0]);
+    $(".notification-pane").show();
+    $.ajax({
+        url : '/file_upload',
+        type : 'POST',
+        data : formData,
+        processData: false,  // tell jQuery not to process the data
+        contentType: false,  // tell jQuery not to set contentType
+        success : function(data) {
+            $(".notification-pane").hide();
+            $('.nav-2Step').attr('href', '/color');
+            $('.nav-2Step .nav-circle').addClass('enabled');
+            $('.nav-2Step .nav-progressLine').addClass('enabled');
+            $('.nav-2Step .nav-progressText').addClass('enabled');
+        },
+        error: function(data){
+            $(".notification-pane").hide();
+            alert('Upload Failed. try again.');
+        }
+    });
+});
+
+
 ///OLD
 
 $( '#view_stream' ).click(function() {

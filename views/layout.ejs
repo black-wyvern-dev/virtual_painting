@@ -26,7 +26,6 @@
     
   <link href="css/main.css" rel="stylesheet" type="text/css">
 </head>
-
 <body class="fullScreenImage">
   <main id="main">
     <div id="HeaderBrandImage">
@@ -44,7 +43,7 @@
                 <div id="roundCorner" data-label="Round Corner Background">
                     <div id="roundCornerBackground">
                         <div id="nav-dynamicMenu" clickoutside="">
-                            <div id="nav-menuTab" showmobilemenu="" class="<%= stepInfo[0].current == 'current' ? 'Step1_4' : '' %>" style="">
+                            <div id="nav-menuTab" showmobilemenu="" class=" <%= stepInfo[0].current == 'current' ? 'Step1_4' : '' %>" style="">
                                 <div id="nav-menuTabIconText">
                                     <span>
                                         <i class="material-icons nav-progressIcons nav-progressSelected nav-whiteIcon" id="hamburgerIcon">menu</i>
@@ -131,7 +130,7 @@
                                 <div class="navigation-wrapper">
                                     <nav class="primary-navigation" id="primary-navigation">
                                         <div id="nav-progressItems" class="nav-menuItemsCount-3" style="">
-                                            <a href="/" class="nav-progressStep nav-menuItemsCount-3 nav-1Step" data-d2="1" style="">
+                                            <a href="/photo" class="nav-progressStep nav-menuItemsCount-3 nav-1Step" data-d2="1" style="">
                                                 <div class="nav-progressInfo nav-mobileItem">
                                                     <div class="nav-circle <%= stepInfo[0].current %>" style="">1</div>
                                                 </div>
@@ -204,7 +203,7 @@
                 </footer>
             </div>
         </div>
-        <notification-pane level="page" class="notification-pane" style="display: none;">
+        <notification-pane level="page" class="notification-pane">
             <div class="loading-overlay page">
                 <div class="loader">
                     <div class="loading-color color-1"></div>
@@ -229,7 +228,7 @@
     <!-- Template Main JS File -->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.js" type="text/javascript"></script>
-    <!-- <script src="/assets/js/main.js"></script> -->\
+    <!-- <script src="/assets/js/main.js"></script> -->
     <script>
         var globalCurColorIdx = 0;
     </script>
@@ -237,7 +236,12 @@
 
     <% if(stepInfo[2].current == 'current') {%>
         <script data-main="js/main.js" src="js/require.js"></script>
+    <%} else {%>
+        <script>
+            $(".notification-pane").hide();
+        </script>
     <%}%>
+    
 </body>
 
 </html>
