@@ -71,7 +71,7 @@ $(window).scroll(function(e){
     if (screen.width < 970) return;
     var $el = $('.fixedElement');
     var x_offset = $('#nav-menuTab').css('width');
-    if ($(this).scrollTop() > 70){ 
+    if ($(this).scrollTop() > 110){ 
         $el.css({
             'position': 'fixed',
             'top': '0',
@@ -79,7 +79,7 @@ $(window).scroll(function(e){
         });
         $('#nav-savedColorsTab').css({'border-top-right-radius': '0'});
     }
-    if ($(this).scrollTop() < 70){
+    if ($(this).scrollTop() < 110){
         $el.css({
             'position': 'static',
             'top': '0',
