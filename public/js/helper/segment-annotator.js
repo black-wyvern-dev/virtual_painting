@@ -36,12 +36,14 @@ function (Layer/*, segmentation*/, morph, Domtoimage, Detection) {
                           Math.min(255, this.visualizationAlpha + 128);
     this.currentZoom = 1.0;
     this.defaultLabel = options.defaultLabel || 0;
+    this.defaultPattern = options.defaultPattern || 0;
     this.maxHistoryRecord = options.maxHistoryRecord || 10;
     this.onchange = options.onchange || null;
     this.onrightclick = options.onrightclick || null;
     this.onleftclick = options.onleftclick || null;
     this.onhighlight = options.onhighlight || null;
     this.onmousemove = options.onmousemove || null;
+    this.patternmap = options.patternmap || null;
     this._createLayers(options);
     this._initializeHistory(options);
     // this.mode = "superpixel";
@@ -52,13 +54,24 @@ function (Layer/*, segmentation*/, morph, Domtoimage, Detection) {
     this.prevAnnotationImg = null;
     this.currentPixels = null;
     var annotator = this;
-    this.layers.image.load(imageURL, {
-      width: options.width,
-      height: options.height,
-      paintwidth: options.paintwidth,
-      paintheight: options.paintheight,
-      onload: function () { annotator._initialize(options); },
-      onerror: options.onerror
+    this.layers.pattern.load(this.patternmap[0], {
+      onload: function () {
+        console.log('Pattern image load succeed.'); 
+        // console.log(annotator.layers.pattern.imageData);
+        annotator.patternWidth = annotator.layers.pattern.imageData.width;
+        annotator.patternHeight = annotator.layers.pattern.imageData.height;
+        annotator.layers.image.load(imageURL, {
+          width: options.width,
+          height: options.height,
+          paintwidth: options.paintwidth,
+          paintheight: options.paintheight,
+          onload: function () { 
+            annotator._initialize(options);
+          },
+          onerror: options.onerror
+        });
+      },
+      onerror: function() {}
     });
   }
 
@@ -309,6 +322,7 @@ function (Layer/*, segmentation*/, morph, Domtoimage, Detection) {
     this.innerContainer.setAttribute('id', 'visual-container');
     this.layers = {
       image: new Layer(options),
+      pattern: new Layer(options),
       boundary: new Layer(options),
       superpixel: new Layer(options),
       visualization: new Layer(options),
@@ -509,7 +523,7 @@ function (Layer/*, segmentation*/, morph, Domtoimage, Detection) {
 
     this.lastHighlightColor = this.colormap[label].concat(this.visualizationAlpha);
 
-    this._updateAnnotation(offsets, labels);
+    this._updateAnnotation(offsets, labels, this.currentPattern);
     this.layers.visualization.render();
     if (typeof this.onchange === "function")
       this.onchange.call(this);
@@ -524,6 +538,7 @@ function (Layer/*, segmentation*/, morph, Domtoimage, Detection) {
     var layer = this.layers.annotation;
     layer.resize(this.width, this.height);
     this.currentLabel = this.defaultLabel;
+    this.currentPattern = this.defaultPattern;
     layer.fill([this.defaultLabel, 0, 0, 0]);
     layer.render();
   };
@@ -653,7 +668,7 @@ function (Layer/*, segmentation*/, morph, Domtoimage, Detection) {
     }
     this.lastHighlightColor = this.colormap[annotator.currentLabel].concat(this.visualizationAlpha);
     // console.log(this.lastHighlightColor);
-    annotator._updateAnnotation(offsets, annotator.currentLabel);
+    annotator._updateAnnotation(offsets, annotator.currentLabel, annotator.currentPattern);
     return true;
   };
 
@@ -718,7 +733,7 @@ function (Layer/*, segmentation*/, morph, Domtoimage, Detection) {
     this.boundaries.push(boundary);
     this.regions.push(region);
     // update annotation.
-    annotator._updateAnnotation(pixelsPolygon, annotator.currentLabel);
+    annotator._updateAnnotation(pixelsPolygon, annotator.currentLabel, annotator.currentPattern);
     annotator._emptyPolygonPoints();
   };
 
@@ -810,10 +825,14 @@ function (Layer/*, segmentation*/, morph, Domtoimage, Detection) {
       this.onhighlight.call(this);
   };
 
-  Annotator.prototype._fillPixels = function (pixels, labels) {
+  Annotator.prototype._fillPixels = function (pixels, labels, curPattern = null) {
     if (pixels.length !== labels.length)
       throw "Invalid fill: " + pixels.length + " !== " + labels.length;
     var annotationData = this.layers.annotation.imageData.data,
+        w = this.layers.annotation.imageData.width, h = this.layers.annotation.imageData.height,
+        patternData = this.layers.pattern.imageData.data,
+        pW = this.layers.pattern.imageData.width, pH = this.layers.pattern.imageData.height,
+        originOffset = pixels[0],
         visualizationData = this.layers.visualization.imageData.data;
     for (var i = 0; i < pixels.length; ++i) {
       var offset = pixels[i],
@@ -823,6 +842,24 @@ function (Layer/*, segmentation*/, morph, Domtoimage, Detection) {
       visualizationData[offset + 0] = color[0];
       visualizationData[offset + 1] = color[1];
       visualizationData[offset + 2] = color[2];
+      if (curPattern != null) {
+        var pos = offset / 4, posO = originOffset / 4, x, y, ox, oy, dx, dy, patOff;
+        ox = posO % w;
+        oy = Math.ceil(posO / w);
+        x = pos % w;
+        y = Math.ceil(pos / w);
+        dx = x - ox;
+        dy = y - oy;
+        dx = dx % pW;
+        dy = dy % pH;
+        if (dx < 0) dx += pW;
+        if (dy < 0) dy += pH;
+        patOff = 4 * (dy * pW + dx);
+        visualizationData[offset + 0] = patternData[patOff];
+        visualizationData[offset + 1] = patternData[patOff + 1];
+        visualizationData[offset + 2] = patternData[patOff + 2];
+        if (patternData[patOff] == 255 && patternData[patOff + 1] == 255 && patternData[patOff + 2] == 255) patternData[patOff + 2] = 254;
+      }
       if(color[0] == 255 && color[1] == 255 && color[2] == 255)  {
         visualizationData[offset + 3] = 0;
         this.layers.boundary.setGrayAlpha(offset, false);
@@ -836,7 +873,7 @@ function (Layer/*, segmentation*/, morph, Domtoimage, Detection) {
   };
 
   // Update label.
-  Annotator.prototype._updateAnnotation = function (pixels, labels) {
+  Annotator.prototype._updateAnnotation = function (pixels, labels, curPattern = null) {
     var updates;
     labels = (typeof labels === "object") ?
         labels : _fillArray(new Int32Array(pixels.length), labels);
@@ -844,7 +881,7 @@ function (Layer/*, segmentation*/, morph, Domtoimage, Detection) {
     if (updates.pixels.length === 0)
       return this;
     this._updateHistory(updates);
-    this._fillPixels(updates.pixels, updates.next);
+    this._fillPixels(updates.pixels, updates.next, curPattern);
     this.layers.visualization.render();
     if (typeof this.onchange === "function")
       this.onchange.call(this);

@@ -491,6 +491,7 @@ function(Layer, Annotator, util) {
     if (isNaN(id))
       throw("Invalid id");
     var srcImg = '/data/images/' + $('#StockPhotoImg').data('source');
+    var pattenImg = '/data/patterns/1.png';
     console.log(srcImg);
     if (!srcImg || srcImg=='' || srcImg.indexOf('undefined') != -1) throw('Invalid Image Source');
     var annotator = new Annotator(/*data.imageURLs[id]*/srcImg, {
@@ -499,6 +500,7 @@ function(Layer, Annotator, util) {
           paintwidth: params.paintwidth,
           paintheight: params.paintheight,
           colormap: data.colormap,
+          patternmap: [pattenImg],
           superpixelOptions: {
             method: "watershed",
             regionSize: 200, //ignore in watershed
