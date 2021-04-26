@@ -64,7 +64,7 @@
                                             </span>
                                         </div>
                                         <div id="nav-SavedColWrapText">
-                                            <span id="nav-savedColorsText" class="nav-progressIcons">Saved Colors</span>
+                                            <span id="nav-savedColorsText" class="nav-progressIcons">Couleurs sauvegardées</span>
                                         </div>      
                                     </div>
                                     <div id="SavedColorsModal" class="transitionProp" stickymodal="">
@@ -73,14 +73,14 @@
                                                 <% if(stepInfo[1].current == 'current') {%>
                                                 <div id="SavedColorsAction"class="One">
                                                     <a navcloseonpaint="" gtm-event="[action.gtmT, 'CTA: Saved Colors', action.gtmD2]" class="SavedColorsNextButton" data-t="ux" data-d1="CTA: Saved Colors" data-d2="paintRoom">
-                                                        <span class="SavedColorsNextButtonText">Paint Your Room<span class="material-icons SavedColorsNextButtonIcon">navigate_next</span></span>
+                                                        <span class="SavedColorsNextButtonText">Peindre votre espace<span class="material-icons SavedColorsNextButtonIcon">navigate_next</span></span>
                                                     </a>  
                                                 </div>
                                                 <%}%>
                                                 <% if(stepInfo[2].current == 'current') {%>
                                                 <div id="SavedColorsAction" class="One">
                                                     <div id="ActionSaveButton">
-                                                        <span class="SavedColorsNextButtonText"><span id="ActionSaveButtonIcon" class="material-icons">save</span>Save Project</span>
+                                                        <span class="SavedColorsNextButtonText"><span id="ActionSaveButtonIcon" class="material-icons">save</span>Sauvegarder le projet</span>
                                                     </div>
                                                 </div>
                                                 <%}%>
@@ -92,7 +92,7 @@
                                                     <span class="SavedColorAddItemPlus material-icons" style="">add</span>
                                                 </div>
                                             </div>
-                                            <span class="SavedColorAddItemText">SAVE MORE COLORS</span>
+                                            <span class="SavedColorAddItemText">Sauvegarder plus de couleurs</span>
                                         </a>     
                                         <div id="SavedColorsList" scrollfade="model.PageData.Data.CurrentStep" class="">
                                             <div id="SavedColorsFadeTop" style="height: 0px;"></div>
@@ -135,7 +135,7 @@
                                                     <div class="nav-circle <%= stepInfo[0].current %>" style="">1</div>
                                                 </div>
                                                 <div class="nav-centerInfo">
-                                                    <span class="nav-progressText <%= stepInfo[0].allow %>" style="">Select Photo</span>
+                                                    <span class="nav-progressText <%= stepInfo[0].allow %>" style="">Sélectionner une photo</span>
                                                 </div>
                                             </a>
                                             <a href="<%= stepInfo[1].allow == 'enabled' ? '/color' : '' %>" class="nav-progressStep nav-menuItemsCount-3 nav-2Step" data-d2="2" style="">
@@ -144,7 +144,7 @@
                                                 </div>
                                                 <div class="nav-progressLine <%= stepInfo[1].allow %>" style=""></div>
                                                 <div class="nav-centerInfo">
-                                                    <span class="nav-progressText <%= stepInfo[1].allow %>" style="">Select Colors</span>
+                                                    <span class="nav-progressText <%= stepInfo[1].allow %>" style="">Sélectionner une couleur</span>
                                                 </div>
                                             </a>
                                             <a href="<%= stepInfo[2].allow == 'enabled' ? '/room' : '' %>" class="nav-progressStep nav-menuItemsCount-3 nav-3Step" data-d2="3" style="">
@@ -153,7 +153,7 @@
                                                 </div>
                                                 <div class="nav-progressLine <%= stepInfo[2].allow %>" style=""></div>
                                                 <div class="nav-centerInfo">
-                                                    <span class="nav-progressText <%= stepInfo[2].allow %>" style="">Visualize Room</span>
+                                                    <span class="nav-progressText <%= stepInfo[2].allow %>" style="">Visualiser le résultat</span>
                                                 </div>
                                             </a>
                                         </div>
@@ -179,13 +179,13 @@
                         <div id="SavedColorsAction" class= "One">
                             <% if(stepInfo[1].current == 'current') {%>
                             <a  navcloseonpaint="" gtm-event="[action.gtmT, 'CTA: footer', action.gtmD2]" class=" ReviewPhotoBuyClass" data-t="ux" data-d1="CTA: footer" data-d2="paintRoom">
-                                <span class=" SavedColorsNextButtonText">Paint Your Room<span class="material-icons  SavedColorsNextButtonIcon">navigate_next</span></span>
+                                <span class=" SavedColorsNextButtonText">Peindre votre espace<span class="material-icons  SavedColorsNextButtonIcon">navigate_next</span></span>
                             </a>
                             <%}%>
                             <% if(stepInfo[2].current == 'current') {%>
                             <div id="SavedColorsAction" class="One">
                                 <div id="ActionSaveButton">
-                                    <span class="SavedColorsNextButtonText"><span id="ActionSaveButtonIcon" class="material-icons">save</span>Save Project</span>
+                                    <span class="SavedColorsNextButtonText"><span id="ActionSaveButtonIcon" class="material-icons">save</span>Sauvegarder le projet</span>
                                 </div>
                             </div>
                             <%}%>

@@ -3,9 +3,9 @@
         <div id="PageHeader">
             <a id="HeaderBackLink" ng-if="model.backlinktext" gtm-event="['ux', 'backButton', model.backlinktext]" class="ng-scope ng-isolate-scope" data-t="ux" data-d1="backButton" data-d2="Select a Different Photo">
                 <span id="HeaderLeftArrow" class="material-icons">keyboard_arrow_left</span>
-                <span id="HeaderBackLinkText" class="ng-binding" data-url="/photo">Select a Different Photo</span>
+                <span id="HeaderBackLinkText" class="ng-binding" data-url="/photo">Sélectionner une autre photo</span>
             </a>
-            <h1 id="HeaderPageTitle" class="ng-binding">Find Colors for Your Photo</h1>
+            <h1 id="HeaderPageTitle" class="ng-binding">Trouver la couleur pour votre photo</h1>
         </div>
     </page-header>
     <div id="MainContentLeftPane">
@@ -16,7 +16,7 @@
                         
                         <img id="TileImage" scroll-loaded-image="" data-lazysrc="https://visualizecolor.blob.core.windows.net/voc/colorspage/browseall.jpg" data-lazyalt="" data-parentclass="TileImageLoader" src="https://visualizecolor.blob.core.windows.net/voc/colorspage/browseall.jpg" alt="">
                     </div>
-                    <h4 ng-if="model.text" name="TileText" class="ng-binding ng-scope">Browse All Colors</h4>
+                    <h4 ng-if="model.text" name="TileText" class="ng-binding ng-scope">Rechercher toutes les couleurs</h4>
                 </div></tile>
             </a>
             <a id="ColorsCollectionTap" gtm-event="['ux', 'colorTile', 'color: ' + tab.TextKey + ' : ' + tab.DisplayOrder]" class="ng-scope ng-isolate-scope" data-t="ux" data-d1="colorTile" data-d2="color: View Curated Palettes : 2">
@@ -25,7 +25,7 @@
                         
                         <img id="TileImage" scroll-loaded-image="" data-lazysrc="https://visualizecolor.blob.core.windows.net/voc/colorspage/collections.jpg" data-lazyalt="" data-parentclass="TileImageLoader" src="https://visualizecolor.blob.core.windows.net/voc/colorspage/collections.jpg" alt="">
                     </div>
-                    <h4 ng-if="model.text" name="TileText" class="ng-binding ng-scope">View Curated Palettes</h4>
+                    <h4 ng-if="model.text" name="TileText" class="ng-binding ng-scope">Voir nos palettes de couleurs</h4>
                 </div></tile>
             </a>
         </div>
