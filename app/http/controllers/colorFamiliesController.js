@@ -1,5 +1,4 @@
 const {colorData, curIndex} = require('../../globaldata')
-const Resource = require('../../methods/resource')
 
 function colorFamiliesController(){
     return {

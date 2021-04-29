@@ -54,3 +54,133 @@
         left:-5px;
     }
 }
+
+.UploadButton{
+    width:80%;
+    height:80px;
+    border-radius:8px;
+    cursor:default;
+    pointer-events:none;
+    background-color:#f0f0f0;
+    box-shadow:0 1px 0 0 #ccc inset;
+    -webkit-box-shadow:0 -1px 0 0 #ccc inset;
+    position:relative;
+    float:right;
+    display:table;
+    transition:all linear .2s;
+}
+
+.UploadButton div{
+    color:rgba(51,51,51,.2);
+}
+
+.UploadButton.Active #UploadText{
+    color:#fff;
+}
+
+.UploadButton.Active #UploadButtonIcon
+{
+    color:#633;
+}
+
+.UploadButton.Active{
+    background-color:#4d1a1a;
+    box-shadow:0 -1px 0 0 #ad8a8a inset;
+    -webkit-box-shadow:0 -1px 0 0 #ad8a8a inset;
+    cursor:pointer;
+    pointer-events:all;
+}
+
+.UploadButton:hover.Active{
+    background-color:#ad8a8a;
+}
+
+#UploadText{
+    font-size:24px;
+    font-weight:700;
+    display:table-cell;
+    vertical-align:middle;
+}
+
+#UploadButtonIcon{
+    display:table-cell;
+    vertical-align:middle;
+    padding-left:10px;
+    padding-right:10px;
+}
+
+#UploadImg{
+    font-size:32px;
+    font-weight:400;
+    font-style:normal;
+}
+
+#UploadDivider{
+    border-color:#ccc;
+    border-bottom-width:1px;
+    border-style:dashed;
+    margin-top:10px;
+    margin-bottom:10px;
+}
+
+#UploadButtonContainer{
+    display:table;
+    height:100%;
+    margin:0 auto;
+    position:relative;
+}
+
+#UploadActionContainer .UploadButton{
+    width: 30%;
+}
+
+#UploadActionContainer{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+@media(min-width:750px){
+    .ProductTypes{}
+}
+
+.ProductTypes{
+    margin-left: 30px;
+    float:left;
+}
+
+#UploadProductTypeContainer{
+    height: 50px;
+}
+
+.UploadPreview{
+    position:absolute;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    height:100%;
+    width:100%;
+}
+
+.UploadPreview span{
+    color:#ff1e00;
+    font-size:100px;
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    -ms-transform:translate(-50%,-50%);
+    -webkit-transform:translate(-50%,-50%);
+    -o-transform:translate(-50%,-50%);
+    text-align:center;
+}
+
+.ProductPreviewHidden {
+    visibility: hidden;
+    min-height: 100px;
+}
+
+.ProductPreviewHidden span {
+    visibility: hidden;
+}

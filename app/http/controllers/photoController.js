@@ -1,4 +1,3 @@
-const Resource = require('../../methods/resource')
 
 function photoController(){
     return {
