@@ -94,31 +94,58 @@
                                             </div>
                                             <span class="SavedColorAddItemText">Sauvegarder plus de couleurs</span>
                                         </a>     
-                                        <div id="SavedColorsList" scrollfade="model.PageData.Data.CurrentStep" class="">
+                                        <div id="SavedColorsList" scrollfade="model.PageData.Data.CurrentStep" class="" data-admin="<%=isAdmin%>">
                                             <div id="SavedColorsFadeTop" style="height: 0px;"></div>
-                                            <% for (idx in colorData) {%>
-                                            <div class="SavedColorItem" style="" data-index="<%= idx%>" data-color="<%= colorData[idx].color%>">
-                                                <div class="SavedColorData">
-                                                    <div class="SavedColor_Col" style="background-color: rgb(<%= colorData[idx].color%>)">
-                                                        <% if (idx == curIndex - 1) {%>
-                                                        <span id="SavedColor_ColCheck" class="material-icons" style="">check_circle</span>
-                                                        <%}%>
+                                            <% if (!isAdmin) {%>
+                                                <% for (idx in colorData) {%>
+                                                <div class="SavedColorItem" style="" data-index="<%= idx%>" data-color="<%= colorData[idx].color%>">
+                                                    <div class="SavedColorData">
+                                                        <div class="SavedColor_Col" style="background-color: rgb(<%= colorData[idx].color%>)">
+                                                            <% if (idx == curIndex - 1) {%>
+                                                            <span id="SavedColor_ColCheck" class="material-icons" style="">check_circle</span>
+                                                            <%}%>
+                                                        </div>
+                                                        <div class="SavedColorInfo UploadRoboMedium">
+                                                            <p class="SavedColorName">
+                                                                <span class=""><%= colorData[idx].name%></span>
+                                                            </p>
+                                                            <p class="SavedColorID">
+                                                                <span class=""><%= colorData[idx].id%></span>
+                                                            </p>
+                                                        </div>
                                                     </div>
-                                                    <div class="SavedColorInfo UploadRoboMedium">
-                                                        <p class="SavedColorName">
-                                                            <span class=""><%= colorData[idx].name%></span>
-                                                        </p>
-                                                        <p class="SavedColorID">
-                                                            <span class=""><%= colorData[idx].id%></span>
-                                                        </p>
+                                                    <div class="SavedColorDelete">
+                                                        <div class="SavedColorTrash material-icons">
+                                                            <span>delete</span>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                                <div class="SavedColorDelete">
-                                                    <div class="SavedColorTrash material-icons">
-                                                        <span>delete</span>
+                                                <%}%>
+                                            <%} else {%>
+                                                <% for (idx in productList) {%>
+                                                    <div class="SavedColorItem" style="" data-index="<%= idx%>" data-id="<%= productList[idx].id%>" data-src="<%= productList[idx].src%>">
+                                                        <div class="SavedColorData">
+                                                            <div class="SavedColor_Col" style="background-image: url(<%= productList[idx].src%>); background-size: contain;">
+                                                                <% if (idx == curIndex - 1) {%>
+                                                                <span id="SavedColor_ColCheck" class="material-icons" style="">check_circle</span>
+                                                                <%}%>
+                                                            </div>
+                                                            <div class="SavedColorInfo UploadRoboMedium">
+                                                                <p class="SavedColorName">
+                                                                    <span class=""><%= productList[idx].title%></span>
+                                                                </p>
+                                                                <p class="SavedColorID">
+                                                                    <span class=""><%= productList[idx].id%></span>
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="SavedColorDelete">
+                                                            <div class="SavedColorTrash material-icons">
+                                                                <span>delete</span>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </div>
+                                                <%}%>
                                             <%}%>
                                         </div>
                                         <div id="SavedColorsFadeBottom" style="visibility: visible;"></div>      

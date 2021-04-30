@@ -16,6 +16,8 @@ function colorCollectionController(){
 
             resData["colorData"] = colorData;
             resData["curIndex"] = curIndex;
+            
+            resData['isAdmin'] = false;
             res.render('color_collection', resData);
         }
     }

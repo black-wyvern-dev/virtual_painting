@@ -17,6 +17,7 @@ function roomController(){
             resData["curIndex"] = curIndex;
             resData["roomPhoto"] = req.session.projectid + req.session.extofbackground;
 
+            resData['isAdmin'] = false;
             res.render('room', resData);
         }
     }

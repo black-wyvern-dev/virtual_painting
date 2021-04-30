@@ -16,6 +16,7 @@ function colorController(){
             resData["colorData"] = colorData;
             resData["curIndex"] = curIndex;
 
+            resData['isAdmin'] = false;
             res.render('color', resData);
         }
     }

@@ -10,15 +10,17 @@ function colorController(){
             let resData = {};
         
             // const result = await Resource.getResource();
-            // if(result.result) resData["resource"] = result.result;
-            resData["stepInfo"] = [
+            // if(result.result) resData['resource'] = result.result;
+            resData['stepInfo'] = [
                 {current: 'enabled', allow: 'enabled'},
                 {current: 'current', allow: 'enabled'},
                 {current: 'enabled', allow: 'enabled'},
             ];
-            resData["colorData"] = colorData;
-            resData["curIndex"] = curIndex;
-
+            resData['colorData'] = colorData;
+            resData['curIndex'] = curIndex;
+            const productlist = await products.getProductList({});
+            resData['isAdmin'] = true;
+            resData['productList'] = productlist.result;
             res.render('admin/color', resData);
         },
 
@@ -90,13 +92,66 @@ function colorController(){
         async addProduct(req, res) {
             console.log('add prodcut request is received.');
             let {title, id, src, type} = req.body;
-            if ( await products.addProduct({title, id, src, type}) ) {
+            if (src.indexOf(type) == -1) {
+                var strList = src.split('/');
+                for ( i in strList ) {
+                    if (strList[i] == 'colors' || strList[i] == 'patterns') {strList[i] = type;break;}
+                }
+                var newStr = strList.join('/');
+                fs.copyFile('./public' + src, './public' + newStr, (err) => {
+                    if (err) console.log(err);
+                    console.log('src was copied to newSrc');
+                });
+                src = newStr;
+            }
+            const result =  await products.addProduct({title, id, src, type});
+            if ( result ) {
                 console.log('Product add succeed');
                 draft = undefined;
                 res.status(200).send ({result: true});
             } else {
                 console.log('Error occured while add product.')
                 res.status(403).send ({message: 'Could not add product.'});
+            }
+        },
+
+        async updateProduct(req, res) {
+            console.log('update product request is received.');
+            let {old_id, title, id, src, type} = req.body;
+            if (src.indexOf(type) == -1) {
+                var strList = src.split('/');
+                for ( i in strList ) {
+                    if (strList[i] == 'colors' || strList[i] == 'patterns') {strList[i] = type;break;}
+                }
+                var newStr = strList.join('/');
+                fs.copyFile('./public' + src, './public' + newStr, (err) => {
+                    if (err) console.log(err);
+                    else console.log('src was copied to newSrc');
+                });
+                src = newStr;
+            }
+            const result =  await products.updateProduct({old_id, title, id, src, type});
+            if ( result ) {
+                console.log('Product update succeed');
+                draft = undefined;
+                res.status(200).send ({result: true});
+            } else {
+                console.log('Error occured while update product.')
+                res.status(403).send ({message: 'Could not update product.'});
+            }
+        },
+
+        async deleteProduct(req, res) {
+            console.log('delete product request is received.');
+            let {id} = req.body;
+            const result =  await products.deleteProduct({id});
+            if ( result ) {
+                console.log('Product delete succeed');
+                draft = undefined;
+                res.status(200).send({result: true});
+            } else {
+                console.log('Error occured while delete product.')
+                res.status(403).send ({message: 'Could not delete product.'});
             }
         }
     }

@@ -17,6 +17,7 @@ function colorFamiliesController(){
             resData["colorData"] = colorData;
             resData["curIndex"] = curIndex;
 
+            resData['isAdmin'] = false;
             res.render('color_families', resData);
         }
     }

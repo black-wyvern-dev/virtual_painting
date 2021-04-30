@@ -19,6 +19,8 @@ function initRoute(app) {
     //Admin Routes
     app.get('/admin', adminController().index)
     app.post('/add_product', adminController().addProduct)
+    app.post('/update_product', adminController().updateProduct)
+    app.post('/delete_product', adminController().deleteProduct)
     app.post('/reset_upload', adminController().resetUpload)
 
     //File upload and download
