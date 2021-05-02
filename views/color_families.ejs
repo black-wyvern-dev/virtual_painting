@@ -1,67 +1,26 @@
-<color-families class="ng-scope ng-isolate-scope"><page-header class="color-family-header ng-isolate-scope" headline="Browse Paint Colors" subheadline="Beiges" backlinktext="Explore Different Colors" data-backurl="/Colors"><div id="PageHeader">
-    <a id="HeaderBackLink" ng-click="model.BackAction()" ng-if="model.backlinktext" gtm-event="['ux', 'backButton', model.backlinktext]" class="ng-scope ng-isolate-scope" data-t="ux" data-d1="backButton" data-d2="Explore Different Colors">
-        <span id="HeaderLeftArrow" class="material-icons">keyboard_arrow_left</span>
-        <span id="HeaderBackLinkText" class="ng-binding" data-url="/color">Explore Different Colors</span>
-    </a>
-    <h1 id="HeaderPageTitle" class="ng-binding">Browse Paint Colors</h1>
-    <span id="HeaderPageSubTitle" ng-if="model.subheadline" class="ng-binding ng-scope">Beiges</span>
-</div></page-header>
-<div id="MainContentLeftPane">
-    <div id="ColorFamilyFamilies">
-        <div ng-repeat="collection in model.Collections" class="ng-scope">
-            <a id="ColorFamSelector" ng-click="model.GoToFamily(collection.CollectionName)" title="Reds" ng-style="{'background-color': model.GetDisplayAs(collection.DisplayAs)}" gtm-event="['ux', 'colorCircles', collection.CollectionName]" class="ng-isolate-scope" data-t="ux" data-d1="colorCircles" data-d2="Reds" style="background-color: rgb(194, 13, 0);">
-                <span class="material-icons isDark" ng-class="model.GetIsDarkCss(collection)">check_circle</span>
+<color-families>
+    <page-header class="color-family-header" headline="Browse Paint Colors" subheadline="Beiges" backlinktext="Explore Different Colors" data-backurl="/Colors">
+        <div id="PageHeader">
+            <a id="HeaderBackLink">
+                <span id="HeaderLeftArrow" class="material-icons">keyboard_arrow_left</span>
+                <span id="HeaderBackLinkText" data-url="/color">Explore Different Colors</span>
             </a>
+            <h1 id="HeaderPageTitle">Browse Paint Colors</h1>
+            <span id="HeaderPageSubTitle">Beiges</span>
         </div>
-        <div ng-repeat="collection in model.Collections" class="ng-scope">
-            <a id="ColorFamSelector" ng-click="model.GoToFamily(collection.CollectionName)" title="Oranges" ng-style="{'background-color': model.GetDisplayAs(collection.DisplayAs)}" gtm-event="['ux', 'colorCircles', collection.CollectionName]" class="ng-isolate-scope" data-t="ux" data-d1="colorCircles" data-d2="Oranges" style="background-color: rgb(217, 81, 0);">
-                <span class="material-icons isDark" ng-class="model.GetIsDarkCss(collection)">check_circle</span>
-            </a>
-        </div>
-        <div ng-repeat="collection in model.Collections" class="ng-scope">
-            <a id="ColorFamSelector" ng-click="model.GoToFamily(collection.CollectionName)" title="Yellows" ng-style="{'background-color': model.GetDisplayAs(collection.DisplayAs)}" gtm-event="['ux', 'colorCircles', collection.CollectionName]" class="ng-isolate-scope" data-t="ux" data-d1="colorCircles" data-d2="Yellows" style="background-color: rgb(228, 157, 0);">
-                <span class="material-icons" ng-class="model.GetIsDarkCss(collection)">check_circle</span>
-            </a>
-        </div>
-        <div ng-repeat="collection in model.Collections" class="ng-scope">
-            <a id="ColorFamSelector" ng-click="model.GoToFamily(collection.CollectionName)" title="Greens" ng-style="{'background-color': model.GetDisplayAs(collection.DisplayAs)}" gtm-event="['ux', 'colorCircles', collection.CollectionName]" class="ng-isolate-scope" data-t="ux" data-d1="colorCircles" data-d2="Greens" style="background-color: rgb(0, 181, 7);">
-                <span class="material-icons" ng-class="model.GetIsDarkCss(collection)">check_circle</span>
-            </a>
-        </div>
-        <div ng-repeat="collection in model.Collections" class="ng-scope">
-            <a id="ColorFamSelector" ng-click="model.GoToFamily(collection.CollectionName)" title="Blues" ng-style="{'background-color': model.GetDisplayAs(collection.DisplayAs)}" gtm-event="['ux', 'colorCircles', collection.CollectionName]" class="ng-isolate-scope" data-t="ux" data-d1="colorCircles" data-d2="Blues" style="background-color: rgb(0, 115, 192);">
-                <span class="material-icons isDark" ng-class="model.GetIsDarkCss(collection)">check_circle</span>
-            </a>
-        </div>
-        <div ng-repeat="collection in model.Collections" class="ng-scope">
-            <a id="ColorFamSelector" ng-click="model.GoToFamily(collection.CollectionName)" title="Aquas" ng-style="{'background-color': model.GetDisplayAs(collection.DisplayAs)}" gtm-event="['ux', 'colorCircles', collection.CollectionName]" class="ng-isolate-scope" data-t="ux" data-d1="colorCircles" data-d2="Aquas" style="background-color: rgb(44, 207, 232);">
-                <span class="material-icons" ng-class="model.GetIsDarkCss(collection)">check_circle</span>
-            </a>
-        </div>
-        <div ng-repeat="collection in model.Collections" class="ng-scope">
-            <a id="ColorFamSelector" ng-click="model.GoToFamily(collection.CollectionName)" title="Purples" ng-style="{'background-color': model.GetDisplayAs(collection.DisplayAs)}" gtm-event="['ux', 'colorCircles', collection.CollectionName]" class="ng-isolate-scope" data-t="ux" data-d1="colorCircles" data-d2="Purples" style="background-color: rgb(127, 0, 190);">
-                <span class="material-icons isDark" ng-class="model.GetIsDarkCss(collection)">check_circle</span>
-            </a>
-        </div>
-        <div ng-repeat="collection in model.Collections" class="ng-scope">
-            <a id="ColorFamSelector" ng-click="model.GoToFamily(collection.CollectionName)" title="Neutrals" ng-style="{'background-color': model.GetDisplayAs(collection.DisplayAs)}" gtm-event="['ux', 'colorCircles', collection.CollectionName]" class="ng-isolate-scope" data-t="ux" data-d1="colorCircles" data-d2="Neutrals" style="background-color: rgb(183, 169, 147);">
-                <span class="material-icons" ng-class="model.GetIsDarkCss(collection)">check_circle</span>
-            </a>
-        </div>
-        <div ng-repeat="collection in model.Collections" class="ng-scope">
-            <a id="ColorFamSelector" ng-click="model.GoToFamily(collection.CollectionName)" title="Beiges" ng-style="{'background-color': model.GetDisplayAs(collection.DisplayAs)}" gtm-event="['ux', 'colorCircles', collection.CollectionName]" class="ng-isolate-scope" data-t="ux" data-d1="colorCircles" data-d2="Beiges" style="background-color: rgb(222, 201, 180);">
-                <span class="material-icons  isSelected" ng-class="model.GetIsDarkCss(collection)">check_circle</span>
-            </a>
-        </div>
-        <div ng-repeat="collection in model.Collections" class="ng-scope">
-            <a id="ColorFamSelector" ng-click="model.GoToFamily(collection.CollectionName)" title="Off-Whites" ng-style="{'background-color': model.GetDisplayAs(collection.DisplayAs)}" gtm-event="['ux', 'colorCircles', collection.CollectionName]" class="ng-isolate-scope" data-t="ux" data-d1="colorCircles" data-d2="Off-Whites" style="background-color: rgb(252, 238, 222);">
-                <span class="material-icons" ng-class="model.GetIsDarkCss(collection)">check_circle</span>
-            </a>
-        </div>
-        <div ng-repeat="collection in model.Collections" class="ng-scope">
-            <a id="ColorFamSelector" ng-click="model.GoToFamily(collection.CollectionName)" title="Grays &amp; Blacks" ng-style="{'background-color': model.GetDisplayAs(collection.DisplayAs)}" gtm-event="['ux', 'colorCircles', collection.CollectionName]" class="ng-isolate-scope" data-t="ux" data-d1="colorCircles" data-d2="Grays &amp; Blacks" style="background-color: rgb(162, 161, 159);">
-                <span class="material-icons" ng-class="model.GetIsDarkCss(collection)">check_circle</span>
-            </a>
+    </page-header>
+    <div id="MainContentLeftPane">
+        <div id="ColorFamilyFamilies">
+            <% for (idx in productList) {%>
+            <div class="ColorItem" style="" data-index="<%= idx%>" data-title="<%= productList[idx].title%>" data-src="<%= productList[idx].src%>">
+                <a id="ColorFamSelector" style="background-image: url(<%= productList[idx].src%>); background-size: contain;">
+                    <span class="material-icons isDark">check_circle</span>
+                </a>
+                <p class="SavedColorName">
+                    <span class=""><%= productList[idx].title%></span>
+                </p>
+            </div>
+            <%}%>
         </div>
     </div>
-</div></color-families>
+</color-families>

@@ -70,15 +70,15 @@
                                     <div id="SavedColorsModal" class="transitionProp" stickymodal="">
                                         <div id="SavedColorsActionsContainer" class="">
                                             <div id="SavedColorsActions" class="">
-                                                <% if(stepInfo[1].current == 'current') {%>
+                                                <% if(stepInfo[1].current == 'current' && !isAdmin) {%>
                                                 <div id="SavedColorsAction"class="One">
-                                                    <a navcloseonpaint="" gtm-event="[action.gtmT, 'CTA: Saved Colors', action.gtmD2]" class="SavedColorsNextButton" data-t="ux" data-d1="CTA: Saved Colors" data-d2="paintRoom">
+                                                    <a class="SavedColorsNextButton">
                                                         <span class="SavedColorsNextButtonText">Peindre votre espace<span class="material-icons SavedColorsNextButtonIcon">navigate_next</span></span>
                                                     </a>  
                                                 </div>
                                                 <%}%>
                                                 <% if(stepInfo[2].current == 'current') {%>
-                                                <div id="SavedColorsAction" class="One">
+                                                <div class="One">
                                                     <div id="ActionSaveButton">
                                                         <span class="SavedColorsNextButtonText"><span id="ActionSaveButtonIcon" class="material-icons">save</span>Sauvegarder le projet</span>
                                                     </div>
@@ -86,14 +86,6 @@
                                                 <%}%>
                                             </div>
                                         </div>
-                                        <a class="SavedColorAddItem" gtm-event="['ux', 'saveMoreColors', model.PageData.Data.CurrentStep]" data-t="ux" data-d1="saveMoreColors" data-d2="3">
-                                            <div class="SavedColorAddItemHolder">
-                                                <div class="SavedColorAddItemSquare">
-                                                    <span class="SavedColorAddItemPlus material-icons" style="">add</span>
-                                                </div>
-                                            </div>
-                                            <span class="SavedColorAddItemText">Sauvegarder plus de couleurs</span>
-                                        </a>     
                                         <div id="SavedColorsList" scrollfade="model.PageData.Data.CurrentStep" class="" data-admin="<%=isAdmin%>">
                                             <div id="SavedColorsFadeTop" style="height: 0px;"></div>
                                             <% if (!isAdmin) {%>
@@ -109,9 +101,9 @@
                                                             <p class="SavedColorName">
                                                                 <span class=""><%= colorData[idx].name%></span>
                                                             </p>
-                                                            <p class="SavedColorID">
+                                                            <!-- <p class="SavedColorID">
                                                                 <span class=""><%= colorData[idx].id%></span>
-                                                            </p>
+                                                            </p> -->
                                                         </div>
                                                     </div>
                                                     <div class="SavedColorDelete">
@@ -123,7 +115,7 @@
                                                 <%}%>
                                             <%} else {%>
                                                 <% for (idx in productList) {%>
-                                                    <div class="SavedColorItem" style="" data-index="<%= idx%>" data-id="<%= productList[idx].id%>" data-src="<%= productList[idx].src%>">
+                                                    <div class="SavedColorItem" style="" data-index="<%= idx%>" data-title="<%= productList[idx].title%>" data-src="<%= productList[idx].src%>">
                                                         <div class="SavedColorData">
                                                             <div class="SavedColor_Col" style="background-image: url(<%= productList[idx].src%>); background-size: contain;">
                                                                 <% if (idx == curIndex - 1) {%>
@@ -134,9 +126,9 @@
                                                                 <p class="SavedColorName">
                                                                     <span class=""><%= productList[idx].title%></span>
                                                                 </p>
-                                                                <p class="SavedColorID">
+                                                                <!-- <p class="SavedColorID">
                                                                     <span class=""><%= productList[idx].id%></span>
-                                                                </p>
+                                                                </p> -->
                                                             </div>
                                                         </div>
                                                         <div class="SavedColorDelete">
@@ -165,7 +157,7 @@
                                                     <span class="nav-progressText <%= stepInfo[0].allow %>" style="">Sélectionner une photo</span>
                                                 </div>
                                             </a>
-                                            <a href="<%= stepInfo[1].allow == 'enabled' ? '/color' : '' %>" class="nav-progressStep nav-menuItemsCount-3 nav-2Step" data-d2="2" style="">
+                                            <a href="<%= stepInfo[1].allow == 'enabled' && !isAdmin ? '/color' : '' %>" class="nav-progressStep nav-menuItemsCount-3 nav-2Step" data-d2="2" style="">
                                                 <div class="nav-progressInfo nav-mobileItem">
                                                     <div class="nav-circle <%= stepInfo[1].current %>" style="">2</div>
                                                 </div>
@@ -174,7 +166,7 @@
                                                     <span class="nav-progressText <%= stepInfo[1].allow %>" style="">Sélectionner une couleur</span>
                                                 </div>
                                             </a>
-                                            <a href="<%= stepInfo[2].allow == 'enabled' ? '/room' : '' %>" class="nav-progressStep nav-menuItemsCount-3 nav-3Step" data-d2="3" style="">
+                                            <a href="<%= stepInfo[2].allow == 'enabled' && !isAdmin ? '/room' : '' %>" class="nav-progressStep nav-menuItemsCount-3 nav-3Step" data-d2="3" style="">
                                                 <div class="nav-progressInfo nav-mobileItem">
                                                     <div class="nav-circle <%= stepInfo[2].current %>" style="">3</div>
                                                 </div>
@@ -204,7 +196,7 @@
                     <% if(stepInfo[0].current != 'current') {%>
                     <div id="NotificationFooterActions" class="">
                         <div id="SavedColorsAction" class= "One">
-                            <% if(stepInfo[1].current == 'current') {%>
+                            <% if(stepInfo[1].current == 'current' && !isAdmin) {%>
                             <a  navcloseonpaint="" gtm-event="[action.gtmT, 'CTA: footer', action.gtmD2]" class=" ReviewPhotoBuyClass" data-t="ux" data-d1="CTA: footer" data-d2="paintRoom">
                                 <span class=" SavedColorsNextButtonText">Peindre votre espace<span class="material-icons  SavedColorsNextButtonIcon">navigate_next</span></span>
                             </a>

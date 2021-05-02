@@ -1,6 +1,29 @@
 <home class="ng-scope ng-isolate-scope"><div id="PhotoChooser" data-label="Room Chooser">
   <h1 id="HomePageTitle" class="ng-binding">Sélectionner une photo à peindre</h1>
 
+
+  <div id="HomeUploadButtonHolder">
+      <a gtm-event="['ux', 'startPhotoType', 'userPhoto']" class="" data-t="ux" data-d1="startPhotoType" data-d2="userPhoto">
+          <div id="HomeUploadButton">
+              <div id="HomeUploadIcon">
+                  <span class="material-icons" id="HomeAddPhotoImg">add_a_photo</span>
+              </div>
+              <div id="HomeUploadText">
+                  <div id="HomeUploadHeader">
+                      <span class="ng-binding">Télécharger votre photo</span>
+                  </div>
+                  <div id="HomeUploadDesc">
+                      <span class="ng-binding">Utiliser une photo de votre intérieur pour obtenir un aperçu</span>
+                  </div>
+              </div>
+          </div>
+      </a>
+  </div>
+  <div id="HomeOrHorizontalLine">
+      <div id="HomeOrDiv">
+          <span id="HomeOrSpan" class="ng-binding">OR</span>
+      </div>
+  </div>
   <div id="HomeExploreHeader">
       <span class="ng-binding">Télécharger votre photo à peindre comme suit</span>
   </div>
@@ -89,28 +112,5 @@
       </a><!-- end ngRepeat: room in model.Rooms -->
   </div>
 
-  <!-- <div id="HomeOrHorizontalLine"> -->
-      <!-- <div id="HomeOrDiv">
-          <span id="HomeOrSpan" class="ng-binding">OR</span>
-      </div> -->
-  <!-- </div> -->
-
-  <div id="HomeUploadButtonHolder">
-      <a gtm-event="['ux', 'startPhotoType', 'userPhoto']" class="" data-t="ux" data-d1="startPhotoType" data-d2="userPhoto">
-          <div id="HomeUploadButton">
-              <div id="HomeUploadIcon">
-                  <span class="material-icons" id="HomeAddPhotoImg">add_a_photo</span>
-              </div>
-              <div id="HomeUploadText">
-                  <div id="HomeUploadHeader">
-                      <span class="ng-binding">Télécharger votre photo</span>
-                  </div>
-                  <div id="HomeUploadDesc">
-                      <span class="ng-binding">Utiliser une photo de votre intérieur pour obtenir un aperçu</span>
-                  </div>
-              </div>
-          </div>
-      </a>
-  </div>
 </div>
 </home>

@@ -1,4 +1,5 @@
 const {colorData, curIndex} = require('../../globaldata')
+const products = require('../../methods/products');
 
 function colorFamiliesController(){
     return {
@@ -18,6 +19,8 @@ function colorFamiliesController(){
             resData["curIndex"] = curIndex;
 
             resData['isAdmin'] = false;
+            const productlist = await products.getProductList({filter: 'colors'});
+            resData['productList'] = productlist.result;
             res.render('color_families', resData);
         }
     }

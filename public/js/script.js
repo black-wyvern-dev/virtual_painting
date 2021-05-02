@@ -94,18 +94,22 @@ $(window).scroll(function(e){
     } 
 });
 
+$('#SavedColorsAction').click(function () {
+    $(location).attr('href', '/room');
+})
+
 $('body').on('click', '.SavedColorDelete', function(){
     if (!$('#SavedColorsList').data('admin')) return;
     
     const index = $(this).closest('.SavedColorItem').data('index');
-    var id = $(this).closest('.SavedColorItem').data('id');
+    var title = $(this).closest('.SavedColorItem').data('title');
     var self = $(this).closest('.SavedColorItem');
     $(".notification-pane").show();
     $.ajax({
         url : '/delete_product',
         type : 'POST',
         data : {
-            id: id,
+            title: title,
         },
         success : function(data) {
             if (globalCurColorIdx == index + 1) {
@@ -188,6 +192,7 @@ $('#ImagePicker').on('change', function(e) {
             $('.nav-2Step .nav-circle').addClass('enabled');
             $('.nav-2Step .nav-progressLine').addClass('enabled');
             $('.nav-2Step .nav-progressText').addClass('enabled');
+            $(location).attr('href', '/color');
         },
         error: function(data){
             $(".notification-pane").hide();
@@ -202,14 +207,14 @@ $('#UploadButton').click(function() {
 
 function checkSubmitActive() {
     if ($('#ProductTitleContainer > input').val() == '') { $('#SubmitButton').removeClass('Active'); return;}
-    if ($('#ProductIdContainer > input').val() == '') { $('#SubmitButton').removeClass('Active'); return;}
+    // if ($('#ProductIdContainer > input').val() == '') { $('#SubmitButton').removeClass('Active'); return;}
     if ($('#ProductPreview > img').attr('src') == '') { $('#SubmitButton').removeClass('Active'); return;}
     $('#SubmitButton').addClass('Active');
 }
 
 function productReset(){
     $('#ProductTitleContainer > input').val('');
-    $('#ProductIdContainer > input').val('');
+    // $('#ProductIdContainer > input').val('');
     if ( $('#ColorTypeChecker > a').hasClass('UploadCheckBoxUnchecked') ) {
         $('.UploadCheckBox').toggleClass('UploadCheckBoxChecked');
         $('.UploadCheckBox').toggleClass('UploadCheckBoxUnchecked');
@@ -248,14 +253,14 @@ function productSelect(){
     if( !globalCurColorIdx ) return;
 
     var el = $(".SavedColorItem[data-index="+(globalCurColorIdx - 1)+"]");
-    var id = el.data('id');
+    // var id = el.data('id');
     var src = el.data('src');
     var type = src.indexOf('/colors/') != -1 ? 'colors' : 'patterns';
     var title = el.find('.SavedColorName > span').text();
 
     $('#ProductTitleContainer > input').val(title);
-    $('#ProductIdContainer > input').val(id);
-    $('#ProductIdContainer > input').data('id', id);
+    // $('#ProductIdContainer > input').val(id);
+    $('#ProductTitleContainer > input').data('title', title);
     if (type == 'patterns') {
         $('.UploadCheckBox').toggleClass('UploadCheckBoxChecked');
         $('.UploadCheckBox').toggleClass('UploadCheckBoxUnchecked');
@@ -271,8 +276,8 @@ function productSelect(){
 
 $('#SubmitButton').click(function() {
     const title= $('#ProductTitleContainer > input').val();
-    const oldId= $('#ProductIdContainer > input').data('id');
-    const id= $('#ProductIdContainer > input').val();
+    const oldTitle= $('#ProductTitleContainer > input').data('title');
+    // const id= $('#ProductIdContainer > input').val();
     var src = $('#ProductPreview > img').attr('src');
     const type = $('#ColorTypeChecker > a').hasClass('UploadCheckBoxChecked') ? 'colors' : 'patterns';
     const postUrl = $(this).find('#UploadText').text() == 'Add' ? '/add_product' : '/update_product';
@@ -281,9 +286,9 @@ $('#SubmitButton').click(function() {
         url : postUrl,
         type : 'POST',
         data : {
-            old_id: oldId,
+            old_title: oldTitle,
             title: title,
-            id: id,
+            // id: id,
             src: src,
             type: type
         },
@@ -317,11 +322,12 @@ $('#SubmitButton').click(function() {
 
                 if( globalCurColorIdx ) {
                     var el = $(".SavedColorItem[data-index="+(globalCurColorIdx - 1)+"]");
-                    el.data('id', id);
+                    // el.data('id', id);
+                    el.data('title', title);
                     el.data('src', src);
                     el.find('.SavedColor_Col').attr('style', 'background-image: url('+src+'); background-size: contain;');
                     el.find('.SavedColorName > span').text(title);
-                    el.find('.SavedColorID > span').text(id);
+                    // el.find('.SavedColorID > span').text(id);
                     el.find(".SavedColor_Col").html("");
                 }
                 $(".notification-pane").hide();
@@ -330,7 +336,7 @@ $('#SubmitButton').click(function() {
                 var idx = $('.SavedColorItem').length;
 
                 origin += 
-                '<div class="SavedColorItem" style="" data-index="'+idx+'" data-id="'+id+'" data-src="'+src+'">'+
+                '<div class="SavedColorItem" style="" data-index="'+idx+'" data-title="'+title+'" data-src="'+src+'">'+
                     '<div class="SavedColorData">'+
                         '<div class="SavedColor_Col" style="background-image: url('+src+'); background-size: contain;">'+
                         '</div>'+
@@ -338,9 +344,9 @@ $('#SubmitButton').click(function() {
                             '<p class="SavedColorName">'+
                                 '<span class="">'+title+'</span>'+
                             '</p>'+
-                            '<p class="SavedColorID">'+
-                                '<span class="">'+id+'</span>'+
-                            '</p>'+
+                            // '<p class="SavedColorID">'+
+                            //     '<span class="">'+id+'</span>'+
+                            // '</p>'+
                         '</div>'+
                     '</div>'+
                     '<div class="SavedColorDelete">'+
@@ -412,10 +418,10 @@ $('#ProductTitleContainer > input').on('change', function(e) {
     checkSubmitActive();
 });
 
-$('#ProductIdContainer > input').on('change', function(e) {
-    const src = $('#ProductPreview > img').attr('src');
-    checkSubmitActive();
-});
+// $('#ProductIdContainer > input').on('change', function(e) {
+//     const src = $('#ProductPreview > img').attr('src');
+//     checkSubmitActive();
+// });
 
 $('#ProductImagePicker').on('change', function(e) {
     var formData = new FormData();

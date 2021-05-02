@@ -18,8 +18,9 @@ function colorController(){
             ];
             resData['colorData'] = colorData;
             resData['curIndex'] = curIndex;
-            const productlist = await products.getProductList({});
+            
             resData['isAdmin'] = true;
+            const productlist = await products.getProductList({});
             resData['productList'] = productlist.result;
             res.render('admin/color', resData);
         },
@@ -91,7 +92,7 @@ function colorController(){
 
         async addProduct(req, res) {
             console.log('add prodcut request is received.');
-            let {title, id, src, type} = req.body;
+            let {title, src, type} = req.body;
             if (src.indexOf(type) == -1) {
                 var strList = src.split('/');
                 for ( i in strList ) {
@@ -104,7 +105,7 @@ function colorController(){
                 });
                 src = newStr;
             }
-            const result =  await products.addProduct({title, id, src, type});
+            const result =  await products.addProduct({title, src, type});
             if ( result ) {
                 console.log('Product add succeed');
                 draft = undefined;
@@ -117,7 +118,7 @@ function colorController(){
 
         async updateProduct(req, res) {
             console.log('update product request is received.');
-            let {old_id, title, id, src, type} = req.body;
+            let {old_title, title, src, type} = req.body;
             if (src.indexOf(type) == -1) {
                 var strList = src.split('/');
                 for ( i in strList ) {
@@ -130,7 +131,7 @@ function colorController(){
                 });
                 src = newStr;
             }
-            const result =  await products.updateProduct({old_id, title, id, src, type});
+            const result =  await products.updateProduct({old_title, title, src, type});
             if ( result ) {
                 console.log('Product update succeed');
                 draft = undefined;
@@ -143,8 +144,8 @@ function colorController(){
 
         async deleteProduct(req, res) {
             console.log('delete product request is received.');
-            let {id} = req.body;
-            const result =  await products.deleteProduct({id});
+            let {title} = req.body;
+            const result =  await products.deleteProduct({title});
             if ( result ) {
                 console.log('Product delete succeed');
                 draft = undefined;

@@ -1,13 +1,13 @@
 const Products = require('../models/products');
 
 const addProduct = async(data) => {
-    if(!data.title || !data.id || !data.type || !data.src) {
+    if(!data.title || !data.type || !data.src) {
         console.log(`Data is undefined in addProduct`);
         return false;
     }
 
     //Check if user username already exists
-    feedback = await Products.exists({ id: data.id });
+    feedback = await Products.exists({ title: data.title });
     if (feedback) {
         error = 'Product already exists, Try another!';
         console.log('error while add product: ', error);
@@ -28,13 +28,13 @@ const addProduct = async(data) => {
 }
 
 const updateProduct = async(data) => {
-    if(!data.old_id || !data.title || !data.id || !data.type || !data.src) {
+    if(!data.old_title || !data.title || !data.type || !data.src) {
         console.log(`Data is undefined in addProduct`);
         return false;
     }
 
     //Check if user username not exists
-    feedback = await Products.exists({ id: data.old_id });
+    feedback = await Products.exists({ title: data.old_title });
     if (!feedback) {
         error = 'Product not  exists, Try again!';
         console.log('error while update product: ', error);
@@ -42,7 +42,7 @@ const updateProduct = async(data) => {
         return false;
     }
 
-    const updateInfo = await Products.updateOne({id: data.old_id}, {id: data.id, title: data.title, type: data.type, src: data.src});
+    const updateInfo = await Products.updateOne({title: data.old_title}, {title: data.title, type: data.type, src: data.src});
     if (updateInfo) {
         console.log("Product data updated")  // Success
         return true;
@@ -53,20 +53,20 @@ const updateProduct = async(data) => {
 }
 
 const deleteProduct = async(data) => {
-    if(!data.id) {
+    if(!data.title) {
         console.log(`Data is undefined in addProduct`);
         return false;
     }
 
     //Check if user username not exists
-    feedback = await Products.exists({ id: data.id });
+    feedback = await Products.exists({ title: data.title });
     if (!feedback) {
         error = 'Product not  exists, Try again!';
         console.log('error while delete product: ', error);
         return false;
     }
 
-    const deleteInfo = await Products.deleteOne({id: data.id});
+    const deleteInfo = await Products.deleteOne({title: data.title});
     if (deleteInfo) {
         console.log("Product data deleted")  // Success
         return true;
@@ -82,7 +82,6 @@ const getProductList = async(data) => {
         query = {
             $or: [
                 {title: data.filter},
-                {id: data.filter},
                 {type: data.filter}
             ]
         };
