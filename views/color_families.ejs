@@ -13,7 +13,7 @@
         <div id="ColorFamilyFamilies">
             <% for (idx in productList) {%>
             <div class="ColorItem" style="" data-index="<%= idx%>" data-title="<%= productList[idx].title%>" data-src="<%= productList[idx].src%>">
-                <a id="ColorFamSelector" style="background-image: url(<%= productList[idx].src%>); background-size: contain;">
+                <a id="ColorFamSelector" class="" style="background-image: url(<%= productList[idx].src%>); background-size: contain;">
                     <span class="material-icons isDark">check_circle</span>
                 </a>
                 <p class="SavedColorName">

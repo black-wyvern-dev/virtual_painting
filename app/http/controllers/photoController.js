@@ -31,6 +31,7 @@ function photoController(){
             else resData['stepInfo'].push({current: '', allow: ''});
             resData['stepInfo'].push({current: '', allow: ''});
 
+            resData['isAdmin'] = false;
             res.render('photo', resData);
         }, 
 

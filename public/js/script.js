@@ -207,14 +207,12 @@ $('#UploadButton').click(function() {
 
 function checkSubmitActive() {
     if ($('#ProductTitleContainer > input').val() == '') { $('#SubmitButton').removeClass('Active'); return;}
-    // if ($('#ProductIdContainer > input').val() == '') { $('#SubmitButton').removeClass('Active'); return;}
     if ($('#ProductPreview > img').attr('src') == '') { $('#SubmitButton').removeClass('Active'); return;}
     $('#SubmitButton').addClass('Active');
 }
 
 function productReset(){
     $('#ProductTitleContainer > input').val('');
-    // $('#ProductIdContainer > input').val('');
     if ( $('#ColorTypeChecker > a').hasClass('UploadCheckBoxUnchecked') ) {
         $('.UploadCheckBox').toggleClass('UploadCheckBoxChecked');
         $('.UploadCheckBox').toggleClass('UploadCheckBoxUnchecked');
@@ -253,13 +251,11 @@ function productSelect(){
     if( !globalCurColorIdx ) return;
 
     var el = $(".SavedColorItem[data-index="+(globalCurColorIdx - 1)+"]");
-    // var id = el.data('id');
     var src = el.data('src');
     var type = src.indexOf('/colors/') != -1 ? 'colors' : 'patterns';
     var title = el.find('.SavedColorName > span').text();
 
     $('#ProductTitleContainer > input').val(title);
-    // $('#ProductIdContainer > input').val(id);
     $('#ProductTitleContainer > input').data('title', title);
     if (type == 'patterns') {
         $('.UploadCheckBox').toggleClass('UploadCheckBoxChecked');
@@ -277,7 +273,6 @@ function productSelect(){
 $('#SubmitButton').click(function() {
     const title= $('#ProductTitleContainer > input').val();
     const oldTitle= $('#ProductTitleContainer > input').data('title');
-    // const id= $('#ProductIdContainer > input').val();
     var src = $('#ProductPreview > img').attr('src');
     const type = $('#ColorTypeChecker > a').hasClass('UploadCheckBoxChecked') ? 'colors' : 'patterns';
     const postUrl = $(this).find('#UploadText').text() == 'Add' ? '/add_product' : '/update_product';
@@ -288,7 +283,6 @@ $('#SubmitButton').click(function() {
         data : {
             old_title: oldTitle,
             title: title,
-            // id: id,
             src: src,
             type: type
         },
@@ -322,12 +316,10 @@ $('#SubmitButton').click(function() {
 
                 if( globalCurColorIdx ) {
                     var el = $(".SavedColorItem[data-index="+(globalCurColorIdx - 1)+"]");
-                    // el.data('id', id);
                     el.data('title', title);
                     el.data('src', src);
                     el.find('.SavedColor_Col').attr('style', 'background-image: url('+src+'); background-size: contain;');
                     el.find('.SavedColorName > span').text(title);
-                    // el.find('.SavedColorID > span').text(id);
                     el.find(".SavedColor_Col").html("");
                 }
                 $(".notification-pane").hide();
@@ -344,9 +336,6 @@ $('#SubmitButton').click(function() {
                             '<p class="SavedColorName">'+
                                 '<span class="">'+title+'</span>'+
                             '</p>'+
-                            // '<p class="SavedColorID">'+
-                            //     '<span class="">'+id+'</span>'+
-                            // '</p>'+
                         '</div>'+
                     '</div>'+
                     '<div class="SavedColorDelete">'+
@@ -381,7 +370,6 @@ $('#SubmitButton').click(function() {
                 $('#ProductPreview > img').addClass('ProductPreviewHidden');
                 $('#ProductPreview > div').removeClass('ProductPreviewHidden');
                 $('#ProductPreview > img').attr('src', '');
-                // $(".notification-pane").hide();
                 alert('Product Id is already exist. Please check and try again.');
             }
         }
@@ -418,11 +406,6 @@ $('#ProductTitleContainer > input').on('change', function(e) {
     checkSubmitActive();
 });
 
-// $('#ProductIdContainer > input').on('change', function(e) {
-//     const src = $('#ProductPreview > img').attr('src');
-//     checkSubmitActive();
-// });
-
 $('#ProductImagePicker').on('change', function(e) {
     var formData = new FormData();
     var filePath;
@@ -454,4 +437,14 @@ $('#ProductImagePicker').on('change', function(e) {
             alert('Upload Failed. try again.');
         }
     });
+});
+
+$('.ColorItem').click(function() {
+    var checkEle = $(this).find('span').first();
+    if (checkEle.hasClass('isSelected')) {
+        $(checkEle.removeClass('isSelected'));
+    } else {
+        $(checkEle.addClass('isSelected'));
+        savedProductData.push({title: '', src: ''});
+    }
 });
