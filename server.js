@@ -97,9 +97,9 @@ function clearPhotoDirectory () {
 clearPhotoDirectory();
 //Set Route
 require('./routes/web.js')(app);
-// const baseUrl = "192.168.104.56";
+const baseUrl = "192.168.104.56";
 // socketSrc.useSocket(io).then(() => {
-    server.listen(process.env.PORT || 8083/*, baseUrl*/, () => {
+    server.listen(process.env.PORT || 8083, baseUrl, () => {
         console.log('Listening on port 8083');
         setInterval(function() {
             clearPhotoDirectory();
