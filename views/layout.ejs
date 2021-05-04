@@ -38,6 +38,19 @@
     
     <!-- ======= Blog Section ======= -->
     <div id="base">
+        <notification-pane level="page" class="notification-pane">
+            <div class="loading-overlay page">
+                <div class="loader">
+                    <div class="loading-color color-1"></div>
+                    <div class="loading-color color-2"></div>
+                    <div class="loading-color color-3"></div>
+                    <div class="loading-color color-4"></div>
+                </div>
+                <!--<div id="loading-bar">
+                    <div class="loading-progress"></div>
+                </div>-->
+            </div>
+        </notification-pane>
         <div id="headerMenu" data-label="Header Menu" resizeheader="" class="" style="height: 70px;">
             <div id="headerMenu_content">
                 <div id="roundCorner" data-label="Round Corner Background">
@@ -60,7 +73,7 @@
                                                 <span class="material-icons nav-whiteIcon nav-progressIcons nav-progressSelected">palette</span>
                                             </span>
                                             <span>
-                                                <span class="SavedColorCountNum">0</span>
+                                                <span class="SavedColorCountNum"><%= isAdmin ? productList.length : savedData.length %></span>
                                             </span>
                                         </div>
                                         <div id="nav-SavedColWrapText">
@@ -208,19 +221,6 @@
                 </footer>
             </div>
         </div>
-        <notification-pane level="page" class="notification-pane">
-            <div class="loading-overlay page">
-                <div class="loader">
-                    <div class="loading-color color-1"></div>
-                    <div class="loading-color color-2"></div>
-                    <div class="loading-color color-3"></div>
-                    <div class="loading-color color-4"></div>
-                </div>
-                <!--<div id="loading-bar">
-                    <div class="loading-progress"></div>
-                </div>-->
-            </div>
-        </notification-pane>
     </div><!-- End Blog Section -->
 
   </main><!-- End #main -->

@@ -4,6 +4,7 @@ function photoController(){
        async index(req, res) {
             let resData = {};
             req.session.extofbackground = undefined;
+            req.session.authonticated = undefined;
             req.session.projectid = Math.ceil(Math.random() * 100000);
             req.session.savedData = [];
             // const result = await Resource.getResource();

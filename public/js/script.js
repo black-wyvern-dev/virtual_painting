@@ -136,6 +136,7 @@ $('body').on('click', '.SavedColorDelete', function(){
                 }
             });
             self.remove();
+            $('.SavedColorCountNum').first().text(String(len - 1));
         },
         error: function(data){
             $(".notification-pane").hide();
@@ -322,6 +323,7 @@ $('#SubmitButton').click(function() {
             } else {
                 var origin = $('#SavedColorsList').html();
                 var idx = $('.SavedColorItem').length;
+                $('.SavedColorCountNum').first().text(String(idx + 1));
 
                 origin += 
                 '<div class="SavedColorItem" style="" data-index="'+idx+'" data-title="'+title+'" data-src="'+src+'">'+
@@ -510,3 +512,66 @@ function addSavedProductItem (data) {
 $('#SavedColorsAction').click(function () {
     if ($(this).hasClass('enabled') || savedProductData.length > 0) $(location).attr('href', '/room');
 })
+
+
+$('#LoginButton').click(function() {
+    var input = $('input[type=password]').first();
+    if (input.val().length < 8) {
+        alert('Password must be at least 8 letters');
+        input.val('');
+    }
+
+    $(".notification-pane").show();
+
+    $.ajax({
+        url : '/login',
+        type : 'POST',
+        data : {password: input.val()},
+        success : function(data) {
+            $(".notification-pane").hide();
+            $(location).attr('href', '/admin');
+        },
+        error: function(data){
+            $(".notification-pane").hide();
+            alert('Password is incorrect. Try again.');
+        }
+    });
+});
+
+$('#PasswordChangeButton').click(function() {
+    var input = $('input[type=password]').first();
+    var confirmInput = $('input[type=password]').last();
+    if (input.val().length < 8 || confirmInput.val().length < 8) {
+        alert('Password must be at least 8 letters.');
+        input.val('');
+        confirmInput.val('');
+        return;
+    }
+
+    if (input.val() != confirmInput.val()) {
+        alert('Confirm Password is incorrect. Try again');
+        input.val('');
+        confirmInput.val('');
+        return;
+    }
+
+    $(".notification-pane").show();
+
+    $.ajax({
+        url : '/reset',
+        type : 'POST',
+        data : {password: input.val()},
+        success : function(data) {
+            $(".notification-pane").hide();
+            $(location).attr('href', '/admin');
+        },
+        error: function(data){
+            $(".notification-pane").hide();
+            $(location).attr('href', '/reset');
+        }
+    });
+});
+
+$('#PasswordButton').click(function() {
+    $(location).attr('href', '/reset');
+});

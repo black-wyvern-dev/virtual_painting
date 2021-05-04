@@ -19,6 +19,9 @@ function initRoute(app) {
 
     //Admin Routes
     app.get('/admin', adminController().index)
+    app.get('/reset', adminController().reset)
+    app.post('/reset', adminController().passwordChange)
+    app.post('/login', adminController().login)
     app.post('/add_product', adminController().addProduct)
     app.post('/update_product', adminController().updateProduct)
     app.post('/delete_product', adminController().deleteProduct)

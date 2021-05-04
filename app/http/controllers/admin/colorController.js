@@ -1,5 +1,5 @@
 const fs = require('fs');
-const {curIndex} = require('../../../globaldata');
+const {curIndex, getPassword, setPassword} = require('../../../globaldata');
 const products = require('../../../methods/products');
 
 let draft;
@@ -9,8 +9,6 @@ function colorController(){
        async index(req, res) {
             let resData = {};
         
-            // const result = await Resource.getResource();
-            // if(result.result) resData['resource'] = result.result;
             resData['stepInfo'] = [
                 {current: 'enabled', allow: 'enabled'},
                 {current: 'current', allow: 'enabled'},
@@ -19,9 +17,57 @@ function colorController(){
             resData['curIndex'] = curIndex;
             
             resData['isAdmin'] = true;
+
+            resData['productList'] = [];
+            if (req.session.authonticated == undefined) {
+                res.render('admin/login', resData);
+                return;
+            }
+
             const productlist = await products.getProductList({});
             resData['productList'] = productlist.result;
             res.render('admin/color', resData);
+        },
+
+        async login(req, res) {
+            if (req.body.password == getPassword()) {
+                req.session.authonticated = true;
+                req.session.save();
+                res.status(200).send();
+                return;
+            };
+            res.status(401).send();
+         },
+
+         async reset(req, res) {
+            let resData = {};
+        
+            resData['stepInfo'] = [
+                {current: 'enabled', allow: 'enabled'},
+                {current: 'current', allow: 'enabled'},
+                {current: 'enabled', allow: 'enabled'},
+            ];
+            resData['curIndex'] = curIndex;
+            
+            resData['isAdmin'] = true;
+
+            resData['productList'] = [];
+            if (req.session.authonticated == undefined) {
+                res.render('admin/login', resData);
+                return;
+            }
+
+            res.render('admin/reset', resData);
+        },
+
+        async passwordChange(req, res) {
+            if (req.session.authonticated == undefined) {
+                res.status(401).send();
+                return;
+            }
+            setPassword(req.body.password);
+            console.log('Password changed');
+            res.status(200).send();
         },
 
         async upload(req, res) {
