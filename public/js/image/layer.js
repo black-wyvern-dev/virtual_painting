@@ -41,8 +41,11 @@ define(function() {
     else
       image = source;
     image.onload = function() { layer._onImageLoad(image, options); };
-    if (typeof options.onerror === "function")
-      image.onerror = options.onerror.call(this);
+    // if (typeof options.onerror === "function")
+    //   image.onerror = options.onerror.call(this);
+    image.onerror = function(e) {
+      // console.log(e);
+    };
     return this;
   };
 

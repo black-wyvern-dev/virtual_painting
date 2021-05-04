@@ -1,5 +1,5 @@
 const fs = require('fs');
-const {colorData, curIndex} = require('../../../globaldata');
+const {curIndex} = require('../../../globaldata');
 const products = require('../../../methods/products');
 
 let draft;
@@ -16,7 +16,6 @@ function colorController(){
                 {current: 'current', allow: 'enabled'},
                 {current: 'enabled', allow: 'enabled'},
             ];
-            resData['colorData'] = colorData;
             resData['curIndex'] = curIndex;
             
             resData['isAdmin'] = true;

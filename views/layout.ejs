@@ -60,7 +60,7 @@
                                                 <span class="material-icons nav-whiteIcon nav-progressIcons nav-progressSelected">palette</span>
                                             </span>
                                             <span>
-                                                <span class="SavedColorCountNum">1</span>
+                                                <span class="SavedColorCountNum">0</span>
                                             </span>
                                         </div>
                                         <div id="nav-SavedColWrapText">
@@ -71,7 +71,7 @@
                                         <div id="SavedColorsActionsContainer" class="">
                                             <div id="SavedColorsActions" class="">
                                                 <% if(stepInfo[1].current == 'current' && !isAdmin) {%>
-                                                <div id="SavedColorsAction"class="One">
+                                                <div id="SavedColorsAction"class="One <%= stepInfo[2].allow %>">
                                                     <a class="SavedColorsNextButton">
                                                         <span class="SavedColorsNextButtonText">Peindre votre espace<span class="material-icons SavedColorsNextButtonIcon">navigate_next</span></span>
                                                     </a>  
@@ -89,26 +89,15 @@
                                         <div id="SavedColorsList" scrollfade="model.PageData.Data.CurrentStep" class="" data-admin="<%=isAdmin%>">
                                             <div id="SavedColorsFadeTop" style="height: 0px;"></div>
                                             <% if (!isAdmin) {%>
-                                                <% for (idx in colorData) {%>
-                                                <div class="SavedColorItem" style="" data-index="<%= idx%>" data-color="<%= colorData[idx].color%>">
+                                                <% for (i in savedData) {%>
+                                                <div class="SavedColorItem" style="" data-index="<%=i%>" data-title="<%=savedData[i].title%>" data-src="<%=savedData[i].src%>">
                                                     <div class="SavedColorData">
-                                                        <div class="SavedColor_Col" style="background-color: rgb(<%= colorData[idx].color%>)">
-                                                            <% if (idx == curIndex - 1) {%>
-                                                            <span id="SavedColor_ColCheck" class="material-icons" style="">check_circle</span>
-                                                            <%}%>
+                                                        <div class="SavedColor_Col" style="background-image: url(<%=savedData[i].src%>); background-size: contain;">
                                                         </div>
                                                         <div class="SavedColorInfo UploadRoboMedium">
                                                             <p class="SavedColorName">
-                                                                <span class=""><%= colorData[idx].name%></span>
+                                                                <span class=""><%=savedData[i].title%></span>
                                                             </p>
-                                                            <!-- <p class="SavedColorID">
-                                                                <span class=""><%= colorData[idx].id%></span>
-                                                            </p> -->
-                                                        </div>
-                                                    </div>
-                                                    <div class="SavedColorDelete">
-                                                        <div class="SavedColorTrash material-icons">
-                                                            <span>delete</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -126,9 +115,6 @@
                                                                 <p class="SavedColorName">
                                                                     <span class=""><%= productList[idx].title%></span>
                                                                 </p>
-                                                                <!-- <p class="SavedColorID">
-                                                                    <span class=""><%= productList[idx].id%></span>
-                                                                </p> -->
                                                             </div>
                                                         </div>
                                                         <div class="SavedColorDelete">
@@ -195,20 +181,20 @@
                 <div id="NotificationFooter" class="" style="">
                     <% if(stepInfo[0].current != 'current') {%>
                     <div id="NotificationFooterActions" class="">
-                        <div id="SavedColorsAction" class= "One">
-                            <% if(stepInfo[1].current == 'current' && !isAdmin) {%>
+                        <% if(stepInfo[1].current == 'current' && !isAdmin) {%>
+                        <div id="SavedColorsAction" class= "One <%= stepInfo[1].allow %>">
                             <a  navcloseonpaint="" gtm-event="[action.gtmT, 'CTA: footer', action.gtmD2]" class=" ReviewPhotoBuyClass" data-t="ux" data-d1="CTA: footer" data-d2="paintRoom">
                                 <span class=" SavedColorsNextButtonText">Peindre votre espace<span class="material-icons  SavedColorsNextButtonIcon">navigate_next</span></span>
                             </a>
-                            <%}%>
-                            <% if(stepInfo[2].current == 'current') {%>
-                            <div id="SavedColorsAction" class="One">
-                                <div id="ActionSaveButton">
-                                    <span class="SavedColorsNextButtonText"><span id="ActionSaveButtonIcon" class="material-icons">save</span>Sauvegarder le projet</span>
-                                </div>
-                            </div>
-                            <%}%>
                         </div>
+                        <%}%>
+                        <% if(stepInfo[2].current == 'current') {%>
+                        <div id="SavedColorsAction" class="One">
+                            <div id="ActionSaveButton">
+                                <span class="SavedColorsNextButtonText"><span id="ActionSaveButtonIcon" class="material-icons">save</span>Sauvegarder le projet</span>
+                            </div>
+                        </div>
+                        <%}%>
                     </div>
                     <%}%>
                 </div>

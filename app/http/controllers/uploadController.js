@@ -7,6 +7,8 @@ function uploadController(){
             // const result = await Resource.getResource();
             // if(result.result) resData["resource"] = result.result;
             if ( req.session.projectid == undefined )req.session.projectid = Math.ceil(Math.random() * 100000);
+            if ( req.session.savedData == undefined ) resData['savedData'] = [];
+            else resData['savedData'] = req.session.savedData;
 
             resData['stepInfo'] = [
                 {current: 'current', allow: 'enabled'},

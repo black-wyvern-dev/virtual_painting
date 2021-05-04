@@ -15,6 +15,7 @@ function initRoute(app) {
     app.get('/photo', photoController().photo)
     app.get('/upload', uploadController().index)
     app.get('/room', roomController().index)
+    app.post('/savedProductDataChanged', photoController().saveData)
 
     //Admin Routes
     app.get('/admin', adminController().index)

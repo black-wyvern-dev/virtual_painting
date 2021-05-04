@@ -94,10 +94,6 @@ $(window).scroll(function(e){
     } 
 });
 
-$('#SavedColorsAction').click(function () {
-    $(location).attr('href', '/room');
-})
-
 $('body').on('click', '.SavedColorDelete', function(){
     if (!$('#SavedColorsList').data('admin')) return;
     
@@ -385,7 +381,7 @@ const resetHandler = function() {
             url : '/reset_upload',
             type : 'POST',
             data : {
-                draftsrc: draftsrc,
+                draftsrc,
             },
             success : function(data) {
                 $(".notification-pane").hide();
@@ -439,12 +435,78 @@ $('#ProductImagePicker').on('change', function(e) {
     });
 });
 
+$(window).on('load', function () {
+    var savedData = [];
+    var items = $('.SavedColorItem');
+    for (i = 0;i < items.length; i++) {
+        var title = items.eq(i).data('title');
+        var src = items.eq(i).data('src');
+        savedData.push({title, src});
+        $('.ColorItem[data-title="'+title+'"]').first().find('span').first().addClass('isSelected');
+    }
+    savedProductData = savedData;
+});
+
 $('.ColorItem').click(function() {
     var checkEle = $(this).find('span').first();
     if (checkEle.hasClass('isSelected')) {
         $(checkEle.removeClass('isSelected'));
+        var idx = -1;
+        for ( i in savedProductData) {
+            var data = savedProductData[i];
+            if (data.title == $(this).data('title')) {
+                idx = i;
+                break;
+            }
+        }
+        if (idx != -1) savedProductData.splice(idx, 1);
+        $('.SavedColorItem').eq(idx).remove();
+        if (savedProductData.length == 0) {
+            $('.nav-3Step .nav-progressLine').removeClass('enabled');
+            $('.nav-3Step').attr('href', '');
+            $('#SavedColorsAction').removeClass('enabled');
+        }
     } else {
         $(checkEle.addClass('isSelected'));
-        savedProductData.push({title: '', src: ''});
+        addSavedProductItem({idx: savedProductData.length, title: $(this).data('title'), src: $(this).data('src')});
+        savedProductData.push({title: $(this).data('title'), src: $(this).data('src')});
+        $('.nav-3Step .nav-progressLine').addClass('enabled');
+        $('.nav-3Step').attr('href', '/room');
+        $('#SavedColorsAction').addClass('enabled');
     }
+    $.ajax({
+        url : '/savedProductDataChanged',
+        type : 'POST',
+        data : {savedProductData},
+        success : function(data) {
+            $(".notification-pane").hide();
+        },
+        error: function(data){
+            $(".notification-pane").hide();
+            alert('Product data save failed. try again.');
+        }
+    });
+    $('.SavedColorCountNum').first().text(String(savedProductData.length));
+    console.log(savedProductData);
 });
+
+function addSavedProductItem (data) {
+    $('#SavedColorsList').append(
+       '<div class="SavedColorItem" style="" data-index="'+data.idx+'" data-title="'+data.title+' data-src="'+data.src+'">'+
+            '<div class="SavedColorData">'+
+                '<div class="SavedColor_Col" style="background-image: url('+data.src+'); background-size: contain;">'+
+                    // '<span id="SavedColor_ColCheck" class="material-icons" style="">check_circle</span>'+
+                '</div>'+
+                '<div class="SavedColorInfo UploadRoboMedium">'+
+                    '<p class="SavedColorName">'+
+                        '<span class="">'+ data.title+'</span>'+
+                    '</p>'+
+                '</div>'+
+            '</div>'+
+        '</div>'
+    );
+}
+
+$('#SavedColorsAction').click(function () {
+    if ($(this).hasClass('enabled') || savedProductData.length > 0) $(location).attr('href', '/room');
+})

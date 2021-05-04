@@ -292,6 +292,7 @@ function(Layer, Annotator, util) {
     //   });
     $('body').on('click', '.SavedColorData', function(){
       annotator.currentLabel = globalCurColorIdx;
+      annotator.currentPattern = globalCurColorIdx;
     });
 
     spacer3.className = "edit-sidebar-spacer";
@@ -499,8 +500,8 @@ function(Layer, Annotator, util) {
           height: params.height,
           paintwidth: params.paintwidth,
           paintheight: params.paintheight,
-          colormap: data.colormap,
-          patternmap: [pattenImg],
+          // colormap: data.colormap,
+          patternmap: data.patternmap,//[pattenImg],
           superpixelOptions: {
             method: "watershed",
             regionSize: 200, //ignore in watershed
@@ -510,8 +511,8 @@ function(Layer, Annotator, util) {
             lowThreshold: 0.3 * 0.04, //0.3 * 0.04
           },
           onload: function () {
-            if (data.annotationURLs)
-              annotator.import(data.annotationURLs[id]);
+            // if (data.annotationURLs)
+              // annotator.import(data.annotationURLs[id]);
             // annotator.show("boundary");
             // boundaryFlash();
             $(".notification-pane").hide();

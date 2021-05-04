@@ -53,25 +53,54 @@ function (Layer/*, segmentation*/, morph, Domtoimage, Detection) {
     this.boundaries = [];
     this.prevAnnotationImg = null;
     this.currentPixels = null;
+    this.curLoadPatternIdx = 0;
+    this.patternMapData = [];
+    this.backImageURL = imageURL;
+    this.loadPatterns(options);
+  }
+
+  // Pattern Data load cycle function
+  Annotator.prototype.loadPatterns = function (options) {
+    if (this.patternmap.length == this.curLoadPatternIdx) {
+      return;
+    }
+    // console.log(this.curLoadPatternIdx);
+    // console.log(this.patternmap);
+
     var annotator = this;
-    this.layers.pattern.load(this.patternmap[0], {
+    this.layers.pattern.load(this.patternmap[this.curLoadPatternIdx], {
       onload: function () {
         console.log('Pattern image load succeed.'); 
         // console.log(annotator.layers.pattern.imageData);
-        annotator.patternWidth = annotator.layers.pattern.imageData.width;
-        annotator.patternHeight = annotator.layers.pattern.imageData.height;
-        annotator.layers.image.load(imageURL, {
-          width: options.width,
-          height: options.height,
-          paintwidth: options.paintwidth,
-          paintheight: options.paintheight,
-          onload: function () { 
-            annotator._initialize(options);
-          },
-          onerror: options.onerror
-        });
+        // annotator.patternWidth = annotator.layers.pattern.imageData.width;
+        // annotator.patternHeight = annotator.layers.pattern.imageData.height;
+        annotator.patternMapData.push(annotator.layers.pattern.imageData);
+        annotator.curLoadPatternIdx ++;
+        if (annotator.patternmap.length == annotator.curLoadPatternIdx) annotator.loadMainImage(options);
+        else annotator.loadPatterns(options);
       },
-      onerror: function() {}
+      onerror: function() {
+        console.log('Pattern image load failed.'); 
+        annotator.curLoadPatternIdx ++;
+        if (annotator.patternmap.length == annotator.curLoadPatternIdx) annotator.loadMainImage(options);
+        else annotator.loadPatterns(options);
+      }
+    });
+  }
+
+  // Background Image Data load and start painting
+  Annotator.prototype.loadMainImage = function (options) {
+    console.log('All pattern images load succeed.'); 
+    var annotator = this;
+    annotator.layers.image.load(annotator.backImageURL, {
+      width: options.width,
+      height: options.height,
+      paintwidth: options.paintwidth,
+      paintheight: options.paintheight,
+      onload: function () { 
+        annotator._initialize(options);
+      },
+      onerror: options.onerror
     });
   }
 
@@ -163,7 +192,7 @@ function (Layer/*, segmentation*/, morph, Domtoimage, Detection) {
         pixels.push(i);
     }
     if (pixels.length > 0)
-      this._updateAnnotation(pixels, this.currentLabel);
+      this._updateAnnotation(pixels, this.currentLabel, this.currentPattern);
     return this;
   };
 
@@ -407,7 +436,7 @@ function (Layer/*, segmentation*/, morph, Domtoimage, Detection) {
         } else {
           if (annotator.mode === "brush" && event.button === 0) {
             annotator.brush(annotator._getClickPos(event),
-                            annotator.currentLabel);
+                            annotator.currentPattern);
           }
           if (event.button === 0 && annotator.mode === "polygon") {
             var isPainted = false;
@@ -418,14 +447,14 @@ function (Layer/*, segmentation*/, morph, Domtoimage, Detection) {
                 annotator._addPolygonToAnnotation();
             }
           } else if (annotator.mode === "superpixel") {
-            // annotator._updateAnnotation(pixels, annotator.currentLabel)
+            // annotator._updateAnnotation(pixels, annotator.currentPattern)
             ;
           } else if (annotator.mode === "detection") {
             $(".notification-pane").show();
             setTimeout(function(){
               annotator._updateAnnotationByDetection(
                 annotator._getClickPos(event),
-                annotator.currentLabel);
+                annotator.currentPattern);
               $(".notification-pane").hide();
             }, 0);
           }
@@ -521,7 +550,13 @@ function (Layer/*, segmentation*/, morph, Domtoimage, Detection) {
       labels.push(label);
     }
 
-    this.lastHighlightColor = this.colormap[label].concat(this.visualizationAlpha);
+    var idx = this.currentPattern - 1, color;
+    if (idx >= 0) {
+      color = this.patternMapData[idx].data;
+      if ( color[0] == 255 && color[1] == 255 && color[2] == 255) color[2] = 254;
+    }
+    else color = [255, 255, 254];
+    this.lastHighlightColor = [color[0], color[1], color[2]].concat(this.visualizationAlpha);
 
     this._updateAnnotation(offsets, labels, this.currentPattern);
     this.layers.visualization.render();
@@ -666,7 +701,14 @@ function (Layer/*, segmentation*/, morph, Domtoimage, Detection) {
     for ( var i = 0; i < region.length; i++) {
         offsets.push(4 * region[i]);
     }
-    this.lastHighlightColor = this.colormap[annotator.currentLabel].concat(this.visualizationAlpha);
+
+    var idx = this.currentPattern - 1, color;
+    if (idx >= 0) {
+      color = this.patternMapData[idx].data;
+      if ( color[0] == 255 && color[1] == 255 && color[2] == 255) color[2] = 254;
+    }
+    else color = [255, 255, 254];
+    this.lastHighlightColor = [color[0], color[1], color[2]].concat(this.visualizationAlpha);
     // console.log(this.lastHighlightColor);
     annotator._updateAnnotation(offsets, annotator.currentLabel, annotator.currentPattern);
     return true;
@@ -728,12 +770,18 @@ function (Layer/*, segmentation*/, morph, Domtoimage, Detection) {
       }
     }
 
-    this.lastHighlightColor = this.colormap[annotator.currentLabel].concat(this.visualizationAlpha);
+    var idx = this.currentPattern - 1, color;
+    if (idx >= 0) {
+      color = this.patternMapData[idx].data;
+      if ( color[0] == 255 && color[1] == 255 && color[2] == 255) color[2] = 254;
+    }
+    else color = [255, 255, 254];
+    this.lastHighlightColor = [color[0], color[1], color[2]].concat(this.visualizationAlpha);
     // console.log(this.lastHighlightColor);
     this.boundaries.push(boundary);
     this.regions.push(region);
     // update annotation.
-    annotator._updateAnnotation(pixelsPolygon, annotator.currentLabel, annotator.currentPattern);
+    annotator._updateAnnotation(pixelsPolygon,/* annotator.currentLabel,*/ annotator.currentPattern);
     annotator._emptyPolygonPoints();
   };
 
@@ -825,24 +873,29 @@ function (Layer/*, segmentation*/, morph, Domtoimage, Detection) {
       this.onhighlight.call(this);
   };
 
-  Annotator.prototype._fillPixels = function (pixels, labels, curPattern = null) {
+  Annotator.prototype._fillPixels = function (pixels, labels/*, curPattern = null*/) {
     if (pixels.length !== labels.length)
       throw "Invalid fill: " + pixels.length + " !== " + labels.length;
     var annotationData = this.layers.annotation.imageData.data,
         w = this.layers.annotation.imageData.width, h = this.layers.annotation.imageData.height,
-        patternData = this.layers.pattern.imageData.data,
-        pW = this.layers.pattern.imageData.width, pH = this.layers.pattern.imageData.height,
+        // curIdx = curPattern-1 < 0 ? 0 : curPattern - 1,
+        // patternData = this.patternMapData[curIdx].data,
+        // pW = this.patternMapData[curIdx].width, pH = this.patternMapData[curIdx].height,
         originOffset = pixels[0],
         visualizationData = this.layers.visualization.imageData.data;
     for (var i = 0; i < pixels.length; ++i) {
       var offset = pixels[i],
           label = labels[i],
-          color = this.colormap[label];
+          curIdx = label-1 < 0 ? 0 : label - 1,
+          patternData = this.patternMapData[curIdx].data,
+          pW = this.patternMapData[curIdx].width, pH = this.patternMapData[curIdx].height,
+          color = this.colormap[label > 0 ? 1 : 0];
       _setEncodedLabel(annotationData, offset, label);
-      visualizationData[offset + 0] = color[0];
-      visualizationData[offset + 1] = color[1];
-      visualizationData[offset + 2] = color[2];
-      if (curPattern != null) {
+      if (label == 0) {
+        visualizationData[offset + 0] = color[0];
+        visualizationData[offset + 1] = color[1];
+        visualizationData[offset + 2] = color[2];
+      } else {
         var pos = offset / 4, posO = originOffset / 4, x, y, ox, oy, dx, dy, patOff;
         ox = posO % w;
         oy = Math.ceil(posO / w);
@@ -873,7 +926,7 @@ function (Layer/*, segmentation*/, morph, Domtoimage, Detection) {
   };
 
   // Update label.
-  Annotator.prototype._updateAnnotation = function (pixels, labels, curPattern = null) {
+  Annotator.prototype._updateAnnotation = function (pixels, labels/*, curPattern = null*/) {
     var updates;
     labels = (typeof labels === "object") ?
         labels : _fillArray(new Int32Array(pixels.length), labels);
@@ -881,7 +934,7 @@ function (Layer/*, segmentation*/, morph, Domtoimage, Detection) {
     if (updates.pixels.length === 0)
       return this;
     this._updateHistory(updates);
-    this._fillPixels(updates.pixels, updates.next, curPattern);
+    this._fillPixels(updates.pixels, updates.next/*, curPattern*/);
     this.layers.visualization.render();
     if (typeof this.onchange === "function")
       this.onchange.call(this);

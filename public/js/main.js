@@ -61,15 +61,15 @@ function(indexPage, editPage, colormap, util) {
       // data.colormap = createColormap(params.label, data.labels);
 
       //<-- CUSTOMIZED CODE standard is become comment.
-      var colorFromServer = [[255, 255, 255]];
+      var colorFromServer = [];
       var items = document.getElementsByClassName("SavedColorItem")
       for ( var i = 0; i < items.length; i++) {
-        var dataString = items[i].dataset.color.replaceAll(" ", "").split(",");
-        var dataArray = [parseInt(dataString[0]), parseInt(dataString[1]), parseInt(dataString[2])];
-        colorFromServer.push(dataArray);
+        var dataString = items[i].dataset.src;
+        colorFromServer.push(dataString);
       }
       
-      data.colormap = colorFromServer;
+      data.colormap = colorMapArray;
+      data.patternmap = colorFromServer;
       data.labels = colorMapLabel;
       //-->
       var w = document.getElementById("StockPhotoMain").clientWidth;
