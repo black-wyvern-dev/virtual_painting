@@ -28,9 +28,11 @@ $('#nav-savedColorsTab').click(function() {
     $('#SavedColorsModal').toggleClass('nav-slideDown');
     $('#SavedColorsModal').toggleClass('nav-slideUp');
     if ($('#SavedColorsModal').hasClass('nav-slideDown')) {
-        $('#headerMenu').height(70 + $('#SavedColorsModal').height());
+        $('#headerMenu').height(55 + $('#SavedColorsModal').height());
+        if (screen.width >= 750) $('#headerMenu').height(70 + $('#SavedColorsModal').height());
     } else {
-        $('#headerMenu').height(70);
+        $('#headerMenu').height(55);
+        if (screen.width >= 750) $('#headerMenu').height(70);
     }
     $('#progressBar').removeClass('nav-slideDown');
     $('#progressBar').addClass('nav-slideUp');
@@ -41,9 +43,9 @@ $('#nav-menuTab').click(function() {
     $('#progressBar').toggleClass('nav-slideDown');
     $('#progressBar').toggleClass('nav-slideUp');
     if ($('#progressBar').hasClass('nav-slideDown')) {
-        $('#headerMenu').height(70 + $('#progressBar').height());
+        $('#headerMenu').height(55 + $('#progressBar').height());
     } else {
-        $('#headerMenu').height(70);
+        $('#headerMenu').height(55);
     }
     $('#SavedColorsModal').removeClass('nav-slideDown');
     $('#SavedColorsModal').addClass('nav-slideUp');
@@ -56,6 +58,7 @@ if (screen.width >= 970) {
 }
 
 $(window).resize(function(e){
+    $('#headerMenu').height(70);
     if (screen.width >= 970) {
         $('#SavedColorsModal').removeClass('nav-slideUp');
         $('#SavedColorsModal').addClass('nav-slideDown');
@@ -66,10 +69,10 @@ $(window).resize(function(e){
     $('#SavedColorsModal').addClass('nav-slideUp');
     $('#SavedColorsModal').removeClass('nav-slideDown');
     if (screen.width < 750) {
+    $('#headerMenu').height(55);
         $('#progressBar').addClass('nav-slideUp');
         $('#progressBar').removeClass('nav-slideDown');
     }
-    $('#headerMenu').height(70);
 });
 
 $(window).scroll(function(e){
@@ -150,12 +153,15 @@ $('body').on('click', '.SavedColorData', function(){
     if (globalCurColorIdx == index + 1) {
         $(this).closest('#SavedColorsList').data('current', 0);
         $(this).children('.SavedColor_Col').first().html("");
+        $('.ColorSelectorSwatch').html('');
         globalCurColorIdx = 0;
     } else {
         $(this).closest('#SavedColorsList').data('current', index + 1);
         $(".SavedColorItem[data-index="+(globalCurColorIdx - 1)+"]").find(".SavedColor_Col").html("");
         $(this).children(".SavedColor_Col").first().html("<span id='SavedColor_ColCheck'"+
             "class='material-icons'>check_circle</span>");
+        $('.ColorSelectorSwatch').html('');
+        $('.ColorSelectorSwatch').eq(index).html("<span class='material-icons'>check_circle</span>");
         globalCurColorIdx = index + 1;
     }
     if ($('#SavedColorsList').data('admin')) productSelect();
@@ -168,6 +174,10 @@ $('.UploadCheckBox').click(function() {
 });
 
 $('#UploadPhotoButton').click(function() {
+    $('#ImagePicker').click();
+});
+
+$('#UploadPhotoMobile > #UploadPhotoButton').click(function() {
     $('#ImagePicker').click();
 });
 
@@ -513,6 +523,27 @@ $('#SavedColorsAction').click(function () {
     if ($(this).hasClass('enabled') || savedProductData.length > 0) $(location).attr('href', '/room');
 })
 
+$('#NotificationFooter .ActionNextButton').click(function () {
+    if (savedProductData.length > 0) $(location).attr('href', '/room');
+})
+
+$('body').on('click', '.ColorSelectorSwatch', function(){
+    const index = $(this).data('index');
+    if (globalCurColorIdx == index + 1) {
+        $('#SavedColorsList').data('current', 0);
+        $(".SavedColorItem[data-index="+(index)+"]").find(".SavedColor_Col").html("");
+        $(this).html('');
+        globalCurColorIdx = 0;
+    } else {
+        $('#SavedColorsList').data('current', index + 1);
+        $(".SavedColorItem[data-index="+(globalCurColorIdx - 1)+"]").find(".SavedColor_Col").html("");
+        $(".SavedColorItem[data-index="+(index)+"]").find(".SavedColor_Col").html("<span id='SavedColor_ColCheck'"+
+            "class='material-icons'>check_circle</span>");
+        $('.ColorSelectorSwatch').html('');
+        $(this).html("<span class='material-icons'>check_circle</span>");
+        globalCurColorIdx = index + 1;
+    }
+})
 
 $('#LoginButton').click(function() {
     var input = $('input[type=password]').first();

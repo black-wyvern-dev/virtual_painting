@@ -223,6 +223,16 @@
         top: 13px;
         left: 0px;
     }
+    
+    #roundCorner{
+        height: 55px;
+    }
+    #headerMenu{
+        height: 55px;
+    }
+    #FooterContainer{
+        padding-top: 80px;
+    }
 }
 
 #ColorFamSelector:hover span{
@@ -427,4 +437,8 @@ input[type=password], select {
 
 .LoginButton:hover.Active{
     background-color:#ad8a8a;
+}
+
+.ColorSelectorSwatch{
+    width: 50px;
 }

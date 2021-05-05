@@ -209,7 +209,7 @@ function(Layer, Annotator, util) {
         manualParagraph = document.createElement("p"),
         spacer7 = document.createElement("div"),
         exportButton = document.createElement("input"),
-        exportAsImageButton = document.getElementById("ActionSaveButton"),
+        // exportAsImageButton = document.getElementsByClassName("ActionSaveButton"),
         manualText;
     exportButton.type = "button";
     exportButton.value = "export";
@@ -223,7 +223,8 @@ function(Layer, Annotator, util) {
     // exportAsImageButton.type = "button";
     // exportAsImageButton.value = "exportAsImage";
     // exportAsImageButton.className = "edit-sidebar-submit";
-    exportAsImageButton.addEventListener("click", function () {
+    // exportAsImageButton.addEventListener("click", function () {
+    $(".ActionSaveButton").click(function() {
       annotator.exportAsImage();
     });
     spacer1.className = "edit-sidebar-spacer";
@@ -291,6 +292,10 @@ function(Layer, Annotator, util) {
     //     annotator.currentLabel = globalCurColorIdx;
     //   });
     $('body').on('click', '.SavedColorData', function(){
+      annotator.currentLabel = globalCurColorIdx;
+      annotator.currentPattern = globalCurColorIdx;
+    });
+    $('body').on('click', '.ColorSelectorSwatch', function(){
       annotator.currentLabel = globalCurColorIdx;
       annotator.currentPattern = globalCurColorIdx;
     });

@@ -51,7 +51,7 @@
                 </div>-->
             </div>
         </notification-pane>
-        <div id="headerMenu" data-label="Header Menu" resizeheader="" class="" style="height: 70px;">
+        <div id="headerMenu" data-label="Header Menu" resizeheader="" class="" style="">
             <div id="headerMenu_content">
                 <div id="roundCorner" data-label="Round Corner Background">
                     <div id="roundCornerBackground">
@@ -92,7 +92,7 @@
                                                 <%}%>
                                                 <% if(stepInfo[2].current == 'current') {%>
                                                 <div class="One">
-                                                    <div id="ActionSaveButton">
+                                                    <div id="ActionSaveButton" class="ActionSaveButton">
                                                         <span class="SavedColorsNextButtonText"><span id="ActionSaveButtonIcon" class="material-icons">save</span>Sauvegarder le projet</span>
                                                     </div>
                                                 </div>
@@ -195,14 +195,14 @@
                     <% if(stepInfo[0].current != 'current') {%>
                     <div id="NotificationFooterActions" class="">
                         <% if(stepInfo[1].current == 'current' && !isAdmin) {%>
-                        <div id="SavedColorsAction" class= "One <%= stepInfo[1].allow %>">
-                            <a  navcloseonpaint="" gtm-event="[action.gtmT, 'CTA: footer', action.gtmD2]" class=" ReviewPhotoBuyClass" data-t="ux" data-d1="CTA: footer" data-d2="paintRoom">
+                        <div id="" class= "One ActionNextButton <%= stepInfo[1].allow %>">
+                            <a class="SavedColorsNextButton ReviewPhotoBuyClass">
                                 <span class=" SavedColorsNextButtonText">Peindre votre espace<span class="material-icons  SavedColorsNextButtonIcon">navigate_next</span></span>
                             </a>
                         </div>
                         <%}%>
                         <% if(stepInfo[2].current == 'current') {%>
-                        <div id="SavedColorsAction" class="One">
+                        <div id="" class="One ActionSaveButton">
                             <div id="ActionSaveButton">
                                 <span class="SavedColorsNextButtonText"><span id="ActionSaveButtonIcon" class="material-icons">save</span>Sauvegarder le projet</span>
                             </div>

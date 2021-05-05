@@ -10,7 +10,7 @@
     </page-header>
     <div id="MainContentLeftPane">
         <div id="ColorsTileContainer">
-            <a id="ColorsFamiliesTap" gtm-event="['ux', 'colorTile', 'color: ' + tab.TextKey + ' : ' + tab.DisplayOrder]" class="ng-scope ng-isolate-scope" data-t="ux" data-d1="colorTile" data-d2="color: Browse All Colors : 1">
+            <a id="ColorsFamiliesTap">
                 <tile data-lazysrc="https://visualizecolor.blob.core.windows.net/voc/colorspage/browseall.jpg" data-text="Browse All Colors" data-lazyalt="Browse All Colors" data-divclass="LazyImage" ng-click="model.Select(tab.Route)" class="ng-isolate-scope"><div id="TileCell" ng-class="model.cssClass()" class="HasText">
                     <div id="TileImageLoading" class="">
                         
@@ -19,7 +19,7 @@
                     <h4 ng-if="model.text" name="TileText" class="ng-binding ng-scope">Rechercher toutes les couleurs</h4>
                 </div></tile>
             </a>
-            <a id="ColorsCollectionTap" gtm-event="['ux', 'colorTile', 'color: ' + tab.TextKey + ' : ' + tab.DisplayOrder]" class="ng-scope ng-isolate-scope" data-t="ux" data-d1="colorTile" data-d2="color: View Curated Palettes : 2">
+            <a id="ColorsCollectionTap" >
                 <tile data-lazysrc="https://visualizecolor.blob.core.windows.net/voc/colorspage/collections.jpg" data-text="View Curated Palettes" data-lazyalt="View Curated Palettes" data-divclass="LazyImage" ng-click="model.Select(tab.Route)" class="ng-isolate-scope"><div id="TileCell" ng-class="model.cssClass()" class="HasText">
                     <div id="TileImageLoading" class="">
                         
