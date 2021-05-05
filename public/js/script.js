@@ -154,6 +154,7 @@ $('body').on('click', '.SavedColorData', function(){
         $(this).closest('#SavedColorsList').data('current', 0);
         $(this).children('.SavedColor_Col').first().html("");
         $('.ColorSelectorSwatch').html('');
+        $('#ColorSelectorSelectedColor').text('No Select');
         globalCurColorIdx = 0;
     } else {
         $(this).closest('#SavedColorsList').data('current', index + 1);
@@ -162,6 +163,7 @@ $('body').on('click', '.SavedColorData', function(){
             "class='material-icons'>check_circle</span>");
         $('.ColorSelectorSwatch').html('');
         $('.ColorSelectorSwatch').eq(index).html("<span class='material-icons'>check_circle</span>");
+        $('#ColorSelectorSelectedColor').text($(this).closest('.SavedColorItem').data('title'));
         globalCurColorIdx = index + 1;
     }
     if ($('#SavedColorsList').data('admin')) productSelect();
@@ -533,6 +535,7 @@ $('body').on('click', '.ColorSelectorSwatch', function(){
         $('#SavedColorsList').data('current', 0);
         $(".SavedColorItem[data-index="+(index)+"]").find(".SavedColor_Col").html("");
         $(this).html('');
+        $('#ColorSelectorSelectedColor').text('No Select');
         globalCurColorIdx = 0;
     } else {
         $('#SavedColorsList').data('current', index + 1);
@@ -540,6 +543,7 @@ $('body').on('click', '.ColorSelectorSwatch', function(){
         $(".SavedColorItem[data-index="+(index)+"]").find(".SavedColor_Col").html("<span id='SavedColor_ColCheck'"+
             "class='material-icons'>check_circle</span>");
         $('.ColorSelectorSwatch').html('');
+        $('#ColorSelectorSelectedColor').text($(this).data('title'));
         $(this).html("<span class='material-icons'>check_circle</span>");
         globalCurColorIdx = index + 1;
     }
