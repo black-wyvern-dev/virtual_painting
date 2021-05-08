@@ -1,3 +1,4 @@
+const products = require('../../methods/products');
 
 function photoController(){
     return {
@@ -7,8 +8,10 @@ function photoController(){
             req.session.authonticated = undefined;
             req.session.projectid = Math.ceil(Math.random() * 100000);
             req.session.savedData = [];
-            // const result = await Resource.getResource();
-            // if(result.result) resData['resource'] = result.result;
+            if (req.query.product_id) {
+                const product = await products.getProductList({id_filter: req.query.product_id});
+                if (product.result && product.result.length > 0) req.session.savedData = product.result;
+            }
             resData['stepInfo'] = [
                 {current: 'current', allow: 'enabled'},
             ];

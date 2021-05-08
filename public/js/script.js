@@ -108,7 +108,7 @@ $('body').on('click', '.SavedColorDelete', function(){
         url : '/delete_product',
         type : 'POST',
         data : {
-            title: title,
+            id: title.toLowerCase().replace(/ /g,'-'),
         },
         success : function(data) {
             if (globalCurColorIdx == index + 1) {
@@ -290,7 +290,8 @@ $('#SubmitButton').click(function() {
         url : postUrl,
         type : 'POST',
         data : {
-            old_title: oldTitle,
+            old_id: oldTitle ? oldTitle.toLowerCase().replace(/ /g,'-') : undefined,
+            id: title.toLowerCase().replace(/ /g,'-'),
             title: title,
             src: src,
             type: type
