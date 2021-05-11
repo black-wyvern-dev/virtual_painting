@@ -101,14 +101,14 @@ $('body').on('click', '.SavedColorDelete', function(){
     if (!$('#SavedColorsList').data('admin')) return;
     
     const index = $(this).closest('.SavedColorItem').data('index');
-    var title = $(this).closest('.SavedColorItem').data('title');
+    var id = $(this).closest('.SavedColorItem').data('id');
     var self = $(this).closest('.SavedColorItem');
     $(".notification-pane").show();
     $.ajax({
         url : '/delete_product',
         type : 'POST',
         data : {
-            id: title.toLowerCase().replace(/ /g,'-'),
+            id: id//title.toLowerCase().replace(/ /g,'-'),
         },
         success : function(data) {
             if (globalCurColorIdx == index + 1) {
@@ -163,7 +163,8 @@ $('body').on('click', '.SavedColorData', function(){
             "class='material-icons'>check_circle</span>");
         $('.ColorSelectorSwatch').html('');
         $('.ColorSelectorSwatch').eq(index).html("<span class='material-icons'>check_circle</span>");
-        $('#ColorSelectorSelectedColor').text($(this).closest('.SavedColorItem').data('title'));
+        ///###
+        $('#ColorSelectorSelectedColor').text($(this).find('p').first().text());
         globalCurColorIdx = index + 1;
     }
     if ($('#SavedColorsList').data('admin')) productSelect();
@@ -216,12 +217,14 @@ $('#UploadButton').click(function() {
 
 function checkSubmitActive() {
     if ($('#ProductTitleContainer > input').val() == '') { $('#SubmitButton').removeClass('Active'); return;}
+    if ($('#ProductIdContainer > input').val() == '') { $('#SubmitButton').removeClass('Active'); return;}
     if ($('#ProductPreview > img').attr('src') == '') { $('#SubmitButton').removeClass('Active'); return;}
     $('#SubmitButton').addClass('Active');
 }
 
 function productReset(){
     $('#ProductTitleContainer > input').val('');
+    $('#ProductIdContainer > input').val('');
     if ( $('#ColorTypeChecker > a').hasClass('UploadCheckBoxUnchecked') ) {
         $('.UploadCheckBox').toggleClass('UploadCheckBoxChecked');
         $('.UploadCheckBox').toggleClass('UploadCheckBoxUnchecked');
@@ -261,11 +264,13 @@ function productSelect(){
 
     var el = $(".SavedColorItem[data-index="+(globalCurColorIdx - 1)+"]");
     var src = el.data('src');
+    var id = el.data('id');
     var type = src.indexOf('/colors/') != -1 ? 'colors' : 'patterns';
     var title = el.find('.SavedColorName > span').text();
 
     $('#ProductTitleContainer > input').val(title);
-    $('#ProductTitleContainer > input').data('title', title);
+    $('#ProductIdContainer > input').val(id);
+    $('#ProductIdContainer > input').data('id', id);
     if (type == 'patterns') {
         $('.UploadCheckBox').toggleClass('UploadCheckBoxChecked');
         $('.UploadCheckBox').toggleClass('UploadCheckBoxUnchecked');
@@ -280,8 +285,9 @@ function productSelect(){
 };
 
 $('#SubmitButton').click(function() {
+    const id= $('#ProductIdContainer > input').val();
     const title= $('#ProductTitleContainer > input').val();
-    const oldTitle= $('#ProductTitleContainer > input').data('title');
+    const oldId= $('#ProductIdContainer > input').data('id');
     var src = $('#ProductPreview > img').attr('src');
     const type = $('#ColorTypeChecker > a').hasClass('UploadCheckBoxChecked') ? 'colors' : 'patterns';
     const postUrl = $(this).find('#UploadText').text() == 'Add' ? '/add_product' : '/update_product';
@@ -290,8 +296,8 @@ $('#SubmitButton').click(function() {
         url : postUrl,
         type : 'POST',
         data : {
-            old_id: oldTitle ? oldTitle.toLowerCase().replace(/ /g,'-') : undefined,
-            id: title.toLowerCase().replace(/ /g,'-'),
+            old_id: oldId ? oldId : undefined,//oldTitle.toLowerCase().replace(/ /g,'-')
+            id: id,//title.toLowerCase().replace(/ /g,'-'),
             title: title,
             src: src,
             type: type
@@ -326,7 +332,7 @@ $('#SubmitButton').click(function() {
 
                 if( globalCurColorIdx ) {
                     var el = $(".SavedColorItem[data-index="+(globalCurColorIdx - 1)+"]");
-                    el.data('title', title);
+                    el.data('id', id);
                     el.data('src', src);
                     el.find('.SavedColor_Col').attr('style', 'background-image: url('+src+'); background-size: contain;');
                     el.find('.SavedColorName > span').text(title);
@@ -339,7 +345,7 @@ $('#SubmitButton').click(function() {
                 $('.SavedColorCountNum').first().text(String(idx + 1));
 
                 origin += 
-                '<div class="SavedColorItem" style="" data-index="'+idx+'" data-title="'+title+'" data-src="'+src+'">'+
+                '<div class="SavedColorItem" style="" data-index="'+idx+'" data-id="'+id+'" data-src="'+src+'">'+
                     '<div class="SavedColorData">'+
                         '<div class="SavedColor_Col" style="background-image: url('+src+'); background-size: contain;">'+
                         '</div>'+
@@ -417,6 +423,10 @@ $('#ProductTitleContainer > input').on('change', function(e) {
     checkSubmitActive();
 });
 
+$('#ProductIdContainer > input').on('change', function(e) {
+    checkSubmitActive();
+});
+
 $('#ProductImagePicker').on('change', function(e) {
     var formData = new FormData();
     var filePath;
@@ -454,10 +464,11 @@ $(window).on('load', function () {
     var savedData = [];
     var items = $('.SavedColorItem');
     for (i = 0;i < items.length; i++) {
-        var title = items.eq(i).data('title');
+        var id = items.eq(i).data('id');
+        var title = items.eq(i).find('.SavedColorName > span').text();
         var src = items.eq(i).data('src');
-        savedData.push({title, src});
-        $('.ColorItem[data-title="'+title+'"]').first().find('span').first().addClass('isSelected');
+        savedData.push({id, title, src});
+        $('.ColorItem[data-id="'+id+'"]').first().find('span').first().addClass('isSelected');
     }
     savedProductData = savedData;
 });
@@ -469,7 +480,7 @@ $('.ColorItem').click(function() {
         var idx = -1;
         for ( i in savedProductData) {
             var data = savedProductData[i];
-            if (data.title == $(this).data('title')) {
+            if (data.id == $(this).data('id')) {
                 idx = i;
                 break;
             }
@@ -483,8 +494,8 @@ $('.ColorItem').click(function() {
         }
     } else {
         $(checkEle.addClass('isSelected'));
-        addSavedProductItem({idx: savedProductData.length, title: $(this).data('title'), src: $(this).data('src')});
-        savedProductData.push({title: $(this).data('title'), src: $(this).data('src')});
+        addSavedProductItem({idx: savedProductData.length, id: $(this).data('id'), title: $(this).find('p > span').first().text(), src: $(this).data('src')});
+        savedProductData.push({id: $(this).data('id'), title: $(this).find('p > span').first().text(), src: $(this).data('src')});
         $('.nav-3Step .nav-progressLine').addClass('enabled');
         $('.nav-3Step').attr('href', '/room');
         $('#SavedColorsAction').addClass('enabled');
@@ -507,7 +518,7 @@ $('.ColorItem').click(function() {
 
 function addSavedProductItem (data) {
     $('#SavedColorsList').append(
-       '<div class="SavedColorItem" style="" data-index="'+data.idx+'" data-title="'+data.title+' data-src="'+data.src+'">'+
+       '<div class="SavedColorItem" style="" data-index="'+data.idx+'" data-id="'+data.id+'" data-src="'+data.src+'">'+
             '<div class="SavedColorData">'+
                 '<div class="SavedColor_Col" style="background-image: url('+data.src+'); background-size: contain;">'+
                     // '<span id="SavedColor_ColCheck" class="material-icons" style="">check_circle</span>'+
@@ -544,7 +555,7 @@ $('body').on('click', '.ColorSelectorSwatch', function(){
         $(".SavedColorItem[data-index="+(index)+"]").find(".SavedColor_Col").html("<span id='SavedColor_ColCheck'"+
             "class='material-icons'>check_circle</span>");
         $('.ColorSelectorSwatch').html('');
-        $('#ColorSelectorSelectedColor').text($(this).data('title'));
+        $('#ColorSelectorSelectedColor').text($(this).data('id'));
         $(this).html("<span class='material-icons'>check_circle</span>");
         globalCurColorIdx = index + 1;
     }

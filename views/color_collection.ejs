@@ -11,7 +11,7 @@
     <div id="MainContentLeftPane">
         <div id="ColorFamilyColorsList">
             <% for (idx in productList) {%>
-            <div class="ColorItem columns count-7" style="" data-index="<%= idx%>" data-title="<%= productList[idx].title%>" data-src="<%= productList[idx].src%>">
+            <div class="ColorItem columns count-7" style="" data-index="<%= idx%>" data-id="<%= productList[idx].id%>" data-src="<%= productList[idx].src%>">
                 <div id="ColorSwatch" class="IsDark" style="background-image: url(<%= productList[idx].src%>); background-size: contain;">  
                     <span class="material-icons isDark">check_circle</span>
                 </div>
