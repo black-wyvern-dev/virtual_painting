@@ -224,7 +224,10 @@ function(Layer, Annotator, util) {
     // exportAsImageButton.value = "exportAsImage";
     // exportAsImageButton.className = "edit-sidebar-submit";
     // exportAsImageButton.addEventListener("click", function () {
-    $(".ActionSaveButton").click(function() {
+    $("#ActionSaveButton").click(function() {
+      annotator.exportAsImage();
+    });
+    $("#NotificationFooterActions #ActionSaveButton").click(function() {
       annotator.exportAsImage();
     });
     spacer1.className = "edit-sidebar-spacer";

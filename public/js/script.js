@@ -79,11 +79,13 @@ $(window).scroll(function(e){
     if (screen.width < 970) return;
     var $el = $('.fixedElement');
     var x_offset = $('#nav-menuTab').css('width');
+    x_offset = 29;
+    if (screen.width < 1170) x_offset = 26;
     if ($(this).scrollTop() > 110){ 
         $el.css({
             'position': 'fixed',
             'top': '0',
-            'transform': `translateX(-${x_offset})`
+            'transform': `translateX(-${x_offset}px)`
         });
         $('#nav-savedColorsTab').css({'border-top-right-radius': '0'});
     }
@@ -91,7 +93,7 @@ $(window).scroll(function(e){
         $el.css({
             'position': 'static',
             'top': '0',
-            'transform': `translateX(-${x_offset})`
+            // 'transform': `translateX(-${x_offset})`
         });
         $('#nav-savedColorsTab').css({'border-top-right-radius': '15px'});
     } 
@@ -622,3 +624,17 @@ $('#PasswordChangeButton').click(function() {
 $('#PasswordButton').click(function() {
     $(location).attr('href', '/reset');
 });
+
+$('#ActionOrderButton').click(function() {
+    if (globalCurColorIdx == 0 || savedProductData.length == 0) return;
+    $(location).attr('href', 'https://www.meriguet-carrere.com/products/{{ '+savedProductData[globalCurColorIdx - 1].id+' }}');
+})
+
+$('#NotificationFooterActions #ActionOrderButton').click(function() {
+    if (globalCurColorIdx == 0 || savedProductData.length == 0) return;
+    $(location).attr('href', 'https://www.meriguet-carrere.com/products/{{ '+savedProductData[globalCurColorIdx - 1].id+' }}');
+})
+
+$('#ActionBackToShop').click(function() {
+    $(location).attr('href', 'https://www.meriguet-carrere.com/');
+})

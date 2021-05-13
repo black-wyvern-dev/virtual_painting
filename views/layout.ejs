@@ -55,7 +55,15 @@
             <div id="headerMenu_content">
                 <div id="roundCorner" data-label="Round Corner Background">
                     <div id="roundCornerBackground">
+                        <div id="ActionBackToShop">
+                            <div id="nav-savedColRect" class="nav-backToShop plusOne">
+                                <span>
+                                    <span class="material-icons nav-whiteIcon nav-progressIcons nav-progressSelected">store</span>
+                                </span>
+                            </div>
+                        </div>
                         <div id="nav-dynamicMenu" clickoutside="">
+                            
                             <div id="nav-menuTab" showmobilemenu="" class=" <%= stepInfo[0].current == 'current' ? 'Step1_4' : '' %>" style="">
                                 <div id="nav-menuTabIconText">
                                     <span>
@@ -94,6 +102,11 @@
                                                 <div class="One">
                                                     <div id="ActionSaveButton" class="ActionSaveButton">
                                                         <span class="SavedColorsNextButtonText"><span id="ActionSaveButtonIcon" class="material-icons">save</span>Sauvegarder le projet</span>
+                                                    </div>
+                                                </div>
+                                                <div class="One">
+                                                    <div id="ActionOrderButton" class="ActionSaveButton">
+                                                        <span class="SavedColorsNextButtonText"><span id="ActionSaveButtonIcon" class="material-icons">book_online</span>Make an Order</span>
                                                     </div>
                                                 </div>
                                                 <%}%>
@@ -147,6 +160,7 @@
                             <div id="progressBar" class="progressShow transitionProp nav-slideUp nav-menuItemsCount-3 <%= stepInfo[0].current == 'current' ? 'Step1_4' : '' %>" data-label="Progress Bar" style="">
                                 <div class="navigation-wrapper">
                                     <nav class="primary-navigation" id="primary-navigation">
+                                        
                                         <div id="nav-progressItems" class="nav-menuItemsCount-3" style="">
                                             <a href="/photo" class="nav-progressStep nav-menuItemsCount-3 nav-1Step" data-d2="1" style="">
                                                 <div class="nav-progressInfo nav-mobileItem">
@@ -205,6 +219,11 @@
                         <div id="" class="One ActionSaveButton">
                             <div id="ActionSaveButton">
                                 <span class="SavedColorsNextButtonText"><span id="ActionSaveButtonIcon" class="material-icons">save</span>Sauvegarder le projet</span>
+                            </div>
+                        </div>
+                        <div class="One ActionSaveButton">
+                            <div id="ActionOrderButton">
+                                <span class="SavedColorsNextButtonText"><span id="ActionSaveButtonIcon" class="material-icons">book_online</span>Make an Order</span>
                             </div>
                         </div>
                         <%}%>

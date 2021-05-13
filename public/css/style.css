@@ -442,3 +442,105 @@ input[type=password], select {
 .ColorSelectorSwatch{
     width: 50px;
 }
+
+#ActionOrderButton {
+    cursor: pointer;
+    background-color: #999;
+    -moz-box-shadow: 0 -1px 0 0 #666 inset;
+    -webkit-box-shadow: 0 -1px 0 0 #666 inset;
+    box-shadow: 0 -1px 0 0 #666 inset;
+    border-radius: 8px;
+    min-width: 140px;
+    height: 50px;
+    font-size: 15px;
+    position: relative;
+    font-family: "Roboto-Medium","Roboto Medium","Roboto";
+    font-weight: 500;
+    font-style: normal;
+    display: table;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5px;
+}
+
+@media (min-width: 970px) {
+    #ActionOrderButton {
+        width: 170px;
+    }
+}
+
+@media (min-width: 1170px) {
+    #ActionOrderButton {
+        width: 190px;
+    }
+}
+
+@media (min-width: 200px) {
+    #NotificationFooterActions {
+        justify-content: center;
+    }
+
+    #NotificationFooterActions #ActionOrderButton {
+        margin-top: 0;
+        margin-left: 5px;
+    }
+}
+
+#ActionBackToShop {
+    position: absolute;
+    z-index: 1;
+    top: 8px;
+    left: 8px;
+}
+
+#nav-dynamicMenu {
+    width: calc(100% - 70px);
+    margin-left: 70px;
+    margin-right: 0;
+}
+
+@media (min-width: 970px) {
+    #nav-savedColorsTab {
+        margin-left: calc(100% - 246px);
+    }
+}
+
+@media (min-width: 1170px) {
+    #nav-savedColorsTab {
+        margin-left: calc(100% - 296px);
+        width: 296px;
+    }
+}
+
+#progressBar {
+    margin-left: 70px;
+    width: calc(100% - 70px);
+}
+
+@media (min-width: 750px) {
+    #progressBar {
+        width: calc(74% - 70px);
+    }
+    #progressBar.Step1_4 {
+        width: calc(100% - 70px);
+    }
+    #ActionBackToShop {
+        top: 15px;
+        left: 15px;
+    }
+}
+
+@media (max-width: 390px) {
+    #nav-SavedColWrapText {
+        display: none;
+    }
+}
+
+.nav-backToShop {
+    width: 66px !important;
+    height: 40px !important;
+}
+
+.nav-backToShop:hover {
+    background-color: #a57171 !important;
+}
