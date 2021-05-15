@@ -1,0 +1,29 @@
+<home class="">
+    <page-header backlinktext="Explore Different Photos" data-backurl="/" class="ng-isolate-scope">
+        <div id="PageHeader">
+            <a id="HeaderBackLink" ng-if="model.backlinktext" gtm-event="['ux', 'backButton', model.backlinktext]" class="" data-t="ux" data-d1="backButton" data-d2="Select a Different Photo">
+                <span id="HeaderLeftArrow" class="material-icons">keyboard_arrow_left</span>
+                <span id="HeaderBackLinkText" class="ng-binding" data-url="/photo">Back to home</span>
+            </a>
+            <h1 id="HeaderPageTitle" class="ng-binding">Select following library photo</h1>
+        </div>
+    </page-header>
+    <div id="PhotoChooser" data-label="Room Chooser">
+  
+    <div id="TileContainer">
+        <% for (idx in libraries) { %>
+        <a class="" data-src="<%= libraries[idx] %>">
+            <tile>
+                <div id="TileCell" class="HasText">
+                    <div id="TileImageLoading" class="TileImage">
+                        <img id="TileImage" scroll-loaded-image="" src="" alt="">
+                    </div>
+                    <h4 name="TileText" class=""><%= namelist[idx] %></h4>
+                </div>
+            </tile>
+        </a>
+        <% } %>
+    </div>
+  
+  </div>
+  </home>

@@ -9,7 +9,7 @@ const uploadController = require('../app/http/controllers/uploadController');
 function initRoute(app) {
     //Customer Routes
     app.get('/color', colorController().index)
-    // app.get('/library', colorController().index)
+    app.get('/library*', photoController().library)
     app.get('/families', colorFamiliesController().index)
     app.get('/collection', colorCollectionController().index)
     app.get('/', photoController().index)

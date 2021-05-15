@@ -627,12 +627,12 @@ $('#PasswordButton').click(function() {
 
 $('#ActionOrderButton').click(function() {
     if (globalCurColorIdx == 0 || savedProductData.length == 0) return;
-    $(location).attr('href', 'https://www.meriguet-carrere.com/products/{{ '+savedProductData[globalCurColorIdx - 1].id+' }}');
+    $(location).attr('href', 'https://www.meriguet-carrere.com/products/'+savedProductData[globalCurColorIdx - 1].id);
 })
 
 $('#NotificationFooterActions #ActionOrderButton').click(function() {
     if (globalCurColorIdx == 0 || savedProductData.length == 0) return;
-    $(location).attr('href', 'https://www.meriguet-carrere.com/products/{{ '+savedProductData[globalCurColorIdx - 1].id+' }}');
+    $(location).attr('href', 'https://www.meriguet-carrere.com/products/'+savedProductData[globalCurColorIdx - 1].id);
 })
 
 $('#ActionBackToShop').click(function() {
