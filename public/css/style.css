@@ -608,12 +608,26 @@ input[type=password], select {
 
 #TileImage {
     background-size: cover;
-    height: 100%;
+    height: 90px;
     object-fit: cover;
 }
 
-.LazyImage, #TileImageLoading, #TileCell {
-    height: 150px;
+@media (min-width: 750px) {
+    #TileImage {
+        height: 200px;
+    }
+}
+
+@media (min-width: 970px) {
+    #TileImage {
+        height: 125px;
+    }
+}
+
+@media (min-width: 1170px) {
+    #TileImage {
+        height: 150px;
+    }
 }
 
 #PhotoChooser {
