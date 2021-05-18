@@ -1,0 +1,125 @@
+<home class="">
+    <page-header backlinktext="Explore Different Photos" data-backurl="/" class="ng-isolate-scope">
+        <div id="PageHeader">
+            <a id="HeaderBackLink" ng-if="model.backlinktext" gtm-event="['ux', 'backButton', model.backlinktext]" class="" data-t="ux" data-d1="backButton" data-d2="Select a Different Photo">
+                <span id="HeaderLeftArrow" class="material-icons">keyboard_arrow_left</span>
+                <span id="HeaderBackLinkText" class="ng-binding" data-url="/admin">Return to admin page</span>
+            </a>
+            <h1 id="HeaderPageTitle" class="ng-binding">Set library thumbnail photo</h1>
+        </div>
+    </page-header>
+    <div id="ThumbnailChooser" data-label="Room Chooser">
+        <h4>Edit library thumbnails</h4>
+        <div id="TileContainer">
+            <a data-thm="1" data-d2="Living Room">
+                <tile data-text="Living Room">
+                    <div id="TileCell" class="HasText">
+                        <div id="TileImageLoading" class="">
+                            <img id="TileImage" scroll-loaded-image="" src="/img/library/1.jpg" alt="">
+                        </div>
+                        <span class="TileEditIcon material-icons">edit</span>
+                    </div>
+                </tile>
+            </a>
+            <a data-thm="2" data-d2="Bedroom">
+                <tile data-text="Bedroom">
+                    <div id="TileCell" class="HasText">
+                        <div id="TileImageLoading" class="">
+                            <img id="TileImage" scroll-loaded-image="" src="/img/library/2.jpg" alt="">
+                        </div>
+                        <span class="TileEditIcon material-icons">edit</span>
+                    </div>
+                </tile>
+            </a>
+            <a data-thm="3" data-d2="Dining Room">
+                <tile data-text="Dining Room">
+                    <div id="TileCell" class="HasText">
+                        <div id="TileImageLoading" class="">
+                            <img id="TileImage" scroll-loaded-image="" src="/img/library/3.jpg" alt="">
+                        </div>
+                        <span class="TileEditIcon material-icons">edit</span>
+                    </div>
+                </tile>
+            </a>
+            <a data-thm="4" data-d2="Kitchen">
+                <tile data-text="Kitchen">
+                    <div id="TileCell" class="HasText">
+                        <div id="TileImageLoading" class="">
+                            <img id="TileImage" scroll-loaded-image="" src="/img/library/4.jpg" alt="">
+                        </div>
+                        <span class="TileEditIcon material-icons">edit</span>
+                    </div>
+                </tile>
+            </a>
+            <a data-thm="5" data-d2="Bathroom">
+                <tile data-text="Bathroom">
+                    <div id="TileCell" class="HasText">
+                        <div id="TileImageLoading" class="">
+                            <img id="TileImage" scroll-loaded-image="" src="/img/library/5.jpg" alt="">
+                        </div>
+                        <span class="TileEditIcon material-icons">edit</span>
+                    </div>
+                </tile>
+            </a>
+            <a data-thm="6" data-d2="Exterior">
+                <tile data-text="Exterior">
+                    <div id="TileCell" class="HasText">
+                        <div id="TileImageLoading" class="">
+                            <img id="TileImage" scroll-loaded-image="" src="/img/library/6.jpg" alt="">
+                        </div>
+                        <span class="TileEditIcon material-icons">edit</span>
+                    </div>
+                </tile>
+            </a>
+            <a data-thm="7" data-d2="Commercial">
+                <tile data-text="Commercial">
+                <div id="TileCell" class="HasText">
+                    <div id="TileImageLoading" class="">
+                        <img id="TileImage" scroll-loaded-image="" src="/img/library/7.jpg" alt="">
+                    </div>
+                    <span class="TileEditIcon material-icons">edit</span>
+                </div>
+            </tile>
+            </a>
+            <a data-thm="8" data-d2="Front Door">
+                <tile data-text="Front Door">
+                <div id="TileCell" class="HasText">
+                    <div id="TileImageLoading" class="">
+                        <img id="TileImage" scroll-loaded-image="" src="/img/library/8.jpg" alt="">
+                    </div>
+                    <span class="TileEditIcon material-icons">edit</span>
+                </div>
+            </tile>
+            </a>
+        </div>
+        <div id="HomeOrHorizontalLine">
+            <div id="HomeOrDiv">
+                <span id="HomeOrSpan" class="ng-binding"></span>
+            </div>
+        </div>
+        <h4>Edit color thumbnails</h4>
+        <div id="TileContainer">
+            <a data-thm="9" data-d2="Living Room">
+                <tile data-text="Living Room">
+                    <div id="TileCell" class="HasText">
+                        <div id="TileImageLoading" class="">
+                            <img id="TileImage" scroll-loaded-image="" src="/img/families.jpg" alt="">
+                        </div>
+                        <span class="TileEditIcon material-icons">edit</span>
+                    </div>
+                </tile>
+            </a>
+            <a data-thm="10" data-d2="Bedroom">
+                <tile data-text="Bedroom">
+                    <div id="TileCell" class="HasText">
+                        <div id="TileImageLoading" class="">
+                            <img id="TileImage" scroll-loaded-image="" src="/img/collections.jpg" alt="">
+                        </div>
+                        <span class="TileEditIcon material-icons">edit</span>
+                    </div>
+                </tile>
+            </a>
+        </div>
+    </div>
+    <input type="file" accept="image/*" style="left: 0px; top: 0px; height: 0px; width: 0px; position: absolute; visibility: hidden;" id="ThumbnailPicker" local-image-selected="" data-path="/UploadPhotoResult">
+</home>

@@ -16,7 +16,13 @@
             <tile>
                 <div id="TileCell" class="HasText">
                     <div id="TileImageLoading" class="TileImage">
-                        <img id="TileImage" scroll-loaded-image="" src="" alt="">
+                        <div class="TileImageLoader">
+                            <div class="imageLoading-color color-1"></div>
+                            <div class="imageLoading-color color-2"></div>
+                            <div class="imageLoading-color color-3"></div>
+                            <div class="imageLoading-color color-4"></div>
+                        </div>
+                        <img id="TileImage" scroll-loaded-image="" src="/img/library/<%=dirIndex%>/<%=libraries[idx]%>" height="150px" alt="" style="">
                     </div>
                     <h4 name="TileText" class=""><%= namelist[idx] %></h4>
                 </div>

@@ -17,10 +17,12 @@ function initRoute(app) {
     app.get('/upload', uploadController().index)
     app.get('/room', roomController().index)
     app.post('/savedProductDataChanged', photoController().saveData)
+    app.post('/select_library', photoController().selectLibrary)
 
     //Admin Routes
     app.get('/admin', adminController().index)
     app.get('/reset', adminController().reset)
+    app.get('/thumbnail', adminController().thumbnail)
     app.post('/reset', adminController().passwordChange)
     app.post('/login', adminController().login)
     app.post('/add_product', adminController().addProduct)
@@ -31,6 +33,8 @@ function initRoute(app) {
     //File upload and download
     app.post('/file_upload', uploadController().upload);
     app.post('/image_upload*', adminController().upload);
+    app.post('/thumbnail_upload*', adminController().thumbnailUpload);
+    
 }
 
 

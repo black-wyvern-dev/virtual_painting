@@ -199,7 +199,52 @@ function colorController(){
                 console.log('Error occured while delete product.')
                 res.status(403).send ({message: 'Could not delete product.'});
             }
-        }
+        },
+        
+        async thumbnail(req, res) {
+            let resData = {};
+        
+            resData['stepInfo'] = [
+                {current: 'enabled', allow: 'enabled'},
+                {current: 'current', allow: 'enabled'},
+                {current: 'enabled', allow: 'enabled'},
+            ];
+            resData['curIndex'] = curIndex;
+            
+            resData['isAdmin'] = true;
+
+            resData['productList'] = [];
+            if (req.session.authonticated == undefined) {
+                res.render('admin/login', resData);
+                return;
+            }
+
+            res.render('admin/thumbnail', resData);
+        },
+
+        async thumbnailUpload(req, res) {
+            try {
+                if(!req.files) {
+                    console.log('Error: File must be supplied while uploading.')
+                    res.status(403).send ({message: 'Error: Select the upload file.'});
+                } else {
+                    //Use the name of the input field (i.e. 'file') to retrieve the uploaded file
+                    let file = req.files.file;
+                    
+                    //Use the mv() method to place the file in upload directory (i.e. 'uploads')
+                    
+                    let url = req.url.substring(17);
+                    file.mv('./public' + url);
+        
+                    //flash response
+                    console.log('Upload image success.');
+                    res.status(200).send({result: true});
+                }
+            } catch (err) {
+                console.log('Error occured while upload :', err);
+                res.status(500).end({message: err});
+            }
+        },
     }
 }
 module.exports = colorController;

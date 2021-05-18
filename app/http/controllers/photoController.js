@@ -48,7 +48,7 @@ function photoController(){
             if ( req.session.projectid == undefined )req.session.projectid = Math.ceil(Math.random() * 100000);
             if ( req.session.savedData == undefined ) resData['savedData'] = [];
             else resData['savedData'] = req.session.savedData;
-            
+            resData['dirIndex'] = params[2] || '1';
             resData['stepInfo'] = [
                 {current: 'current', allow: 'enabled'},
             ];
@@ -82,17 +82,25 @@ function photoController(){
                     res.render('library', resData);
                 }
             });
-            // let file = req.files.file;
-            
-            // //Use the mv() method to place the file in upload directory (i.e. 'uploads')
-            // const extIndex = file.name.lastIndexOf('.');
-            // const filename = req.session.projectid + file.name.substring(extIndex);
-            // req.session.extofbackground = file.name.substring(extIndex);
-            
-            // file.mv('./public/data/images/' + filename);
+        },
 
-            // //flash response
-            // console.log('Upload pdf success.');
+        async selectLibrary(req, res) {
+            const {dirId, name} = req.body;
+            const ext = name.substring(name.lastIndexOf('.'));
+            if ( req.session.projectid == undefined )req.session.projectid = Math.ceil(Math.random() * 100000);
+            const newStr = req.session.projectid;
+
+            let directory = __dirname + '/../../../public/';
+            fs.copyFile(directory + 'img/library/' + dirId + '/' + name, directory + 'data/images/' + newStr + ext, (err) => {
+                if (err) {
+                    console.log(err);
+                    res.status(404).send({error: err});
+                    return;
+                }
+                req.session.extofbackground = ext;
+                console.log('src was copied to newSrc');
+                res.status(200).send({result: true});
+            });
         },
         
         async photo(req, res) {

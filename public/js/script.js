@@ -81,7 +81,7 @@ $(window).scroll(function(e){
     var x_offset = $('#nav-menuTab').css('width');
     x_offset = 29;
     if (screen.width < 1170) x_offset = 26;
-    if ($(this).scrollTop() > 110){ 
+    if ($(this).scrollTop() > 170){ 
         $el.css({
             'position': 'fixed',
             'top': '0',
@@ -89,7 +89,7 @@ $(window).scroll(function(e){
         });
         $('#nav-savedColorsTab').css({'border-top-right-radius': '0'});
     }
-    if ($(this).scrollTop() < 110){
+    if ($(this).scrollTop() < 170){
         $el.css({
             'position': 'static',
             'top': '0',
@@ -158,6 +158,8 @@ $('body').on('click', '.SavedColorData', function(){
         $('.ColorSelectorSwatch').html('');
         $('#ColorSelectorSelectedColor').text('No Select');
         globalCurColorIdx = 0;
+        $('#ActionOrderButton').removeClass('Active');
+        $('#NotificationFooter #ActionOrderButton').removeClass('Active');
     } else {
         $(this).closest('#SavedColorsList').data('current', index + 1);
         $(".SavedColorItem[data-index="+(globalCurColorIdx - 1)+"]").find(".SavedColor_Col").html("");
@@ -168,6 +170,8 @@ $('body').on('click', '.SavedColorData', function(){
         ///###
         $('#ColorSelectorSelectedColor').text($(this).find('p').first().text());
         globalCurColorIdx = index + 1;
+        $('#ActionOrderButton').addClass('Active');
+        $('#NotificationFooter #ActionOrderButton').addClass('Active');
     }
     if ($('#SavedColorsList').data('admin')) productSelect();
 })
@@ -551,6 +555,8 @@ $('body').on('click', '.ColorSelectorSwatch', function(){
         $(this).html('');
         $('#ColorSelectorSelectedColor').text('No Select');
         globalCurColorIdx = 0;
+        $('#ActionOrderButton').removeClass('Active');
+        $('#NotificationFooter #ActionOrderButton').removeClass('Active');
     } else {
         $('#SavedColorsList').data('current', index + 1);
         $(".SavedColorItem[data-index="+(globalCurColorIdx - 1)+"]").find(".SavedColor_Col").html("");
@@ -560,6 +566,8 @@ $('body').on('click', '.ColorSelectorSwatch', function(){
         $('#ColorSelectorSelectedColor').text($(this).data('id'));
         $(this).html("<span class='material-icons'>check_circle</span>");
         globalCurColorIdx = index + 1;
+        $('#ActionOrderButton').addClass('Active');
+        $('#NotificationFooter #ActionOrderButton').addClass('Active');
     }
 })
 
@@ -625,16 +633,90 @@ $('#PasswordButton').click(function() {
     $(location).attr('href', '/reset');
 });
 
+$('#LibraryButton').click(function() {
+    $(location).attr('href', '/thumbnail');
+});
+
 $('#ActionOrderButton').click(function() {
     if (globalCurColorIdx == 0 || savedProductData.length == 0) return;
-    $(location).attr('href', 'https://www.meriguet-carrere.com/products/'+savedProductData[globalCurColorIdx - 1].id);
+    window.open('https://www.meriguet-carrere.com/products/'+savedProductData[globalCurColorIdx - 1].id);
 })
 
 $('#NotificationFooterActions #ActionOrderButton').click(function() {
     if (globalCurColorIdx == 0 || savedProductData.length == 0) return;
-    $(location).attr('href', 'https://www.meriguet-carrere.com/products/'+savedProductData[globalCurColorIdx - 1].id);
+    window.open('https://www.meriguet-carrere.com/products/'+savedProductData[globalCurColorIdx - 1].id);
 })
 
 $('#ActionBackToShop').click(function() {
     $(location).attr('href', 'https://www.meriguet-carrere.com/');
 })
+
+$('.TileImage #TileImage').on('load', function(){
+    $(this).closest('#TileImageLoading').find('.TileImageLoader').css('display', 'none');
+})
+
+var cur_thm = 0;
+
+$('body').on('click', '#TileContainer > a', function(){
+    const index = $(this).data('d1');
+    if (!index) {
+        const src = $(this).data('src');
+        if (!src) {
+            cur_thm = $(this).data('thm');
+            $('#ThumbnailPicker').click();
+            return;
+        }
+        const url = $(location).attr('href');
+        const dirIdx = url.substring(url.lastIndexOf('/') + 1);
+        $(".notification-pane").show();
+        $.ajax({
+            url : '/select_library',
+            type : 'POST',
+            data : {
+                dirId: dirIdx,
+                name: src
+            },
+            success : function(data) {
+                console.log(data);
+                $(".notification-pane").hide();
+                $('.nav-2Step').attr('href', '/color');
+                $('.nav-2Step .nav-circle').addClass('enabled');
+                $('.nav-2Step .nav-progressLine').addClass('enabled');
+                $('.nav-2Step .nav-progressText').addClass('enabled');
+                $(location).attr('href', '/color');
+            },
+            error: function(data){
+                console.log(data);
+                $(".notification-pane").hide();
+            }
+        });
+    } else
+        $(location).attr('href', '/library/' + index);
+})
+
+$('#ThumbnailPicker').on('change', function(e) {
+    var formData = new FormData();
+    if (cur_thm == 0) return;
+    var filePath = '/img/library/' + cur_thm + '.jpg';
+    if (cur_thm == 9) filePath = '/img/families.jpg';
+    if (cur_thm == 10) filePath = '/img/collections.jpg';
+    if($('#ThumbnailPicker').length == 0)
+        return;
+    formData.append('file', $('#ThumbnailPicker')[0].files[0]);
+    $(".notification-pane").show();
+    $.ajax({
+        url : '/thumbnail_upload' + filePath,
+        type : 'POST',
+        data : formData,
+        processData: false,  // tell jQuery not to process the data
+        contentType: false,  // tell jQuery not to set contentType
+        success : function(data) {
+            $(".notification-pane").hide();
+            $(location).attr('href', '/thumbnail');
+        },
+        error: function(data){
+            $(".notification-pane").hide();
+            alert('Upload Failed. try again.');
+        }
+    });
+});
