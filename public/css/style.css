@@ -238,7 +238,12 @@
 }
 
 #ColorFamilyFamilies .ColorItem{
-    margin: 10px 35px;
+    margin: 10px 0px !important;
+    width: 25%;
+}
+
+#ColorFamilyFamilies .ColorItem #ColorFamSelector{
+    margin: auto !important;
 }
 
 @media (min-width: 1170px) {
