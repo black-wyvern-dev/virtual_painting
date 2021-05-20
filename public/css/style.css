@@ -680,3 +680,7 @@ input[type=password], select {
 #ThumbnailChooser a:hover span {
     visibility: visible;
 }
+
+.ColorItem .SavedColorName {
+    margin-top: 10px;
+}
