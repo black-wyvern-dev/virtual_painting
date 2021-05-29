@@ -1,3 +1,5 @@
+$(".notification-pane").show();
+
 $('#HomeUploadButtonHolder > a').click(function() {
     window.location.replace("/upload");
 })
@@ -477,6 +479,7 @@ $(window).on('load', function () {
         $('.ColorItem[data-id="'+id+'"]').first().find('span').first().addClass('isSelected');
     }
     savedProductData = savedData;
+    $(".notification-pane").hide();
 });
 
 $('.ColorItem').click(function() {

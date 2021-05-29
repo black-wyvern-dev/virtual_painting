@@ -125,7 +125,7 @@ function photoController(){
 
         async saveData(req, res) {
             let {savedProductData} = req.body;
-            
+            console.log('SavedProductDataChanged', savedProductData.length);
             req.session.savedData = savedProductData;
             res.status(200).send ({result: true});
         }, 
