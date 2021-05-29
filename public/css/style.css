@@ -23,6 +23,7 @@
 
 .SavedColorItem {
     display: flex;
+    justify-content: space-between;
 }
 
 @media(min-width:200px){
@@ -277,6 +278,22 @@
 
 .SavedColorInfo {
     margin-top: 10px;
+}
+
+#SavedColorsList .SavedColorName {
+    width: 170px;
+}
+
+@media (min-width: 970px) {
+    #SavedColorsList .SavedColorName {
+        width: 110px;
+    }
+}
+
+@media (min-width: 1170px) {
+    #SavedColorsList .SavedColorName {
+        width: 150px;
+    }
 }
 
 .nav-progressInfo{
@@ -683,4 +700,80 @@ input[type=password], select {
 
 .ColorItem .SavedColorName {
     margin-top: 10px;
+}
+
+#subScribeModal {
+    width: 500px;
+    height: 400px;
+    background: url(/img/modalback.jpg);
+    border-radius: 15px;
+    box-shadow: 0 0 40px 5px;
+    position: absolute;
+    top: 150px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto auto auto;
+    justify-content: space-evenly;
+    padding: 20px;
+}
+
+#subScribeModal h1 {
+    grid-column: 1 / span 2;
+    width: 180px;
+    margin: auto;
+    font-size: xx-large;
+    text-align: center;
+    color: white;
+    text-shadow: 1px 1px 3px #000;
+}
+
+#subScribeModal input {
+    width: 140px;
+    margin: auto;
+    font-size: large;
+    text-align: left;
+    padding-left: 10px;
+    height: 50px;
+    border-radius: 7px;
+    border-color: #9b7e41;
+    background-color: #bd9540;
+    color: white;
+}
+
+#subScribeModal input::placeholder {
+    color: lightgray;
+}
+
+#subScribeModal #email {
+    grid-column: 1 / span 2;
+    width: 100%;
+    border-color: #9b7e41;
+}
+
+#subScribeModal button {
+    grid-column: 1 / span 2;
+    margin: auto;
+    width: 150px;
+    height: 50px;
+    border-radius: 7px;
+    border-color: #9b7e41;
+    background-color: #bd9540;
+    color: white;
+    font-size: large;
+}
+
+@media (max-width: 400px) {
+    #subScribeModal input {
+        width: 100%;
+    }
+}
+
+@media (max-width: 600px) {
+    #subScribeModal {
+        width: 90%;
+        grid-template-columns: auto;
+        grid-template-rows: auto auto auto auto auto;
+    }
 }

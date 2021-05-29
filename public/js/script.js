@@ -720,3 +720,14 @@ $('#ThumbnailPicker').on('change', function(e) {
         }
     });
 });
+
+$('#subScribeModal button').click(function() {
+    var fisrtname = $('#subScribeModal #firstname').val();
+    var lastname = $('#subScribeModal #lastname').val();
+    var emailname = $('#subScribeModal #email').val();
+    if (fisrtname=='' || lastname == '' || emailname == '') {
+        alert('Subscribe values is not valid. Please input your information.');
+        return;
+    }
+    $('#subScribeModal').hide();
+})

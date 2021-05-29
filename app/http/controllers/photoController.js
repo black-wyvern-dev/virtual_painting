@@ -22,6 +22,7 @@ function photoController(){
             resData['savedData'] = [];
 
             resData['isAdmin'] = false;
+            resData['isSubscribed'] = false;
             res.render('photo', resData);
         },
         
@@ -118,6 +119,7 @@ function photoController(){
             resData['stepInfo'].push({current: '', allow: ''});
 
             resData['isAdmin'] = false;
+            resData['isSubscribed'] = true;
             res.render('photo', resData);
         }, 
 
