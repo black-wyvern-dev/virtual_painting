@@ -731,4 +731,5 @@ $('#subScribeModal button').click(function() {
         return;
     }
     $('#subScribeModal').hide();
+    $(".notification-pane").hide();
 })

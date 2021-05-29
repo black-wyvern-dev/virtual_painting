@@ -263,7 +263,9 @@
         <script data-main="/js/main.js" src="/js/require.js"></script>
     <%} else {%>
         <script>
-            $(".notification-pane").hide();
+            <% if(isSubscribed) { %>
+                $(".notification-pane").hide();
+            <% } %>
         </script>
     <%}%>
     

@@ -717,6 +717,7 @@ input[type=password], select {
     grid-template-rows: auto auto auto auto;
     justify-content: space-evenly;
     padding: 20px;
+    z-index: 1000;
 }
 
 #subScribeModal h1 {
