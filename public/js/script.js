@@ -228,18 +228,22 @@ function checkSubmitActive() {
     $('#SubmitButton').addClass('Active');
 }
 
+function checkProductSubtype(idx) {
+    $('.ProductTypes > a').addClass('UploadCheckBoxUnchecked');
+    $('.ProductTypes > a').removeClass('UploadCheckBoxChecked');
+    $('.ProductTypes').eq(parseInt(idx) - 1).find('a').first().addClass('UploadCheckBoxChecked');
+    $('.ProductTypes').eq(parseInt(idx) - 1).find('a').first().removeClass('UploadCheckBoxUnchecked');
+}
+
 function productReset(){
     $('#ProductTitleContainer > input').val('');
     $('#ProductIdContainer > input').val('');
-    if ( $('#ColorTypeChecker > a').hasClass('UploadCheckBoxUnchecked') ) {
-        $('.UploadCheckBox').toggleClass('UploadCheckBoxChecked');
-        $('.UploadCheckBox').toggleClass('UploadCheckBoxUnchecked');
-    }
     $('#SubmitButton').removeClass('Active');
     $('#ProductPreview > img').addClass('ProductPreviewHidden');
     $('#ProductPreview > div').removeClass('ProductPreviewHidden');
     $('#ProductPreview > img').attr('src', '');
     $('#ProductPreview').data('imgurl','');
+    checkProductSubtype('1');
     $('#SubmitButton').find('#UploadText').text('Add');
 };
 
@@ -271,16 +275,14 @@ function productSelect(){
     var el = $(".SavedColorItem[data-index="+(globalCurColorIdx - 1)+"]");
     var src = el.data('src');
     var id = el.data('id');
+    var subtype = el.data('subtype');
     var type = src.indexOf('/colors/') != -1 ? 'colors' : 'patterns';
     var title = el.find('.SavedColorName > span').text();
 
     $('#ProductTitleContainer > input').val(title);
     $('#ProductIdContainer > input').val(id);
     $('#ProductIdContainer > input').data('id', id);
-    if (type == 'patterns') {
-        $('.UploadCheckBox').toggleClass('UploadCheckBoxChecked');
-        $('.UploadCheckBox').toggleClass('UploadCheckBoxUnchecked');
-    }
+    checkProductSubtype(subtype);
     $('#ProductPreview > img').removeClass('ProductPreviewHidden');
     $('#ProductPreview > div').addClass('ProductPreviewHidden');
     $('#ProductPreview > img').attr('src', src);
@@ -295,7 +297,8 @@ $('#SubmitButton').click(function() {
     const title= $('#ProductTitleContainer > input').val();
     const oldId= $('#ProductIdContainer > input').data('id');
     var src = $('#ProductPreview > img').attr('src');
-    const type = $('#ColorTypeChecker > a').hasClass('UploadCheckBoxChecked') ? 'colors' : 'patterns';
+    const type = $('#UploadProductTypeContainer .UploadCheckBoxChecked').closest('.ProductTypes').hasClass('ColorTypeChecker') ? 'colors' : 'patterns';
+    const subtype = $('#UploadProductTypeContainer .UploadCheckBoxChecked').closest('.ProductTypes').data('sub');
     const postUrl = $(this).find('#UploadText').text() == 'Add' ? '/add_product' : '/update_product';
     $(".notification-pane").show();
     $.ajax({
@@ -306,7 +309,8 @@ $('#SubmitButton').click(function() {
             id: id,//title.toLowerCase().replace(/ /g,'-'),
             title: title,
             src: src,
-            type: type
+            type: type,
+            subtype: subtype
         },
         success : function(data) {
             if (src.indexOf(type) == -1) {
@@ -340,6 +344,7 @@ $('#SubmitButton').click(function() {
                     var el = $(".SavedColorItem[data-index="+(globalCurColorIdx - 1)+"]");
                     el.data('id', id);
                     el.data('src', src);
+                    el.data('subtype', subtype);
                     el.find('.SavedColor_Col').attr('style', 'background-image: url('+src+'); background-size: contain;');
                     el.find('.SavedColorName > span').text(title);
                     el.find(".SavedColor_Col").html("");
@@ -351,7 +356,7 @@ $('#SubmitButton').click(function() {
                 $('.SavedColorCountNum').first().text(String(idx + 1));
 
                 origin += 
-                '<div class="SavedColorItem" style="" data-index="'+idx+'" data-id="'+id+'" data-src="'+src+'">'+
+                '<div class="SavedColorItem" style="" data-index="'+idx+'" data-id="'+id+'" data-subtype="'+subtype+'" data-src="'+src+'">'+
                     '<div class="SavedColorData">'+
                         '<div class="SavedColor_Col" style="background-image: url('+src+'); background-size: contain;">'+
                         '</div>'+
@@ -723,13 +728,112 @@ $('#ThumbnailPicker').on('change', function(e) {
 });
 
 $('#subScribeModal button').click(function() {
-    var fisrtname = $('#subScribeModal #firstname').val();
+    var firstname = $('#subScribeModal #firstname').val();
     var lastname = $('#subScribeModal #lastname').val();
-    var emailname = $('#subScribeModal #email').val();
-    if (fisrtname=='' || lastname == '' || emailname == '') {
+    var email = $('#subScribeModal #email').val();
+    if (firstname=='' || lastname == '' || email == '') {
         alert('Subscribe values is not valid. Please input your information.');
         return;
     }
-    $('#subScribeModal').hide();
-    $(".notification-pane").hide();
+    $.ajax({
+        url : '/subscribe',
+        type : 'POST',
+        data : {firstname, lastname, email},
+        success : function(data) {
+
+            $('#subScribeModal').hide();
+            $(".notification-pane").hide();
+        },
+        error: function(data){
+
+            $('#subScribeModal').hide();
+            $(".notification-pane").hide();
+        }
+    });
 })
+
+$('#AdminTabDiv button').click(function() {
+    if( $(this).hasClass('IsActive') ) return;
+    $('#AdminTabDiv button').removeClass('IsActive');
+    $(this).addClass('IsActive');
+
+    $('#UploadMainContent > div').hide();
+    if ($(this).data('idx') == '2') {$('#adminTab2').show();$('#nav-savedColorsTab').hide();$('#MainContentLeftPane').attr('style','width: 100%')}
+    else if ($(this).data('idx') == '1') {$('#adminTab1').show();$('#nav-savedColorsTab').hide();$('#MainContentLeftPane').attr('style', 'width: 100%')}
+    else {$('#adminTab3').show();$('#nav-savedColorsTab').show();$('#MainContentLeftPane').attr('style', '')}
+});
+
+function toggleColorTab(idx) {
+    $('#colorTab3 > div').hide();
+    $('#ColorFamilyColorsList > div').hide();
+    if (idx == '2') {$('.ColorItem[data-subtype="2"]').show();}
+    else if (idx == '1') {$('.ColorItem[data-subtype="1"]').show();}
+    else if (idx == '3') {$('.ColorItem[data-subtype="3"]').show();}
+    else if (idx == '4') {$('.ColorItem[data-subtype="4"]').show();}
+    else if (idx == '5') {$('.ColorItem[data-subtype="5"]').show();}
+    else {$('.ColorItem[data-subtype="6"]').show();}
+}
+
+if ($(location).attr('href').indexOf('families') != -1) toggleColorTab('1');
+else toggleColorTab('5');
+
+$('#ColorTabDiv button').click(function() {
+    if( $(this).hasClass('IsActive') ) return;
+    $('#ColorTabDiv button').removeClass('IsActive');
+    $(this).addClass('IsActive');
+    toggleColorTab($(this).data('idx'));
+});
+
+$('#PaletteTabDiv button').click(function() {
+    if( $(this).hasClass('IsActive') ) return;
+    $('#PaletteTabDiv button').removeClass('IsActive');
+    $(this).addClass('IsActive');
+    toggleColorTab($(this).data('idx'));
+});
+
+$('#ThumbnailChooser .TiltTextUpdateBtn').click(function() {
+    // console.log($(this).closest('.TileItem').find('input').val());
+    $(".notification-pane").show();
+    $.ajax({
+        url : '/libraryTitleUpdate',
+        type : 'POST',
+        data : {
+            index: $(this).closest('a').data('thm'),
+            value: $(this).closest('.TileItem').find('input').val()
+        },
+        success : function(data) {
+
+            $(".notification-pane").hide();
+        },
+        error: function(data){
+
+            $(".notification-pane").hide();
+        }
+    });
+});
+
+$('#UploadProductTypeContainer .UploadCheckBox').click(function() {
+    $('.UploadCheckBox').removeClass('UploadCheckBoxChecked');
+    $('.UploadCheckBox').addClass('UploadCheckBoxUnchecked');
+    $(this).addClass('UploadCheckBoxChecked');
+    $(this).removeClass('UploadCheckBoxUnchecked');
+});
+
+$('body').on('click', '.UserTableDeleteBtn', function(){
+    var btn = $(this);
+    var email = btn.closest('td').data('email');
+    $(".notification-pane").show();
+    $.ajax({
+        url : '/deleteUserInfo',
+        type : 'POST',
+        data : {email},
+        success : function(data) {
+            btn.closest('tr').remove();
+            $(".notification-pane").hide();
+        },
+        error: function(data){
+            alert('Could not delete customer info. Email is not exist!');
+            $(".notification-pane").hide();
+        }
+    });
+});

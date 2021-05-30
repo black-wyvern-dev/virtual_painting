@@ -392,10 +392,10 @@ function(Layer, Annotator, util) {
     // Write the brush tool
   Annotator.prototype.brush = function (pos, label) {
     var offsets = [], labels = [];
-    for (var y = -2; y <= 2; y++) {
-      for (var x = -2; x <= 2; x++) {
+    for (var y = -4; y <= 4; y++) {
+      for (var x = -4; x <= 4; x++) {
         // it is circle bitches
-        if ((x*x + y*y) > 7) continue;
+        if ((x*x + y*y) > 20) continue;
         var offset = 4 * ((pos[1]+y) * this.layers.visualization.canvas.width + (pos[0]+x));
         offsets.push(offset);
         labels.push(label);

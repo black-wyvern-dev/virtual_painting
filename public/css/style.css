@@ -143,11 +143,24 @@
 
 .ProductTypes{
     margin-left: 30px;
-    float:left;
+    display: block;
+    /* float: left; */
+    margin-bottom: 15px;
+}
+
+.ProductTypeLeft{
+    display: flex;
+    flex-direction: column;
+    flex: 0.5;
+}
+
+.ProductTypeRight{
+    flex: 0.5;
 }
 
 #UploadProductTypeContainer{
-    height: 50px;
+    height: 160px;
+    display: flex;
 }
 
 .UploadPreview{
@@ -182,7 +195,7 @@
     visibility: hidden;
 }
 
-#ColorFamilyFamilies {
+.ColorFamilyFamilies {
     display: flex;
     flex-wrap: wrap;
 }
@@ -238,12 +251,12 @@
     visibility: visible;
 }
 
-#ColorFamilyFamilies .ColorItem{
+.ColorFamilyFamilies .ColorItem{
     margin: 10px 0px !important;
     width: 25%;
 }
 
-#ColorFamilyFamilies .ColorItem #ColorFamSelector{
+.ColorFamilyFamilies .ColorItem #ColorFamSelector{
     margin: auto !important;
 }
 
@@ -253,7 +266,7 @@
         height: 60px;
     }
     
-    #ColorFamilyFamilies .ColorItem{
+    .ColorFamilyFamilies .ColorItem{
         margin: 10px 40px;
     }
 }
@@ -662,20 +675,38 @@ input[type=password], select {
 }
 
 #ThumbnailChooser {
-    margin-top: 50px;
+    padding-top: 20px;
+    border-top: 1px dotted #999;
+    margin-top: 80px;
     position: relative;
-    width: 100%;
+    /* width: 100%; */
 }
 
 @media (min-width: 970px) {
     #ThumbnailChooser {
-        width: 75%;
+        /* width: 75%; */
     }
 }
 
 #ThumbnailChooser img{
     position: absolute;
     top: 0;
+}
+#ThumbnailChooser .TileText{
+    margin-left: 25px;
+    margin-right: 12px;
+    width: -webkit-fill-available;
+}
+#ThumbnailChooser .TileItem{
+    position: relative;
+    margin-bottom: 10px;
+}
+#ThumbnailChooser .TiltTextUpdateBtn{
+    border-radius: 3px;
+    position: absolute;
+    background-color: #4d1a1a;
+    font-size: 20px;
+    color: white;
 }
 
 .TileEditIcon {
@@ -696,6 +727,10 @@ input[type=password], select {
 
 #ThumbnailChooser a:hover span {
     visibility: visible;
+}
+
+#ThumbnailChooser h4 {
+    margin-bottom: 10px;
 }
 
 .ColorItem .SavedColorName {
@@ -777,4 +812,117 @@ input[type=password], select {
         grid-template-columns: auto;
         grid-template-rows: auto auto auto auto auto;
     }
+}
+
+#nav-savedColorsTab #nav-savedColRect span {
+    font-size: 15px;
+}
+
+#AdminTabDiv {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    align-content: end;
+    width: 100%;
+    height: 70px;
+    border-bottom: 2px solid;
+    margin-bottom: 25px;
+    margin-top: 15px;
+}
+
+#AdminTabDiv button {
+    height: 50px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    background-color: #999;
+    border-color: white;
+    border-bottom-color: transparent;
+    color: white;
+    font-size: 18px;
+}
+
+#AdminTabDiv button.IsActive {
+    background-color: #4d1a1a;
+}
+
+.AdminPageHeader {
+    margin-bottom: 0 !important;
+}
+
+.AdminHeaderPageTitle {
+    margin-bottom: 25px !important;
+}
+
+#ColorTabDiv {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    align-content: end;
+    width: 100%;
+    height: 70px;
+    border-bottom: 2px solid;
+    margin-bottom: 25px;
+    margin-top: 15px;
+}
+
+#ColorTabDiv button {
+    height: 60px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    background-color: #999;
+    border-color: white;
+    border-bottom-color: transparent;
+    color: white;
+    font-size: 12px;
+}
+
+#ColorTabDiv button.IsActive {
+    background-color: #4d1a1a;
+}
+
+#PaletteTabDiv {
+    display: grid;
+    grid-template-columns: auto auto;
+    align-content: end;
+    width: 100%;
+    height: 70px;
+    border-bottom: 2px solid;
+    margin-bottom: 25px;
+    margin-top: 15px;
+}
+
+#PaletteTabDiv button {
+    height: 50px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    background-color: #999;
+    border-color: white;
+    border-bottom-color: transparent;
+    color: white;
+    font-size: 15px;
+}
+
+#PaletteTabDiv button.IsActive {
+    background-color: #4d1a1a;
+}
+
+#CustomerTableContainer table {
+    width: 100%;
+    border: 3px solid #4d1a1a;
+}
+
+#CustomerTableContainer th, tr, td {
+    height: 40px;
+    border: 1px solid #4d1a1a;
+    font-size: 15px;
+    padding: 7px;
+}
+
+#CustomerTableContainer th {
+    background-color: #4d1a1a;
+    color: white;
+    border-right: 1px solid white;
+}
+
+.UserTableDeleteBtn:hover {
+    color: gray;
+    cursor: pointer;
 }

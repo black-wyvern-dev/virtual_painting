@@ -1,7 +1,7 @@
 const Products = require('../models/products');
 
 const addProduct = async(data) => {
-    if(!data.id || !data.title || !data.type || !data.src) {
+    if(!data.id || !data.title || !data.type || !data.src || !data.subtype) {
         console.log(`Data is undefined in addProduct`);
         return false;
     }
@@ -28,7 +28,7 @@ const addProduct = async(data) => {
 }
 
 const updateProduct = async(data) => {
-    if(!data.old_id || !data.id || !data.title || !data.type || !data.src) {
+    if(!data.old_id || !data.id || !data.title || !data.type || !data.src || !data.subtype) {
         console.log(`Data is undefined in addProduct`);
         return false;
     }
@@ -42,7 +42,7 @@ const updateProduct = async(data) => {
         return false;
     }
 
-    const updateInfo = await Products.updateOne({id: data.old_id}, {id: data.id, title: data.title, type: data.type, src: data.src});
+    const updateInfo = await Products.updateOne({id: data.old_id}, {id: data.id, title: data.title, type: data.type, subtype:data.subtype, src: data.src});
     if (updateInfo) {
         console.log("Product data updated")  // Success
         return true;

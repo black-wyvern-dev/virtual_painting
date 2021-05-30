@@ -18,6 +18,7 @@ function uploadController(){
             resData['stepInfo'].push({current: '', allow: ''});
 
             resData['isAdmin'] = false;
+            resData['isSubscribed'] = true;
             res.render('upload', resData);
         },
     

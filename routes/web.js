@@ -18,17 +18,20 @@ function initRoute(app) {
     app.get('/room', roomController().index)
     app.post('/savedProductDataChanged', photoController().saveData)
     app.post('/select_library', photoController().selectLibrary)
+    app.post('/subscribe', photoController().subscribe)
 
     //Admin Routes
     app.get('/admin', adminController().index)
     app.get('/reset', adminController().reset)
     app.get('/thumbnail', adminController().thumbnail)
     app.post('/reset', adminController().passwordChange)
+    app.post('/libraryTitleUpdate', adminController().titleUpdate)
     app.post('/login', adminController().login)
     app.post('/add_product', adminController().addProduct)
     app.post('/update_product', adminController().updateProduct)
     app.post('/delete_product', adminController().deleteProduct)
     app.post('/reset_upload', adminController().resetUpload)
+    app.post('/deleteUserInfo', adminController().deleteUserInfo)
 
     //File upload and download
     app.post('/file_upload', uploadController().upload);

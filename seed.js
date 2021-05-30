@@ -16,7 +16,7 @@ connection.once('open', () => {
 })
 
 async function main() {
-    // let result = await connection.dropDatabase();
+    let result = await connection.dropDatabase();
     // console.log('database droped : ', result);
     console.log(await getProductList({filter: 'colors'}));
 

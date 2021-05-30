@@ -19,6 +19,7 @@ function roomController(){
             resData["roomPhoto"] = req.session.projectid + req.session.extofbackground;
 
             resData['isAdmin'] = false;
+            resData['isSubscribed'] = true;
             res.render('room', resData);
         }
     }

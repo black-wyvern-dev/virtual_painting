@@ -1,4 +1,5 @@
 const { curIndex} = require('../../globaldata')
+const {getTitles} = require('../../globaldata');
 
 function colorController(){
     return {
@@ -20,6 +21,8 @@ function colorController(){
             resData["curIndex"] = curIndex;
 
             resData['isAdmin'] = false;
+            resData['isSubscribed'] = true;
+            resData['libraryTitle'] = getTitles();
             res.render('color', resData);
         }
     }

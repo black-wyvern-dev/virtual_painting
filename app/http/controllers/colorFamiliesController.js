@@ -23,6 +23,7 @@ function colorFamiliesController(){
             resData['isAdmin'] = false;
             const productlist = await products.getProductList({filter: 'colors'});
             resData['productList'] = productlist.result;
+            resData['isSubscribed'] = true;
             res.render('color_families', resData);
         }
     }

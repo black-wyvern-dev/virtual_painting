@@ -23,6 +23,7 @@ function colorCollectionController(){
             resData['isAdmin'] = false;
             const productlist = await products.getProductList({filter: 'patterns'});
             resData['productList'] = productlist.result;
+            resData['isSubscribed'] = true;
             res.render('color_collection', resData);
         }
     }

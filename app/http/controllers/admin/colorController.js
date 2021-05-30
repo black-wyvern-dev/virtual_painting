@@ -1,6 +1,7 @@
 const fs = require('fs');
-const {curIndex, getPassword, setPassword} = require('../../../globaldata');
+const {curIndex, getPassword, setPassword, getTitles, updateTitle} = require('../../../globaldata');
 const products = require('../../../methods/products');
+const users = require('../../../methods/users');
 
 let draft;
 
@@ -19,14 +20,27 @@ function colorController(){
             resData['isAdmin'] = true;
 
             resData['productList'] = [];
+            resData['isSubscribed'] = true;
             if (req.session.authonticated == undefined) {
                 res.render('admin/login', resData);
                 return;
             }
 
             const productlist = await products.getProductList({});
+
             resData['productList'] = productlist.result;
+            resData['userList'] = await users.getUserList();
+            // console.log(JSON.stringify(resData['userList']));
+            resData['libraryTitle'] = getTitles();
             res.render('admin/color', resData);
+        },
+
+        async titleUpdate(req, res) {
+            let {index, value} = req.body;
+            console.log(index + ' '+ value);
+            updateTitle(parseInt(index) - 1, value);
+            console.log('Title updated');
+            res.status(200).send();
         },
 
         async login(req, res) {
@@ -52,6 +66,7 @@ function colorController(){
             resData['isAdmin'] = true;
 
             resData['productList'] = [];
+            resData['isSubscribed'] = true;
             if (req.session.authonticated == undefined) {
                 res.render('admin/login', resData);
                 return;
@@ -137,7 +152,7 @@ function colorController(){
 
         async addProduct(req, res) {
             console.log('add prodcut request is received.');
-            let {id, title, src, type} = req.body;
+            let {id, title, src, type, subtype} = req.body;
             if (src.indexOf(type) == -1) {
                 var strList = src.split('/');
                 for ( i in strList ) {
@@ -150,7 +165,7 @@ function colorController(){
                 });
                 src = newStr;
             }
-            const result =  await products.addProduct({id, title, src, type});
+            const result =  await products.addProduct({id, title, src, type, subtype});
             if ( result ) {
                 console.log('Product add succeed');
                 draft = undefined;
@@ -163,7 +178,7 @@ function colorController(){
 
         async updateProduct(req, res) {
             console.log('update product request is received.');
-            let {old_id, id, title, src, type} = req.body;
+            let {old_id, id, title, src, type, subtype} = req.body;
             if (src.indexOf(type) == -1) {
                 var strList = src.split('/');
                 for ( i in strList ) {
@@ -176,7 +191,7 @@ function colorController(){
                 });
                 src = newStr;
             }
-            const result =  await products.updateProduct({old_id, id, title, src, type});
+            const result =  await products.updateProduct({old_id, id, title, src, type, subtype});
             if ( result ) {
                 console.log('Product update succeed');
                 draft = undefined;
@@ -214,6 +229,7 @@ function colorController(){
             resData['isAdmin'] = true;
 
             resData['productList'] = [];
+            resData['isSubscribed'] = true;
             if (req.session.authonticated == undefined) {
                 res.render('admin/login', resData);
                 return;
@@ -244,6 +260,14 @@ function colorController(){
                 console.log('Error occured while upload :', err);
                 res.status(500).end({message: err});
             }
+        },
+
+        async deleteUserInfo(req, res) {
+            let {email} = req.body;
+            console.log(email);
+            const result = await users.deleteUser({email});
+            if (result) res.status(200).send({});
+            else res.status(404).send({});
         },
     }
 }

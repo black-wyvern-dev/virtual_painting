@@ -29,86 +29,18 @@
   </div>
   
   <div id="TileContainer">
-    <a data-d1="1" data-d2="Living Room">
-        <tile data-text="Living Room">
-            <div id="TileCell" class="HasText">
-                <div id="TileImageLoading" class="">
-                    <img id="TileImage" scroll-loaded-image="" src="/img/library/1.jpg" alt="">
+      <% for (var idx=1;idx<=8;idx++) {%>
+        <a data-d1="<%=idx%>" data-d2="Living Room">
+            <tile data-text="Living Room">
+                <div id="TileCell" class="HasText">
+                    <div id="TileImageLoading" class="">
+                        <img id="TileImage" scroll-loaded-image="" src="/img/library/<%=idx%>.jpg" alt="">
+                    </div>
+                <h4 name="TileText" class="ng-binding ng-scope"><%=libraryTitle[idx-1]%></h4>
                 </div>
-            <h4 name="TileText" class="ng-binding ng-scope">Salon</h4>
-            </div>
-        </tile>
-    </a>
-    <a data-d1="2" data-d2="Bedroom">
-        <tile data-text="Bedroom">
-            <div id="TileCell" class="HasText">
-                <div id="TileImageLoading" class="">
-                    <img id="TileImage" scroll-loaded-image="" src="/img/library/2.jpg" alt="">
-                </div>
-            <h4 name="TileText" class="ng-binding ng-scope">Chambre</h4>
-            </div>
-        </tile>
-    </a>
-    <a data-d1="3" data-d2="Dining Room">
-        <tile data-text="Dining Room">
-            <div id="TileCell" class="HasText">
-                <div id="TileImageLoading" class="">
-                    <img id="TileImage" scroll-loaded-image="" src="/img/library/3.jpg" alt="">
-                </div>
-            <h4 name="TileText" class="ng-binding ng-scope">Salle à manger</h4>
-            </div>
-        </tile>
-    </a>
-    <a data-d1="4" data-d2="Kitchen">
-        <tile data-text="Kitchen">
-            <div id="TileCell" class="HasText">
-                <div id="TileImageLoading" class="">
-                    <img id="TileImage" scroll-loaded-image="" src="/img/library/4.jpg" alt="">
-                </div>
-            <h4 name="TileText" class="ng-binding ng-scope">Cuisine</h4>
-            </div>
-        </tile>
-    </a>
-    <a data-d1="5" data-d2="Bathroom">
-        <tile data-text="Bathroom">
-            <div id="TileCell" class="HasText">
-                <div id="TileImageLoading" class="">
-                    <img id="TileImage" scroll-loaded-image="" src="/img/library/5.jpg" alt="">
-                </div>
-            <h4 name="TileText" class="ng-binding ng-scope">Salle de bain</h4>
-            </div>
-        </tile>
-    </a>
-    <a data-d1="6" data-d2="Exterior">
-        <tile data-text="Exterior">
-            <div id="TileCell" class="HasText">
-                <div id="TileImageLoading" class="">
-                    <img id="TileImage" scroll-loaded-image="" src="/img/library/6.jpg" alt="">
-                </div>
-            <h4 name="TileText" class="ng-binding ng-scope">Extérieur</h4>
-            </div>
-        </tile>
-    </a>
-    <a data-d1="7" data-d2="Commercial">
-        <tile data-text="Commercial">
-        <div id="TileCell" class="HasText">
-            <div id="TileImageLoading" class="">
-                <img id="TileImage" scroll-loaded-image="" src="/img/library/7.jpg" alt="">
-            </div>
-        <h4 name="TileText" class="ng-binding ng-scope">Commercial</h4>
-        </div>
-    </tile>
-    </a>
-    <a data-d1="8" data-d2="Front Door">
-        <tile data-text="Front Door">
-        <div id="TileCell" class="HasText">
-            <div id="TileImageLoading" class="">
-                <img id="TileImage" scroll-loaded-image="" src="/img/library/8.jpg" alt="">
-            </div>
-        <h4 name="TileText" class="ng-binding ng-scope">Porte Principale</h4>
-        </div>
-    </tile>
-    </a>
+            </tile>
+        </a>
+    <%}%>
   </div>
 
   <% if(!isSubscribed) { %>

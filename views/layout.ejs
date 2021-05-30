@@ -74,7 +74,7 @@
                             </div>
                             <saved-colors id="savedColorsSection" class="fixedElement">
                                 <% if(stepInfo[0].current != 'current') {%>
-                                <div id="nav-savedColorsTab" showsavedcolors="model.ProjectServ.Project.Colors.length" currentstep="model.PageData.Data.CurrentStep" class="" style="">
+                                <div id="nav-savedColorsTab" class="" style="<%= isAdmin? 'display: none':''%>">
                                     <div id="nav-savedColTabIconText">
                                         <div id="nav-savedColRect" class="plusOne">
                                             <span>
@@ -116,7 +116,7 @@
                                             <div id="SavedColorsFadeTop" style="height: 0px;"></div>
                                             <% if (!isAdmin) {%>
                                                 <% for (i in savedData) {%>
-                                                <div class="SavedColorItem" style="" data-index="<%=i%>" data-id="<%=savedData[i].id%>" data-src="<%=savedData[i].src%>">
+                                                <div class="SavedColorItem" style="" data-index="<%=i%>" data-id="<%=savedData[i].id%>" data-subtype="<%=savedData[i].subtype%>" data-src="<%=savedData[i].src%>">
                                                     <div class="SavedColorData">
                                                         <div class="SavedColor_Col" style="background-image: url(<%=savedData[i].src%>); background-size: contain;">
                                                         </div>
@@ -130,7 +130,7 @@
                                                 <%}%>
                                             <%} else {%>
                                                 <% for (idx in productList) {%>
-                                                    <div class="SavedColorItem" style="" data-index="<%= idx%>" data-id="<%= productList[idx].id%>" data-src="<%= productList[idx].src%>">
+                                                    <div class="SavedColorItem" style="" data-index="<%= idx%>" data-id="<%= productList[idx].id%>" data-subtype="<%=!productList[idx].subtype ? 1 : productList[idx].subtype %>" data-src="<%= productList[idx].src%>">
                                                         <div class="SavedColorData">
                                                             <div class="SavedColor_Col" style="background-image: url(<%= productList[idx].src%>); background-size: contain;">
                                                                 <% if (idx == curIndex - 1) {%>

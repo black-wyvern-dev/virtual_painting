@@ -1,4 +1,6 @@
 const products = require('../../methods/products');
+const users = require('../../methods/users');
+const { getTitles} = require('../../globaldata');
 const fs = require('fs');
 
 function photoController(){
@@ -23,6 +25,7 @@ function photoController(){
 
             resData['isAdmin'] = false;
             resData['isSubscribed'] = false;
+            resData['libraryTitle'] = getTitles();
             res.render('photo', resData);
         },
         
@@ -77,6 +80,7 @@ function photoController(){
 
                     resData['libraries'] = files;
                     resData['namelist'] = nameList;
+                    resData['isSubscribed'] = true;
                     console.log('Load all library files success.');
                     
                     console.log(resData);
@@ -120,6 +124,7 @@ function photoController(){
 
             resData['isAdmin'] = false;
             resData['isSubscribed'] = true;
+            resData['libraryTitle'] = getTitles();
             res.render('photo', resData);
         }, 
 
@@ -128,7 +133,15 @@ function photoController(){
             console.log('SavedProductDataChanged', savedProductData.length);
             req.session.savedData = savedProductData;
             res.status(200).send ({result: true});
-        }, 
+        },
+
+        async subscribe(req, res) {
+            let {firstname, lastname, email} = req.body;
+            console.log('userSubscribed'+ JSON.stringify(req.body));
+            await users.addUser({firstname, lastname, email});
+
+            res.status(200).send({result: true});
+        }
     }
 }
 module.exports = photoController;
