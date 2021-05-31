@@ -926,3 +926,18 @@ input[type=password], select {
     color: gray;
     cursor: pointer;
 }
+
+.SubscribeModalCloseBtn {
+    position: absolute;
+    right: 0;
+    top: 0;
+    background-color: #bd9540;
+    border: 2px solid #4d1a1a;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;    
+}
+
+.SubscribeModalCloseBtn:hover {
+    background-color: #4d1a1a;
+}

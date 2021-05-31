@@ -22,6 +22,7 @@
                             <th style="width: 20%">FirstName</th>
                             <th style="width: 20%">SecondName</th>
                             <th>Email</th>
+                            <th>SubscribeAt</th>
                             <th style="width: 15%"></th>
                         </tr>
                         <% for(i in userList) { %>
@@ -29,6 +30,7 @@
                                 <td><%=userList[i].firstname%></td>
                                 <td><%=userList[i].lastname%></td>
                                 <td><%=userList[i].email%></td>
+                                <td><%=timeStrings[i]%></td>
                                 <td data-email="<%=userList[i].email%>">
                                     <span class="UserTableDeleteBtn material-icons">delete</span>
                                 </td>

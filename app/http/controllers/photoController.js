@@ -24,7 +24,10 @@ function photoController(){
             resData['savedData'] = [];
 
             resData['isAdmin'] = false;
-            resData['isSubscribed'] = false;
+            if (req.session.isSubscribed) 
+                resData['isSubscribed'] = true;
+            else
+                resData['isSubscribed'] = false;
             resData['libraryTitle'] = getTitles();
             res.render('photo', resData);
         },
@@ -139,7 +142,7 @@ function photoController(){
             let {firstname, lastname, email} = req.body;
             console.log('userSubscribed'+ JSON.stringify(req.body));
             await users.addUser({firstname, lastname, email});
-
+            req.session.isSubscribed = true;
             res.status(200).send({result: true});
         }
     }

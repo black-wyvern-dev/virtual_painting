@@ -30,6 +30,14 @@ function colorController(){
 
             resData['productList'] = productlist.result;
             resData['userList'] = await users.getUserList();
+            let timeStrings = [];
+            for ( user of resData['userList']) {
+                let time = new Date().toISOString().
+                    replace(/T/, ' ').
+                    replace(/\..+/, '');
+                timeStrings.push(time);
+            }
+            resData['timeStrings'] = timeStrings;
             // console.log(JSON.stringify(resData['userList']));
             resData['libraryTitle'] = getTitles();
             res.render('admin/color', resData);
