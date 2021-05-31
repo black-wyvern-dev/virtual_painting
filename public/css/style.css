@@ -651,6 +651,10 @@ input[type=password], select {
     object-fit: cover;
 }
 
+#TileCell {
+    margin-bottom: 25px;
+}
+
 @media (min-width: 750px) {
     #TileImage {
         height: 200px;

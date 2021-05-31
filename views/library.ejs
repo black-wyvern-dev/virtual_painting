@@ -3,9 +3,9 @@
         <div id="PageHeader">
             <a id="HeaderBackLink" ng-if="model.backlinktext" gtm-event="['ux', 'backButton', model.backlinktext]" class="" data-t="ux" data-d1="backButton" data-d2="Select a Different Photo">
                 <span id="HeaderLeftArrow" class="material-icons">keyboard_arrow_left</span>
-                <span id="HeaderBackLinkText" class="ng-binding" data-url="/photo">Back to home</span>
+                <span id="HeaderBackLinkText" class="ng-binding" data-url="/photo">Dos</span>
             </a>
-            <h1 id="HeaderPageTitle" class="ng-binding">Select following library photo</h1>
+            <h1 id="HeaderPageTitle" class="ng-binding">Sélectionnez une photo à peindre</h1>
         </div>
     </page-header>
     <div id="PhotoChooser" data-label="Room Chooser">
@@ -24,7 +24,7 @@
                         </div>
                         <img id="TileImage" scroll-loaded-image="" src="/img/library/<%=dirIndex%>/<%=libraries[idx]%>" height="150px" alt="" style="">
                     </div>
-                    <h4 name="TileText" class=""><%= namelist[idx] %></h4>
+                    <!-- <h4 name="TileText" class=""><%= namelist[idx] %></h4> -->
                 </div>
             </tile>
         </a>
