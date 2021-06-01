@@ -51,6 +51,10 @@
                 </div>-->
             </div>
         </notification-pane>
+        
+        <% if(!isSubscribed) { %>
+            <div id="subScribeModalBack"></div>
+        <% } %>
         <div id="headerMenu" data-label="Header Menu" resizeheader="" class="" style="">
             <div id="headerMenu_content">
                 <div id="roundCorner" data-label="Round Corner Background">
@@ -263,9 +267,7 @@
         <script data-main="/js/main.js" src="/js/require.js"></script>
     <%} else {%>
         <script>
-            <% if(isSubscribed) { %>
-                $(".notification-pane").hide();
-            <% } %>
+            $(".notification-pane").hide();
         </script>
     <%}%>
     

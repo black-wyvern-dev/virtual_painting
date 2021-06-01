@@ -840,5 +840,5 @@ $('body').on('click', '.UserTableDeleteBtn', function(){
 
 $('.SubscribeModalCloseBtn').click(function() {
     $('#subScribeModal').hide();
-    $(".notification-pane").hide();
+    $("#subScribeModalBack").hide();
 })
