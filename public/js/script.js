@@ -735,19 +735,20 @@ $('#subScribeModal button').click(function() {
         alert('Subscribe values is not valid. Please input your information.');
         return;
     }
+    $(".notification-pane").show();
     $.ajax({
         url : '/subscribe',
         type : 'POST',
         data : {firstname, lastname, email},
         success : function(data) {
-
             $('#subScribeModal').hide();
             $(".notification-pane").hide();
+            $('#subScribeModalBack').hide();
         },
         error: function(data){
-
             $('#subScribeModal').hide();
             $(".notification-pane").hide();
+            $('#subScribeModalBack').hide();
         }
     });
 })
@@ -840,5 +841,5 @@ $('body').on('click', '.UserTableDeleteBtn', function(){
 
 $('.SubscribeModalCloseBtn').click(function() {
     $('#subScribeModal').hide();
-    $("#subScribeModalBack").hide();
+    $('#subScribeModalBack').hide();
 })
