@@ -29,7 +29,7 @@ function photoController(){
             else
                 resData['isSubscribed'] = false;
             resData['libraryTitle'] = getTitles();
-            res.render('photo', resData);
+            return res.render('photo', resData);
         },
         
         async library(req, res) {

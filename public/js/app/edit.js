@@ -2,8 +2,8 @@
  */
 define(['../image/layer',
         '../helper/segment-annotator',
-        /*'../helper/util'*/],
-function(Layer, Annotator/*, util*/) {
+        '../helper/util'],
+function(Layer, Annotator, util) {
   // Create the navigation menu.
   // function createNavigationMenu(params, data, annotator) {
   //   var navigationMenu = document.createElement("p"),
@@ -18,49 +18,49 @@ function(Layer, Annotator/*, util*/) {
   // }
 
   // Create the page navigation.
-  // function createNavigation(params, data) {
-  //   var id = parseInt(params.id, 10),
-  //       container = document.createElement("div"),
-  //       indexAnchor = document.createElement("a"),
-  //       indexAnchorText = document.createTextNode("Index"),
-  //       prevAnchorText = document.createTextNode("Prev"),
-  //       nextAnchorText = document.createTextNode("Next"),
-  //       prevAnchor, nextAnchor;
-  //   indexAnchor.href = util.makeQueryParams({ view: "index" });
-  //   indexAnchor.appendChild(indexAnchorText);
-  //   if (id > 0) {
-  //     prevAnchor = document.createElement("a");
-  //     prevAnchor.appendChild(prevAnchorText);
-  //     prevAnchor.href = util.makeQueryParams(params, {
-  //       id: id - 1
-  //     });
-  //   }
-  //   else
-  //     prevAnchor = prevAnchorText;
-  //   if (id < data.imageURLs.length - 1) {
-  //     nextAnchor = document.createElement("a");
-  //     nextAnchor.appendChild(nextAnchorText);
-  //     nextAnchor.href = util.makeQueryParams(params, {
-  //       id: id + 1
-  //     });
-  //   }
-  //   else
-  //     nextAnchor = nextAnchorText;
-  //   container.appendChild(prevAnchor);
-  //   container.appendChild(document.createTextNode(" "));
-  //   container.appendChild(indexAnchor);
-  //   container.appendChild(document.createTextNode(" "));
-  //   container.appendChild(nextAnchor);
-  //   container.classList.add("edit-top-menu-block");
-  //   return container;
-  // }
+  function createNavigation(params, data) {
+    var id = parseInt(params.id, 10),
+        container = document.createElement("div"),
+        indexAnchor = document.createElement("a"),
+        indexAnchorText = document.createTextNode("Index"),
+        prevAnchorText = document.createTextNode("Prev"),
+        nextAnchorText = document.createTextNode("Next"),
+        prevAnchor, nextAnchor;
+    indexAnchor.href = util.makeQueryParams({ view: "index" });
+    indexAnchor.appendChild(indexAnchorText);
+    if (id > 0) {
+      prevAnchor = document.createElement("a");
+      prevAnchor.appendChild(prevAnchorText);
+      prevAnchor.href = util.makeQueryParams(params, {
+        id: id - 1
+      });
+    }
+    else
+      prevAnchor = prevAnchorText;
+    if (id < data.imageURLs.length - 1) {
+      nextAnchor = document.createElement("a");
+      nextAnchor.appendChild(nextAnchorText);
+      nextAnchor.href = util.makeQueryParams(params, {
+        id: id + 1
+      });
+    }
+    else
+      nextAnchor = nextAnchorText;
+    container.appendChild(prevAnchor);
+    container.appendChild(document.createTextNode(" "));
+    container.appendChild(indexAnchor);
+    container.appendChild(document.createTextNode(" "));
+    container.appendChild(nextAnchor);
+    container.classList.add("edit-top-menu-block");
+    return container;
+  }
 
   // Create the main content block.
   function createMainDisplay(params, data, annotator, imageLayer) {
     var container = document.createElement("div"),
         imageContainerSpacer = document.createElement("div"),
         imageContainer = document.createElement("div"),
-        // annotatorTopMenu = createImageTopMenu(params, data, annotator),
+        annotatorTopMenu = createImageTopMenu(params, data, annotator),
         annotatorContainer = document.createElement("div"),
         sidebarSpacer = document.createElement("div"),
         sidebarContainer = document.createElement("div"),
@@ -84,93 +84,93 @@ function(Layer, Annotator/*, util*/) {
   }
 
   // Create the menu above the editor.
-  // function createImageTopMenu(params, data, annotator) {
-  //   var container = document.createElement("div"),
-  //       zoomOutButton = document.getElementById('StockPhotoZoomOut'),
-  //       zoomInButton = document.getElementById('StockPhotoZoomIn'),
-  //       spacer1 = document.createElement("span"),
-  //       finerButton = document.createElement("div"),
-  //       boundaryButton = document.createElement("div"),
-  //       coarserButton = document.createElement("div"),
-  //       spacer2 = document.createElement("span"),
-  //       alphaMinusButton = document.createElement("div"),
-  //       imageButton = document.createElement("div"),
-  //       alphaPlusButton = document.createElement("div");
-  //   // zoomOutButton.appendChild(document.createTextNode("-"));
-  //   // zoomOutButton.classList.add("edit-image-top-button");
-  //   zoomOutButton.addEventListener("click", function () {
-  //     annotator.zoomOut();
-  //   });
-  //   // zoomInButton.appendChild(document.createTextNode("zoom +"));
-  //   // zoomInButton.classList.add("edit-image-top-button");
-  //   zoomInButton.addEventListener("click", function () {
-  //     annotator.zoomIn();
-  //   });
-  //   spacer1.className = "edit-image-top-spacer";
-  //   boundaryButton.id = "boundary-button";
-  //   boundaryButton.className = "edit-image-top-button";
-  //   boundaryButton.appendChild(document.createTextNode("boundary"));
-  //   boundaryButton.addEventListener("click", function () {
-  //     if (boundaryFlashTimeoutID)
-  //       window.clearTimeout(boundaryFlashTimeoutID);
-  //     if (boundaryButton.classList.contains("edit-image-top-button-enabled"))
-  //       annotator.hide("boundary");
-  //     else
-  //       annotator.show("boundary");
-  //     boundaryButton.classList.toggle("edit-image-top-button-enabled");
-  //   });
-  //   finerButton.appendChild(document.createTextNode("-"));
-  //   finerButton.className = "edit-image-top-button";
-  //   finerButton.addEventListener("click", function () {
-  //     annotator.finer();
-  //     boundaryFlash();
-  //   });
-  //   coarserButton.appendChild(document.createTextNode("+"));
-  //   coarserButton.className = "edit-image-top-button";
-  //   coarserButton.addEventListener("click", function () {
-  //     annotator.coarser();
-  //     boundaryFlash();
-  //   });
-  //   spacer2.className = "edit-image-top-spacer";
-  //   alphaMinusButton.className = "edit-image-top-button";
-  //   alphaMinusButton.appendChild(document.createTextNode("-"));
-  //   alphaMinusButton.addEventListener("click", function () {
-  //     annotator.moreAlpha();
-  //   });
-  //   imageButton.className = "edit-image-top-button " +
-  //                           "edit-image-top-button-enabled";
-  //   imageButton.appendChild(document.createTextNode("image"));
-  //   imageButton.addEventListener("click", function () {
-  //     // if (imageButton.classList.contains("edit-image-top-button-enabled"))
-  //     //   annotator.hide("image");
-  //     // else
-  //     //   annotator.show("image");
-  //     // imageButton.classList.toggle("edit-image-top-button-enabled");
-  //     annotator.defaultAlpha();
-  //   });
-  //   alphaPlusButton.className = "edit-image-top-button";
-  //   alphaPlusButton.appendChild(document.createTextNode("+"));
-  //   alphaPlusButton.addEventListener("click", function () {
-  //     annotator.lessAlpha();
-  //   });
-  //   //
-  //   container.className = "edit-image-top-menu";
-  //   // container.appendChild(zoomOutButton);
-  //   // container.appendChild(zoomInButton);
-  //   // container.appendChild(spacer1);
-  //   // container.appendChild(finerButton);
-  //   // container.appendChild(boundaryButton);
-  //   // container.appendChild(coarserButton);
-  //   container.appendChild(spacer2);
-  //   container.appendChild(alphaMinusButton);
-  //   container.appendChild(imageButton);
-  //   container.appendChild(alphaPlusButton);
-  //   return container;
-  // }
+  function createImageTopMenu(params, data, annotator) {
+    var container = document.createElement("div"),
+        zoomOutButton = document.getElementById('StockPhotoZoomOut'),
+        zoomInButton = document.getElementById('StockPhotoZoomIn'),
+        spacer1 = document.createElement("span"),
+        finerButton = document.createElement("div"),
+        boundaryButton = document.createElement("div"),
+        coarserButton = document.createElement("div"),
+        spacer2 = document.createElement("span"),
+        alphaMinusButton = document.createElement("div"),
+        imageButton = document.createElement("div"),
+        alphaPlusButton = document.createElement("div");
+    // zoomOutButton.appendChild(document.createTextNode("-"));
+    // zoomOutButton.classList.add("edit-image-top-button");
+    zoomOutButton.addEventListener("click", function () {
+      annotator.zoomOut();
+    });
+    // zoomInButton.appendChild(document.createTextNode("zoom +"));
+    // zoomInButton.classList.add("edit-image-top-button");
+    zoomInButton.addEventListener("click", function () {
+      annotator.zoomIn();
+    });
+    spacer1.className = "edit-image-top-spacer";
+    boundaryButton.id = "boundary-button";
+    boundaryButton.className = "edit-image-top-button";
+    boundaryButton.appendChild(document.createTextNode("boundary"));
+    boundaryButton.addEventListener("click", function () {
+      if (boundaryFlashTimeoutID)
+        window.clearTimeout(boundaryFlashTimeoutID);
+      if (boundaryButton.classList.contains("edit-image-top-button-enabled"))
+        annotator.hide("boundary");
+      else
+        annotator.show("boundary");
+      boundaryButton.classList.toggle("edit-image-top-button-enabled");
+    });
+    finerButton.appendChild(document.createTextNode("-"));
+    finerButton.className = "edit-image-top-button";
+    finerButton.addEventListener("click", function () {
+      annotator.finer();
+      boundaryFlash();
+    });
+    coarserButton.appendChild(document.createTextNode("+"));
+    coarserButton.className = "edit-image-top-button";
+    coarserButton.addEventListener("click", function () {
+      annotator.coarser();
+      boundaryFlash();
+    });
+    spacer2.className = "edit-image-top-spacer";
+    alphaMinusButton.className = "edit-image-top-button";
+    alphaMinusButton.appendChild(document.createTextNode("-"));
+    alphaMinusButton.addEventListener("click", function () {
+      annotator.moreAlpha();
+    });
+    imageButton.className = "edit-image-top-button " +
+                            "edit-image-top-button-enabled";
+    imageButton.appendChild(document.createTextNode("image"));
+    imageButton.addEventListener("click", function () {
+      // if (imageButton.classList.contains("edit-image-top-button-enabled"))
+      //   annotator.hide("image");
+      // else
+      //   annotator.show("image");
+      // imageButton.classList.toggle("edit-image-top-button-enabled");
+      annotator.defaultAlpha();
+    });
+    alphaPlusButton.className = "edit-image-top-button";
+    alphaPlusButton.appendChild(document.createTextNode("+"));
+    alphaPlusButton.addEventListener("click", function () {
+      annotator.lessAlpha();
+    });
+    //
+    container.className = "edit-image-top-menu";
+    // container.appendChild(zoomOutButton);
+    // container.appendChild(zoomInButton);
+    // container.appendChild(spacer1);
+    // container.appendChild(finerButton);
+    // container.appendChild(boundaryButton);
+    // container.appendChild(coarserButton);
+    container.appendChild(spacer2);
+    container.appendChild(alphaMinusButton);
+    container.appendChild(imageButton);
+    container.appendChild(alphaPlusButton);
+    return container;
+  }
 
   // Set up the automatic flash of boundary.
-  // var boundaryFlashTimeoutID = null;
-  // function boundaryFlash() {
+  var boundaryFlashTimeoutID = null;
+  function boundaryFlash() {
     // var boundaryButton = document.getElementById("boundary-button");
     // if (boundaryFlashTimeoutID) {
     //   window.clearTimeout(boundaryFlashTimeoutID);
@@ -187,38 +187,38 @@ function(Layer, Annotator/*, util*/) {
     //     boundaryFlashTimeoutID = null;
     //   }, 1000);
     // }
-  // }
+  }
 
   // Create the sidebar.
   function createSidebar(params, data, annotator) {
     var container = document.createElement("div"),
         // labelPicker = createLabelPicker(params, data, annotator),
-        // spacer1 = document.createElement("div"),
+        spacer1 = document.createElement("div"),
         undoButton = document.getElementById("StockPhotoUndo"),
         redoButton = document.getElementById("StockPhotoRedo"),
         resetButton = document.getElementById("StockPhotoReset"),
-        // spacer2 = document.createElement("div"),
-        // denoiseButton = document.createElement("div"),
-        // spacer3 = document.createElement("div"),
+        spacer2 = document.createElement("div"),
+        denoiseButton = document.createElement("div"),
+        spacer3 = document.createElement("div"),
         superpixelToolButton = document.getElementById("StockPhotoPaint"),
-        // spacer4 = document.createElement("div"),
+        spacer4 = document.createElement("div"),
         polygonToolButton = document.getElementById("StockPhotoPolygon"),
-        // spacer5 = document.createElement("div"),
-        brushToolButton = document.getElementById("StockPhotoBrush");
-        // spacer6 = document.createElement("div"),
-        // manualParagraph = document.createElement("p"),
-        // spacer7 = document.createElement("div"),
+        spacer5 = document.createElement("div"),
+        brushToolButton = document.getElementById("StockPhotoBrush"),
+        spacer6 = document.createElement("div"),
+        manualParagraph = document.createElement("p"),
+        spacer7 = document.createElement("div"),
         exportButton = document.createElement("input"),
         // exportAsImageButton = document.getElementsByClassName("ActionSaveButton"),
-        // manualText;
-    // exportButton.type = "button";
-    // exportButton.value = "export";
-    // exportButton.className = "edit-sidebar-submit";
+        manualText;
+    exportButton.type = "button";
+    exportButton.value = "export";
+    exportButton.className = "edit-sidebar-submit";
     exportButton.addEventListener("click", function () {
-      // var filename = (data.annotationURLs) ?
-      //     data.annotationURLs[/*params.id*/0].split(/[\\/]/).pop() :
-      //     /*params.id*/0 + ".png";
-      // downloadURI(annotator.export(), filename);
+      var filename = (data.annotationURLs) ?
+          data.annotationURLs[/*params.id*/0].split(/[\\/]/).pop() :
+          /*params.id*/0 + ".png";
+      downloadURI(annotator.export(), filename);
     });
     // exportAsImageButton.type = "button";
     // exportAsImageButton.value = "exportAsImage";
@@ -230,7 +230,7 @@ function(Layer, Annotator/*, util*/) {
     $("#NotificationFooterActions #ActionSaveButton").click(function() {
       annotator.exportAsImage();
     });
-    // spacer1.className = "edit-sidebar-spacer";
+    spacer1.className = "edit-sidebar-spacer";
     // undoButton.type = "button";
     // undoButton.value = "undo";
     // undoButton.className = " edit-sidebar-submit";
@@ -246,12 +246,12 @@ function(Layer, Annotator/*, util*/) {
     // resetButton.className = " edit-sidebar-submit";
     // resetButton.appendChild(document.createTextNode("reset"));
     resetButton.addEventListener("click", function () { annotator.reset(); });
-    // spacer2.className = "edit-sidebar-spacer";
-    // denoiseButton.className = "edit-sidebar-button";
-    // denoiseButton.appendChild(document.createTextNode("denoise"));
-    // denoiseButton.addEventListener("click", function () {
-    //   annotator.denoise();
-    // });
+    spacer2.className = "edit-sidebar-spacer";
+    denoiseButton.className = "edit-sidebar-button";
+    denoiseButton.appendChild(document.createTextNode("denoise"));
+    denoiseButton.addEventListener("click", function () {
+      annotator.denoise();
+    });
     // superpixelToolButton.className = "edit-sidebar-button";
     // superpixelToolButton.appendChild(
     //   document.createTextNode("Detection tool"));
@@ -303,7 +303,7 @@ function(Layer, Annotator/*, util*/) {
       annotator.currentPattern = globalCurColorIdx;
     });
 
-    // spacer3.className = "edit-sidebar-spacer";
+    spacer3.className = "edit-sidebar-spacer";
     // manualParagraph.appendChild(document.createTextNode("ctrl: toggle mode"));
     // manualParagraph.appendChild(document.createElement("br"));
     // manualParagraph.appendChild(document.createElement("br"));
@@ -317,25 +317,25 @@ function(Layer, Annotator/*, util*/) {
     // manualParagraph.appendChild(document.createTextNode("+Polygon tool:"));
     // manualParagraph.appendChild(document.createElement("br"));
     // manualParagraph.appendChild(document.createTextNode("left: draw line"));
-    // manualParagraph.appendChild(document.createTextNode("left: paint node"));
-    // manualParagraph.appendChild(document.createElement("br"));
-    // manualParagraph.appendChild(document.createTextNode("left + drag: paint by track"));
+    manualParagraph.appendChild(document.createTextNode("left: paint node"));
+    manualParagraph.appendChild(document.createElement("br"));
+    manualParagraph.appendChild(document.createTextNode("left + drag: paint by track"));
     // manualParagraph.appendChild(document.createTextNode("right: abort"));
-    // spacer4.className = "edit-sidebar-spacer";
-    // container.className = "edit-sidebar";
+    spacer4.className = "edit-sidebar-spacer";
+    container.className = "edit-sidebar";
     // container.appendChild(labelPicker);
-    // container.appendChild(spacer1);
+    container.appendChild(spacer1);
     // container.appendChild(undoButton);
     // container.appendChild(redoButton);
     // container.appendChild(resetButton);
-    // container.appendChild(spacer2);
+    container.appendChild(spacer2);
     // container.appendChild(denoiseButton);
     // container.appendChild(polygonToolButton);
     // container.appendChild(superpixelToolButton);
-    // container.appendChild(spacer3);
+    container.appendChild(spacer3);
     // container.appendChild(brushToolButton);
-    // container.appendChild(manualParagraph);
-    // container.appendChild(spacer4);
+    container.appendChild(manualParagraph);
+    container.appendChild(spacer4);
     // container.appendChild(exportButton);
     // container.appendChild(exportAsImageButton);
     return container;

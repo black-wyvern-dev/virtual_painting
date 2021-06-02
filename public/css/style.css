@@ -767,6 +767,16 @@ input[type=password], select {
     z-index: 1000;
 }
 
+#subScribeModalOverlay {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    top: 0;
+    z-index: -1;
+}
+
 #subScribeModalBack {
     position: fixed;
     left: 0;
@@ -776,7 +786,6 @@ input[type=password], select {
     top: 0;
     z-index: 999;
 }
-
 #subScribeModal h1 {
     grid-column: 1 / span 2;
     width: 180px;

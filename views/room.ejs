@@ -1,11 +1,12 @@
 <stock-photo>
-    <page-header headline="Visualize Your Room" backlinktext="Find More Colors" data-backurl="/Colors" data-subheadline="Click a wall to paint the selected color." class="ng-isolate-scope">
+    <page-header data-backurl="/Colors" >
         <div id="PageHeader">
-            <a id="HeaderBackLink" ng-click="model.BackAction()" ng-if="model.backlinktext" gtm-event="['ux', 'backButton', model.backlinktext]" class="ng-scope ng-isolate-scope" data-t="ux" data-d1="backButton" data-d2="Find More Colors" style="">
+            <a id="HeaderBackLink">
                 <span id="HeaderLeftArrow" class="material-icons">keyboard_arrow_left</span>
                 <span id="HeaderBackLinkText" class="" data-url="/color">Trouver plus de couleurs</span>
+            </a>
             <h1 id="HeaderPageTitle" class="">Visualiser votre espace</h1>
-            <span id="HeaderPageSubTitle" ng-if="model.subheadline" class="" style="">Cliquer sur le mur à peindre avec la couleur sélectionner</span>
+            <span id="HeaderPageSubTitle" class="" style="">Cliquer sur le mur à peindre avec la couleur sélectionner</span>
         </div>
     </page-header>
     <div id="MainContentLeftPane">
