@@ -3,9 +3,10 @@ const products = require('../../methods/products');
 
 function colorCollectionController(){
     return {
-       async index(req, res) {
+        async index(req, res) {
+            res.setHeader('Cache-Control', 'public, max-age=86400');
             let resData = {};
-            if (req.session.projectid == undefined || req.session.extofbackground == undefined) res.redirect('/photo');
+            if (req.session.projectid == undefined || req.session.extofbackground == undefined) return res.redirect('/photo');
             if ( req.session.savedData == undefined ) resData['savedData'] = [];
             else resData['savedData'] = req.session.savedData;
             
@@ -24,7 +25,7 @@ function colorCollectionController(){
             const productlist = await products.getProductList({filter: 'patterns'});
             resData['productList'] = productlist.result;
             resData['isSubscribed'] = true;
-            res.render('color_collection', resData);
+            return res.render('color_collection', resData);
         }
     }
 }

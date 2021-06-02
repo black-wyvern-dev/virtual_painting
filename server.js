@@ -3,6 +3,7 @@ const express = require('express');
 const app = express();
 const ejs = require('ejs');
 const expressLayouts = require('express-ejs-layouts');
+const compression = require('compression');
 // const sharedsession = require('express-socket.io-session');
 const fileUpload = require('express-fileupload');
 const cors = require('cors');
@@ -37,6 +38,7 @@ const appsession = session({
 app.use(appsession);
 // io.use(sharedsession(appsession));
 
+app.use(compression());
 
 // enable files upload
 app.use(fileUpload({
@@ -44,8 +46,8 @@ app.use(fileUpload({
 }));
 
 //Assets
-app.use(express.static('public'));
-app.use(express.static('uploads'));
+app.use(express.static('public', { maxAge: 31557600 }));
+app.use(express.static('uploads', { maxAge: 31557600 }));
 app.use(express.json());
 
 //Passport config

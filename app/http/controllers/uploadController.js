@@ -2,7 +2,8 @@
 function uploadController(){
     return {
         
-       async index(req, res) {
+        async index(req, res) {
+            res.setHeader('Cache-Control', 'public, max-age=86400');
             let resData = {};
             // const result = await Resource.getResource();
             // if(result.result) resData["resource"] = result.result;
@@ -19,10 +20,11 @@ function uploadController(){
 
             resData['isAdmin'] = false;
             resData['isSubscribed'] = true;
-            res.render('upload', resData);
+            return res.render('upload', resData);
         },
     
         async upload(req, res) {
+            res.setHeader('Cache-Control', 'public, max-age=86400');
             try {
                 if(!req.files) {
                     console.log('Error: File must be supplied while uploading.')
@@ -37,15 +39,15 @@ function uploadController(){
                     const filename = req.session.projectid + file.name.substring(extIndex);
                     req.session.extofbackground = file.name.substring(extIndex);
                     
-                    file.mv('./public/data/images/' + filename);
+                    await file.mv('./public/data/images/' + filename);
         
                     //flash response
                     console.log('Upload pdf success.');
-                    res.status(200).send({result: true});
+                    return res.status(200).send({result: true});
                 }
             } catch (err) {
                 console.log('Error occured while upload :', err);
-                res.status(500).end({message: err});
+                return res.status(500).end({message: err});
             }
         },
     }
