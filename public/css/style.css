@@ -242,6 +242,7 @@
     }
     #headerMenu{
         height: 55px;
+        z-index: 99;
     }
     #FooterContainer{
         padding-top: 80px;
@@ -773,7 +774,7 @@ input[type=password], select {
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
     top: 0;
-    z-index: 1000;
+    z-index: 999;
 }
 
 #subScribeModal h1 {

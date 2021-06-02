@@ -30,10 +30,16 @@
   
   <div id="TileContainer">
       <% for (var idx=1;idx<=8;idx++) {%>
-        <a data-d1="<%=idx%>" data-d2="Living Room">
-            <tile data-text="Living Room">
+        <a data-src="/img/library/<%=idx%>.jpg">
+            <tile >
                 <div id="TileCell" class="HasText">
-                    <div id="TileImageLoading" class="">
+                    <div id="TileImageLoading" class="TileImage">
+                        <div class="TileImageLoader">
+                            <div class="imageLoading-color color-1"></div>
+                            <div class="imageLoading-color color-2"></div>
+                            <div class="imageLoading-color color-3"></div>
+                            <div class="imageLoading-color color-4"></div>
+                        </div>
                         <img id="TileImage" scroll-loaded-image="" src="/img/library/<%=idx%>.jpg" alt="">
                     </div>
                 <h4 name="TileText" class="ng-binding ng-scope"><%=libraryTitle[idx-1]%></h4>
@@ -52,6 +58,7 @@
         <button>ENVOYER</button>
         <span class="SubscribeModalCloseBtn material-icons">close</span>
     </div>
+    <div id="subScribeModalBack"></div>
   <% } %>
 </div>
 </home>

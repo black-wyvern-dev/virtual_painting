@@ -93,13 +93,13 @@ function photoController(){
         },
 
         async selectLibrary(req, res) {
-            const {dirId, name} = req.body;
+            const {/*dirId, */name} = req.body;
             const ext = name.substring(name.lastIndexOf('.'));
             if ( req.session.projectid == undefined )req.session.projectid = Math.ceil(Math.random() * 100000);
             const newStr = req.session.projectid;
 
-            let directory = __dirname + '/../../../public/';
-            fs.copyFile(directory + 'img/library/' + dirId + '/' + name, directory + 'data/images/' + newStr + ext, (err) => {
+            let directory = __dirname + '/../../../public';
+            fs.copyFile(directory /*+ 'img/library/' + dirId + '/'*/ + name, directory + '/data/images/' + newStr + ext, (err) => {
                 if (err) {
                     console.log(err);
                     res.status(404).send({error: err});

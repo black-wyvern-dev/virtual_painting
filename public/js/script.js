@@ -664,31 +664,31 @@ $('.TileImage #TileImage').on('load', function(){
 var cur_thm = 0;
 
 $('body').on('click', '#TileContainer > a', function(){
-    const index = $(this).data('d1');
-    if (!index) {
+    // const index = $(this).data('d1');
+    // if (!index) {
         const src = $(this).data('src');
         if (!src) {
             cur_thm = $(this).data('thm');
             $('#ThumbnailPicker').click();
             return;
         }
-        const url = $(location).attr('href');
-        const dirIdx = url.substring(url.lastIndexOf('/') + 1);
+        // const url = $(location).attr('href');
+        // const dirIdx = url.substring(url.lastIndexOf('/') + 1);
         $(".notification-pane").show();
         $.ajax({
             url : '/select_library',
             type : 'POST',
             data : {
-                dirId: dirIdx,
+                // dirId: dirIdx,
                 name: src
             },
             success : function(data) {
                 console.log(data);
                 $(".notification-pane").hide();
-                $('.nav-2Step').attr('href', '/color');
-                $('.nav-2Step .nav-circle').addClass('enabled');
-                $('.nav-2Step .nav-progressLine').addClass('enabled');
-                $('.nav-2Step .nav-progressText').addClass('enabled');
+                // $('.nav-2Step').attr('href', '/color');
+                // $('.nav-2Step .nav-circle').addClass('enabled');
+                // $('.nav-2Step .nav-progressLine').addClass('enabled');
+                // $('.nav-2Step .nav-progressText').addClass('enabled');
                 $(location).attr('href', '/color');
             },
             error: function(data){
@@ -696,8 +696,8 @@ $('body').on('click', '#TileContainer > a', function(){
                 $(".notification-pane").hide();
             }
         });
-    } else
-        $(location).attr('href', '/library/' + index);
+    // } else
+    //     $(location).attr('href', '/library/' + index);
 })
 
 $('#ThumbnailPicker').on('change', function(e) {
