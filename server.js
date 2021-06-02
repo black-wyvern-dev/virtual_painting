@@ -38,7 +38,6 @@ const appsession = session({
 app.use(appsession);
 // io.use(sharedsession(appsession));
 
-app.use(compression());
 
 // enable files upload
 app.use(fileUpload({
@@ -46,8 +45,8 @@ app.use(fileUpload({
 }));
 
 //Assets
-app.use(express.static('public', { maxAge: 31557600 }));
-app.use(express.static('uploads', { maxAge: 31557600 }));
+app.use(express.static('public'));//, { maxAge: 31557600 }));
+app.use(express.static('uploads'));//, { maxAge: 31557600 }));
 app.use(express.json());
 
 //Passport config
@@ -58,6 +57,7 @@ app.use(express.json());
 
 app.use(flash());
 
+app.use(compression());
 
 //Global Middleware to use session and user(if logged in) in client side
 app.use(cors());

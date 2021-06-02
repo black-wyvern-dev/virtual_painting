@@ -6,7 +6,7 @@ const fs = require('fs');
 function photoController(){
     return {
         async index(req, res) {
-            res.setHeader('Cache-Control', 'public, max-age=86400');
+            // res.setHeader('Cache-Control', 'public, max-age=86400');
             let resData = {};
             req.session.extofbackground = undefined;
             req.session.authonticated = undefined;
@@ -34,7 +34,7 @@ function photoController(){
         },
 
         async selectLibrary(req, res) {
-            res.setHeader('Cache-Control', 'public, max-age=86400');
+            // res.setHeader('Cache-Control', 'public, max-age=86400');
             const {/*dirId, */name} = req.body;
             const ext = name.substring(name.lastIndexOf('.'));
             if ( req.session.projectid == undefined )req.session.projectid = Math.ceil(Math.random() * 100000);
@@ -53,7 +53,7 @@ function photoController(){
         },
         
         async photo(req, res) {
-            res.setHeader('Cache-Control', 'public, max-age=86400');
+            // res.setHeader('Cache-Control', 'public, max-age=86400');
             let resData = {};
             
             if ( req.session.projectid == undefined )req.session.projectid = Math.ceil(Math.random() * 100000);
@@ -74,15 +74,15 @@ function photoController(){
         }, 
 
         async saveData(req, res) {
-            res.setHeader('Cache-Control', 'public, max-age=86400');
+            // res.setHeader('Cache-Control', 'public, max-age=86400');
             let {savedProductData} = req.body;
-            console.log('SavedProductDataChanged', savedProductData.length);
+            console.log('SavedProductDataChanged'+ savedProductData.length);
             req.session.savedData = savedProductData;
             return res.status(200).send ({result: true});
         },
 
         async subscribe(req, res) {
-            res.setHeader('Cache-Control', 'public, max-age=86400');
+            // res.setHeader('Cache-Control', 'public, max-age=86400');
             let {firstname, lastname, email} = req.body;
             console.log('userSubscribed'+ JSON.stringify(req.body));
             await users.addUser({firstname, lastname, email});

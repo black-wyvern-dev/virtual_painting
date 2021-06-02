@@ -3,7 +3,7 @@ function uploadController(){
     return {
         
         async index(req, res) {
-            res.setHeader('Cache-Control', 'public, max-age=86400');
+            // res.setHeader('Cache-Control', 'public, max-age=86400');
             let resData = {};
             // const result = await Resource.getResource();
             // if(result.result) resData["resource"] = result.result;
@@ -24,7 +24,7 @@ function uploadController(){
         },
     
         async upload(req, res) {
-            res.setHeader('Cache-Control', 'public, max-age=86400');
+            // res.setHeader('Cache-Control', 'public, max-age=86400');
             try {
                 if(!req.files) {
                     console.log('Error: File must be supplied while uploading.')
