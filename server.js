@@ -45,8 +45,8 @@ app.use(fileUpload({
 }));
 
 //Assets
-app.use(express.static('public'));//, { maxAge: 31557600 }));
-app.use(express.static('uploads'));//, { maxAge: 31557600 }));
+app.use(express.static('public', { maxAge: 31557600 }));//));//
+app.use(express.static('uploads', { maxAge: 31557600 }));//));//
 app.use(express.json());
 
 //Passport config

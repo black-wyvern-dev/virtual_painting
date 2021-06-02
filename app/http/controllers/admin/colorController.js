@@ -8,7 +8,7 @@ let draft;
 function colorController(){
     return {
         async index(req, res) {
-            // res.setHeader('Cache-Control', 'public, max-age=86400');
+            res.setHeader('Cache-Control', 'public, max-age=86400');
             let resData = {};
         
             resData['stepInfo'] = [
@@ -45,7 +45,7 @@ function colorController(){
         },
 
         async titleUpdate(req, res) {
-            // res.setHeader('Cache-Control', 'public, max-age=86400');
+            res.setHeader('Cache-Control', 'public, max-age=86400');
             let {index, value} = req.body;
             console.log(index + ' '+ value);
             updateTitle(parseInt(index) - 1, value);
@@ -54,7 +54,7 @@ function colorController(){
         },
 
         async login(req, res) {
-            // res.setHeader('Cache-Control', 'public, max-age=86400');
+            res.setHeader('Cache-Control', 'public, max-age=86400');
             if (req.body.password == getPassword()) {
                 req.session.authonticated = true;
                 req.session.save();
@@ -65,7 +65,7 @@ function colorController(){
          },
 
          async reset(req, res) {
-            // res.setHeader('Cache-Control', 'public, max-age=86400');
+            res.setHeader('Cache-Control', 'public, max-age=86400');
             let resData = {};
         
             resData['stepInfo'] = [
@@ -88,7 +88,7 @@ function colorController(){
         },
 
         async passwordChange(req, res) {
-            // res.setHeader('Cache-Control', 'public, max-age=86400');
+            res.setHeader('Cache-Control', 'public, max-age=86400');
             if (req.session.authonticated == undefined) {
                 res.status(401).send();
                 return;
@@ -99,7 +99,7 @@ function colorController(){
         },
 
         async upload(req, res) {
-            // res.setHeader('Cache-Control', 'public, max-age=86400');
+            res.setHeader('Cache-Control', 'public, max-age=86400');
             try {
                 if(!req.files) {
                     console.log('Error: File must be supplied while uploading.')
@@ -143,7 +143,7 @@ function colorController(){
         },
 
         async resetUpload(req, res) {
-            // res.setHeader('Cache-Control', 'public, max-age=86400');
+            res.setHeader('Cache-Control', 'public, max-age=86400');
             const src = req.body.draftsrc;
             if(!src) {
                 console.log('Error: File must be supplied while uploading.')
@@ -166,7 +166,7 @@ function colorController(){
         },
 
         async addProduct(req, res) {
-            // res.setHeader('Cache-Control', 'public, max-age=86400');
+            res.setHeader('Cache-Control', 'public, max-age=86400');
             console.log('add prodcut request is received.');
             let {id, title, src, type, subtype} = req.body;
             if (src.indexOf(type) == -1) {
@@ -193,7 +193,7 @@ function colorController(){
         },
 
         async updateProduct(req, res) {
-            // res.setHeader('Cache-Control', 'public, max-age=86400');
+            res.setHeader('Cache-Control', 'public, max-age=86400');
             console.log('update product request is received.');
             let {old_id, id, title, src, type, subtype} = req.body;
             if (src.indexOf(type) == -1) {
@@ -220,7 +220,7 @@ function colorController(){
         },
 
         async deleteProduct(req, res) {
-            // res.setHeader('Cache-Control', 'public, max-age=86400');
+            res.setHeader('Cache-Control', 'public, max-age=86400');
             console.log('delete product request is received.');
             let {id} = req.body;
             const result =  await products.deleteProduct({id});
@@ -235,7 +235,7 @@ function colorController(){
         },
         
         async thumbnail(req, res) {
-            // res.setHeader('Cache-Control', 'public, max-age=86400');
+            res.setHeader('Cache-Control', 'public, max-age=86400');
             let resData = {};
         
             resData['stepInfo'] = [
@@ -258,7 +258,7 @@ function colorController(){
         },
 
         async thumbnailUpload(req, res) {
-            // res.setHeader('Cache-Control', 'public, max-age=86400');
+            res.setHeader('Cache-Control', 'public, max-age=86400');
             try {
                 if(!req.files) {
                     console.log('Error: File must be supplied while uploading.')
@@ -283,7 +283,7 @@ function colorController(){
         },
 
         async deleteUserInfo(req, res) {
-            // res.setHeader('Cache-Control', 'public, max-age=86400');
+            res.setHeader('Cache-Control', 'public, max-age=86400');
             let {email} = req.body;
             console.log(email);
             const result = await users.deleteUser({email});
