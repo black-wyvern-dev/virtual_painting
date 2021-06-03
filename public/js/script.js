@@ -482,7 +482,7 @@ $('#ProductImagePicker').on('change', function(e) {
         $('.ColorItem[data-id="'+id+'"]').first().find('span').first().addClass('isSelected');
     }
     savedProductData = savedData;
-    // $(".notification-pane").hide();
+//     $(".notification-pane").hide();
 // });
 
 $('.ColorItem').click(function() {

@@ -64,28 +64,28 @@ function colorController(){
             return res.status(401).send();
          },
 
-         async reset(req, res) {
-            res.setHeader('Cache-Control', 'public, max-age=86400');
-            let resData = {};
+        //  async reset(req, res) {
+        //     res.setHeader('Cache-Control', 'public, max-age=86400');
+        //     let resData = {};
         
-            resData['stepInfo'] = [
-                {current: 'enabled', allow: 'enabled'},
-                {current: 'current', allow: 'enabled'},
-                {current: 'enabled', allow: 'enabled'},
-            ];
-            resData['curIndex'] = curIndex;
+        //     resData['stepInfo'] = [
+        //         {current: 'enabled', allow: 'enabled'},
+        //         {current: 'current', allow: 'enabled'},
+        //         {current: 'enabled', allow: 'enabled'},
+        //     ];
+        //     resData['curIndex'] = curIndex;
             
-            resData['isAdmin'] = true;
+        //     resData['isAdmin'] = true;
 
-            resData['productList'] = [];
-            resData['isSubscribed'] = true;
-            if (req.session.authonticated == undefined) {
-                res.render('admin/login', resData);
-                return;
-            }
+        //     resData['productList'] = [];
+        //     resData['isSubscribed'] = true;
+        //     if (req.session.authonticated == undefined) {
+        //         res.render('admin/login', resData);
+        //         return;
+        //     }
 
-            return res.render('admin/reset', resData);
-        },
+        //     return res.render('admin/reset', resData);
+        // },
 
         async passwordChange(req, res) {
             res.setHeader('Cache-Control', 'public, max-age=86400');
@@ -234,28 +234,28 @@ function colorController(){
             }
         },
         
-        async thumbnail(req, res) {
-            res.setHeader('Cache-Control', 'public, max-age=86400');
-            let resData = {};
+        // async thumbnail(req, res) {
+        //     res.setHeader('Cache-Control', 'public, max-age=86400');
+        //     let resData = {};
         
-            resData['stepInfo'] = [
-                {current: 'enabled', allow: 'enabled'},
-                {current: 'current', allow: 'enabled'},
-                {current: 'enabled', allow: 'enabled'},
-            ];
-            resData['curIndex'] = curIndex;
+        //     resData['stepInfo'] = [
+        //         {current: 'enabled', allow: 'enabled'},
+        //         {current: 'current', allow: 'enabled'},
+        //         {current: 'enabled', allow: 'enabled'},
+        //     ];
+        //     resData['curIndex'] = curIndex;
             
-            resData['isAdmin'] = true;
+        //     resData['isAdmin'] = true;
 
-            resData['productList'] = [];
-            resData['isSubscribed'] = true;
-            if (req.session.authonticated == undefined) {
-                res.render('admin/login', resData);
-                return;
-            }
+        //     resData['productList'] = [];
+        //     resData['isSubscribed'] = true;
+        //     if (req.session.authonticated == undefined) {
+        //         res.render('admin/login', resData);
+        //         return;
+        //     }
 
-            return res.render('admin/thumbnail', resData);
-        },
+        //     return res.render('admin/thumbnail', resData);
+        // },
 
         async thumbnailUpload(req, res) {
             res.setHeader('Cache-Control', 'public, max-age=86400');
