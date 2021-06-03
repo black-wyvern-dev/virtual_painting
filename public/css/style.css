@@ -866,6 +866,10 @@ input[type=password], select {
     font-family: 'Montserrat';
 }
 
+#subScribeModal button:hover {
+    background-color: #884141;
+}
+
 @media (max-width: 400px) {
     #subScribeModal input {
         width: 100%;
