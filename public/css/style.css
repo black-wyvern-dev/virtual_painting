@@ -775,7 +775,7 @@ input[type=password], select {
 #subScribeModal {
     width: 500px;
     height: 400px;
-    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.1)), url(/image/modalback.jpg);
+    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.1)), url('/image/modalback.jpg');
     background-size: cover;
     /* border-radius: 15px; */
     /* box-shadow: 0 0 40px 5px; */
