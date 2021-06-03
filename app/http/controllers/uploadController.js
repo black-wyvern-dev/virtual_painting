@@ -39,7 +39,7 @@ function uploadController(){
                     const filename = req.session.projectid + file.name.substring(extIndex);
                     req.session.extofbackground = file.name.substring(extIndex);
                     
-                    await file.mv('./public/data/images/' + filename);
+                    await file.mv('./uploads/data/images/' + filename);
         
                     //flash response
                     console.log('Upload pdf success.');

@@ -119,17 +119,17 @@ function colorController(){
                         return;
                     }
                     if (oldfilename)
-                        await fs.unlink('./public' + oldfilename, err => {
+                        await fs.unlink('./uploads' + oldfilename, err => {
                             if(err) console.error(`Error occured while delete image files ${err}`);
                         });
                     if (draft)
-                        await fs.unlink('./public' + draft, err => {
+                        await fs.unlink('./uploads' + draft, err => {
                             if(err) console.error(`Error occured while delete image files ${err}`);
                         });
 
                     if (type == 'colors') filename = '/data/colors/' + filename + file.name.substring(extIndex);
                     else if (type == 'patterns') filename = '/data/patterns/' + filename + file.name.substring(extIndex);
-                    await file.mv('./public' + filename);
+                    await file.mv('./uploads' + filename);
         
                     //flash response
                     console.log('Upload image success.');
@@ -155,7 +155,7 @@ function colorController(){
                     return;
                 }
                 if (src)
-                    await fs.unlink('./public' + src, err => {
+                    await fs.unlink('./uploads' + src, err => {
                         if(err) console.error(`Error occured while delete image files ${err}`);
                     });
     
@@ -175,7 +175,7 @@ function colorController(){
                     if (strList[i] == 'colors' || strList[i] == 'patterns') {strList[i] = type;break;}
                 }
                 var newStr = strList.join('/');
-                await fs.copyFile('./public' + src, './public' + newStr, (err) => {
+                await fs.copyFile('./uploads' + src, './uploads' + newStr, (err) => {
                     if (err) console.log(err);
                     console.log('src was copied to newSrc');
                 });
@@ -202,7 +202,7 @@ function colorController(){
                     if (strList[i] == 'colors' || strList[i] == 'patterns') {strList[i] = type;break;}
                 }
                 var newStr = strList.join('/');
-                await fs.copyFile('./public' + src, './public' + newStr, (err) => {
+                await fs.copyFile('./uploads' + src, './uploads' + newStr, (err) => {
                     if (err) console.log(err);
                     else console.log('src was copied to newSrc');
                 });
@@ -270,7 +270,7 @@ function colorController(){
                     //Use the mv() method to place the file in upload directory (i.e. 'uploads')
                     
                     let url = req.url.substring(17);
-                    await file.mv('./public' + url);
+                    await file.mv('./uploads' + url);
         
                     //flash response
                     console.log('Upload image success.');

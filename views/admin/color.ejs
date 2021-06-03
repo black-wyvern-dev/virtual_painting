@@ -45,9 +45,9 @@
                     <h4>Edit library thumbnails</h4>
                     <div id="TileContainer">
                         <% for(var idx=1;idx<8;idx++) {%>
-                            <a data-thm="<%=idx%>">
+                            <a>
                                 <div class="TileItem">
-                                    <div id="TileCell" class="TileCell">
+                                    <div id="TileCell" class="TileCell" data-thm="<%=idx%>">
                                         <div id="TileImageLoading" class="">
                                             <img id="TileImage" scroll-loaded-image="" src="/img/library/<%=idx%>.jpg" alt="">
                                         </div>
@@ -66,9 +66,9 @@
                     </div>
                     <h4>Edit color thumbnails</h4>
                     <div id="TileContainer">
-                        <a data-thm="9" data-d2="Living Room">
+                        <a  data-d2="Living Room">
                             <div class="TileItem" data-text="Living Room">
-                                <div id="TileCell" class="HasText">
+                                <div id="TileCell" class="HasText"data-thm="9">
                                     <div id="TileImageLoading" class="">
                                         <img id="TileImage" scroll-loaded-image="" src="/img/families.jpg" alt="">
                                     </div>
@@ -78,9 +78,9 @@
                                 <input class="TileText" class="" value="<%=libraryTitle[8]%>">
                             </div>
                         </a>
-                        <a data-thm="10" data-d2="Bedroom">
+                        <a data-d2="Bedroom">
                             <div class="TileItem" data-text="Bedroom">
-                                <div id="TileCell" class="HasText">
+                                <div id="TileCell" class="HasText" data-thm="10">
                                     <div id="TileImageLoading" class="">
                                         <img id="TileImage" scroll-loaded-image="" src="/img/collections.jpg" alt="">
                                     </div>

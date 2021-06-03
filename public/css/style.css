@@ -1,6 +1,6 @@
 @media (min-width: 970px) {
     .fullScreenImage {
-        background: url('../img/background.jpg') no-repeat center center fixed; /*https://visualizecolor.blob.core.windows.net/voc/main_background.jpg*/
+        background: url('../image/background.jpg') no-repeat center center fixed; /*https://visualizecolor.blob.core.windows.net/voc/main_background.jpg*/
         -webkit-background-size: cover;
         -moz-background-size: cover;
         -o-background-size: cover;
@@ -775,7 +775,7 @@ input[type=password], select {
 #subScribeModal {
     width: 500px;
     height: 400px;
-    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.1)), url(/img/modalback.jpg);
+    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.1)), url(/image/modalback.jpg);
     background-size: cover;
     /* border-radius: 15px; */
     /* box-shadow: 0 0 40px 5px; */

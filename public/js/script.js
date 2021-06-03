@@ -626,22 +626,22 @@ $('#PasswordChangeButton').click(function() {
         data : {password: input.val()},
         success : function(data) {
             $(".notification-pane").hide();
-            $(location).attr('href', '/admin');
+            // $(location).attr('href', '/admin');
         },
         error: function(data){
             $(".notification-pane").hide();
-            $(location).attr('href', '/reset');
+            // $(location).attr('href', '/reset');
         }
     });
 });
 
-$('#PasswordButton').click(function() {
-    $(location).attr('href', '/reset');
-});
+// $('#PasswordButton').click(function() {
+//     $(location).attr('href', '/admin');
+// });
 
-$('#LibraryButton').click(function() {
-    $(location).attr('href', '/thumbnail');
-});
+// $('#LibraryButton').click(function() {
+//     $(location).attr('href', '/admin');
+// });
 
 $('#ActionOrderButton').click(function() {
     if (globalCurColorIdx == 0 || savedProductData.length == 0) return;
@@ -720,7 +720,7 @@ $('#ThumbnailPicker').on('change', function(e) {
         contentType: false,  // tell jQuery not to set contentType
         success : function(data) {
             $(".notification-pane").hide();
-            $(location).attr('href', '/thumbnail');
+            $(location).attr('href', '/admin');
         },
         error: function(data){
             $(".notification-pane").hide();

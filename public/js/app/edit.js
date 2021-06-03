@@ -500,7 +500,7 @@ function(Layer, Annotator, util) {
     if (isNaN(id))
       throw("Invalid id");
     var srcImg = '/data/images/' + $('#StockPhotoImg').data('source');
-    var pattenImg = '/img/colors/Picture2.png';
+    // var pattenImg = '/img/colors/Picture2.png';
     console.log(srcImg);
     if (!srcImg || srcImg=='' || srcImg.indexOf('undefined') != -1) throw('Invalid Image Source');
     var annotator = new Annotator(/*data.imageURLs[id]*/srcImg, {

@@ -40,7 +40,7 @@ function photoController(){
             if ( req.session.projectid == undefined )req.session.projectid = Math.ceil(Math.random() * 100000);
             const newStr = req.session.projectid;
 
-            let directory = __dirname + '/../../../public';
+            let directory = __dirname + '/../../../uploads';
             await fs.copyFile(directory /*+ 'img/library/' + dirId + '/'*/ + name, directory + '/data/images/' + newStr + ext, (err) => {
                 if (err) {
                     console.log(err);

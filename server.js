@@ -45,8 +45,8 @@ app.use(fileUpload({
 }));
 
 //Assets
-app.use(express.static('public', { maxAge: 31557600 }));//));//
-app.use(express.static('uploads', { maxAge: 31557600 }));//));//
+app.use(express.static('public', { maxAge: 31557600 }));
+app.use(express.static('uploads'));
 app.use(express.json());
 
 //Passport config
@@ -81,7 +81,7 @@ console.log = function(d) { //
   log_stdout.write( now.toLocaleTimeString()+ ' ' + util.format(d) + '\n');
 };
 
-const directory = './public/data/images/';
+const directory = './uploads/data/images/';
 //Use the unlint() method to delete the file in upload directory 
 function clearPhotoDirectory () {
     fs.readdir(directory, (err, files) => {
