@@ -37,6 +37,18 @@
         </div>
     </div>
     
+  <% if(!isSubscribed) { %>
+    <div id="subScribeModal">
+        <h1>BIENVENUE</h1>
+        <input id="firstname" type="text" placeholder="NOM">
+        <input id="lastname" type="text" placeholder="PRÉNOM">
+        <input id="email" type="email" placeholder="EMAIL">
+        <button>ENVOYER</button>
+        <span class="SubscribeModalCloseBtn material-icons">close</span>
+        <!-- <div id="subScribeModalOverlay"></div> -->
+    </div>
+    <div id="subScribeModalBack"></div>
+  <% } %>
     <!-- ======= Blog Section ======= -->
     <div id="base">
         <notification-pane level="page" class="notification-pane">
