@@ -156,7 +156,7 @@ $('body').on('click', '.SavedColorData', function(){
         $(this).closest('#SavedColorsList').data('current', 0);
         $(this).children('.SavedColor_Col').first().html("");
         $('.ColorSelectorSwatch').html('');
-        $('#ColorSelectorSelectedColor').text('No Select');
+        $('#ColorSelectorSelectedColor').text('');
         globalCurColorIdx = 0;
         $('#ActionOrderButton').removeClass('Active');
         $('#NotificationFooter #ActionOrderButton').removeClass('Active');
