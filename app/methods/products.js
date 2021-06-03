@@ -96,7 +96,7 @@ const getProductList = async(data) => {
             ]
         };
     }
-    result = await Products.find(query).sort('title');
+    result = await Products.find(query).sort('title').collation({locale:"en_US", numericOrdering:true});
     return { result: result, error: ''}
 }
 
