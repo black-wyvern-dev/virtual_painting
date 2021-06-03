@@ -1015,3 +1015,8 @@ input[type=password], select {
 .loading-overlay.page {
     background-color: rgba(0, 0, 0, 0.5);
 }
+
+.TileCell .TileEditIcon {
+    top: 37%;
+    left: 48%;
+}
