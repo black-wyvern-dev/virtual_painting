@@ -96,7 +96,7 @@ const getProductList = async(data) => {
             ]
         };
     }
-    result = await Products.find(query);
+    result = await Products.find(query).sort('title');
     return { result: result, error: ''}
 }
 
