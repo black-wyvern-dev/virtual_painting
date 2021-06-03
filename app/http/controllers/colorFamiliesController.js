@@ -4,7 +4,6 @@ const products = require('../../methods/products');
 function colorFamiliesController(){
     return {
         async index(req, res) {
-            res.setHeader('Cache-Control', 'public, max-age=86400');
             let resData = {};
             if (req.session.projectid == undefined || req.session.extofbackground == undefined) return res.redirect('/photo');
             if ( req.session.savedData == undefined ) resData['savedData'] = [];
@@ -25,6 +24,7 @@ function colorFamiliesController(){
             const productlist = await products.getProductList({filter: 'colors'});
             resData['productList'] = productlist.result;
             resData['isSubscribed'] = true;
+            // res.setHeader('Cache-Control', 'public, max-age=86400');
             return res.render('color_families', resData);
         }
     }

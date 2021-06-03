@@ -4,7 +4,6 @@ const {getTitles} = require('../../globaldata');
 function colorController(){
     return {
         async index(req, res) {
-            res.setHeader('Cache-Control', 'public, max-age=86400');
             let resData = {};
             if (req.session.projectid == undefined || req.session.extofbackground == undefined) return res.redirect('/photo');
             if ( req.session.savedData == undefined ) resData['savedData'] = [];
@@ -24,6 +23,7 @@ function colorController(){
             resData['isAdmin'] = false;
             resData['isSubscribed'] = true;
             resData['libraryTitle'] = getTitles();
+            // res.setHeader('Cache-Control', 'public, max-age=86400');
             return res.render('color', resData);
         }
     }
