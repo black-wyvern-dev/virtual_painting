@@ -1036,6 +1036,7 @@ input[type=password], select {
 #UploadWellLit {
     width: 100%;
     border-right: none;
+    margin-bottom: 40px;
 }
 
 #UploadWall {
