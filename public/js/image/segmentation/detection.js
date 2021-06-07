@@ -80,6 +80,8 @@ function (BaseSegmentation) {
       labels.push(offset[1]);
       neighbors = this.neighborMap8.get(offset[1]);
       for (var i = 0; i < neighbors.length; i++) {
+        // diff = this.diffSquare(init_offset, neighbors[i]);
+        // if(diff > tolerance+15) continue;
         diff = this.diffSquare(offset[1], neighbors[i]);
         if(diff <= tolerance) queue.push([diff, neighbors[i]]);
       }
