@@ -22,7 +22,21 @@ function colorFamiliesController(){
 
             resData['isAdmin'] = false;
             const productlist = await products.getProductList({filter: 'colors'});
-            resData['productList'] = productlist.result;
+            let list = productlist.result;
+            list.sort((obj1, obj2) => {
+                if (obj1.subtype!='3') return 0;
+                const str1 = obj1.title.slice(-3);
+                const str2 = obj2.title.slice(-3);
+                if (str1 < str2) {
+                    return -1;
+                }
+                if (str1 > str2) {
+                    return 1;
+                }
+                return 0;
+            });
+
+            resData['productList'] = list;
             resData['isSubscribed'] = true;
             // res.setHeader('Cache-Control', 'public, max-age=86400');
             return res.render('color_families', resData);
