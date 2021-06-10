@@ -23,23 +23,26 @@ function colorFamiliesController(){
             resData['isAdmin'] = false;
             const productlist = await products.getProductList({filter: 'colors'});
             let list = productlist.result;
-            list.sort((obj1, obj2) => {
-                if (obj1.subtype=='3' && obj2.subtype=='3') {
-					//if (obj2.subtype!='3') return 0;
-					const str1 = obj1.title.slice(-3);
-					const str2 = obj2.title.slice(-3);
-					if (str1 < str2) {
-						return -1;
-					}
-					if (str1 > str2) {
-						return 1;
-					}
+			let subList1 = [], subList2 = [];
+			for(i of list){
+				if(i.subtype == '3') subList1.push(i);
+				else subList2.push(i);
+			}
+			console.log(subList1);
+			console.log(subList2.length);
+            subList1.sort((obj1, obj2) => {
+				const str1 = obj1.title.slice(-3);
+				const str2 = obj2.title.slice(-3);
+				if (str1 < str2) {
+					return -1;
 				}
-				if (obj1.subtype=='3') return -1;
-                return 0;
+				if (str1 > str2) {
+					return 1;
+				}
+				return 0;
             });
 
-            resData['productList'] = list;
+            resData['productList'] = subList2.concat(subList1);
             resData['isSubscribed'] = true;
             // res.setHeader('Cache-Control', 'public, max-age=86400');
             return res.render('color_families', resData);
