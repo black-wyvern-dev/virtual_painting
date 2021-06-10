@@ -24,7 +24,7 @@ function colorFamiliesController(){
             const productlist = await products.getProductList({filter: 'colors'});
             let list = productlist.result;
             list.sort((obj1, obj2) => {
-                if (obj1.subtype!='3') return 0;
+                if (obj1.subtype=='3' && obj2.subtype=='3') {
                 //if (obj2.subtype!='3') return 0;
                 const str1 = obj1.title.slice(-3);
                 const str2 = obj2.title.slice(-3);
@@ -33,7 +33,7 @@ function colorFamiliesController(){
                 }
                 if (str1 > str2) {
                     return 1;
-                }
+                }}
                 return 0;
             });
 
