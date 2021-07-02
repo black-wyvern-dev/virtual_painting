@@ -126,6 +126,10 @@
     background-color:#ad8a8a;
 }
 
+#UploadMainContent {
+    height: 'auto',
+}
+
 #UploadText{
     font-size:24px;
     font-weight:700;
