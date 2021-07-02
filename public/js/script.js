@@ -222,8 +222,8 @@ $('#UploadButton').click(function() {
 });
 
 function checkSubmitActive() {
-    if ($('#ProductTitleContainer > input').val() == '') { $('#SubmitButton').removeClass('Active'); return;}
-    if ($('#ProductIdContainer > input').val() == '') { $('#SubmitButton').removeClass('Active'); return;}
+    if ($('#ProductTitleContainer > .UploadRoboMedium').val() == '') { $('#SubmitButton').removeClass('Active'); return;}
+    if ($('#ProductIdContainer > .UploadRoboMedium').val() == '') { $('#SubmitButton').removeClass('Active'); return;}
     if ($('#ProductPreview > img').attr('src') == '') { $('#SubmitButton').removeClass('Active'); return;}
     $('#SubmitButton').addClass('Active');
 }
