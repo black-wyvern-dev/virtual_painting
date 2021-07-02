@@ -294,7 +294,7 @@ function productSelect(){
 
 $('#SubmitButton').click(function() {
     const id= $('#ProductIdContainer > input').val();
-    const title= $('#ProductTitleContainer > input').val();
+    const title= $('#ProductTitleContainer .UploadRoboMedium').val();
     const oldId= $('#ProductIdContainer > input').data('id');
     var src = $('#ProductPreview > img').attr('src');
     const type = $('#UploadProductTypeContainer .UploadCheckBoxChecked').closest('.ProductTypes').hasClass('ColorTypeChecker') ? 'colors' : 'patterns';
