@@ -422,7 +422,7 @@ function (Layer/*, segmentation*/, morph, Domtoimage, Detection) {
           // pixels = annotator.pixelIndex[existingLabel]
           ;
       if (annotator.mode === "detection" || annotator.mode === 'polygon')
-        annotator._updateHighlight(annotator._getClickOffset(event));
+        annotator._updateHighlight(null);//annotator._getClickOffset(event));
         ;
       if (typeof annotator.onmousemove === "function")
         annotator.onmousemove.call(annotator, existingLabel);
