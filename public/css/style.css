@@ -736,7 +736,7 @@ input[type=password], select {
     position: absolute;
     top: 0;
 }
-#ThumbnailChooser .TileText{
+#ThumbnailChooser .TileText, #ThumbnailChooser .TileDesc{
     margin-left: 25px;
     margin-right: 12px;
     width: -webkit-fill-available;
@@ -745,7 +745,7 @@ input[type=password], select {
     position: relative;
     margin-bottom: 10px;
 }
-#ThumbnailChooser .TiltTextUpdateBtn{
+#ThumbnailChooser .TiltTextUpdateBtn, #ThumbnailChooser .TiltDescUpdateBtn{
     border-radius: 3px;
     position: absolute;
     background-color: #4d1a1a;
@@ -1055,5 +1055,25 @@ input[type=password], select {
 
     #UploadWall {
         width: 50%;
+    }
+}
+
+#TileCell h4 {
+    padding: 12px 5% 5px 5%;
+}
+
+#TileCell h3 {
+    padding: 12px 5% 16px 5%;
+    font-size: 80%;
+    overflow-wrap: break-word;
+}
+
+@media (min-width: 750px) {
+    #TileCell h4 {
+        padding: 13px 5% 5px 5%;
+    }
+
+    #TileCell h3 {
+        padding: 13px 5% 16px 5%;
     }
 }

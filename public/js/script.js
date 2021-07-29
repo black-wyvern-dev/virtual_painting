@@ -801,8 +801,29 @@ $('#ThumbnailChooser .TiltTextUpdateBtn').click(function() {
         url : '/libraryTitleUpdate',
         type : 'POST',
         data : {
-            index: $(this).closest('a').data('thm'),
-            value: $(this).closest('.TileItem').find('input').val()
+            index: $(this).closest('.TileItem').find('#TileCell').data('thm'),
+            value: $(this).closest('.TileItem').find('.TileText').val()
+        },
+        success : function(data) {
+
+            $(".notification-pane").hide();
+        },
+        error: function(data){
+
+            $(".notification-pane").hide();
+        }
+    });
+});
+
+$('#ThumbnailChooser .TiltDescUpdateBtn').click(function() {
+    // console.log($(this).closest('.TileItem').find('input').val());
+    $(".notification-pane").show();
+    $.ajax({
+        url : '/libraryDescUpdate',
+        type : 'POST',
+        data : {
+            index: $(this).closest('.TileItem').find('#TileCell').data('thm'),
+            value: $(this).closest('.TileItem').find('.TileDesc').val()
         },
         success : function(data) {
 

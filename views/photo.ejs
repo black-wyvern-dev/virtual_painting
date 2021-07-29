@@ -33,6 +33,7 @@
         <a data-src="/img/library/<%=idx%>.jpg">
             <tile >
                 <div id="TileCell" class="HasText">
+                    <h4 name="TileText" class="ng-binding ng-scope"><%=libraryTitle[idx-1]%></h4>
                     <div id="TileImageLoading" class="TileImage">
                         <div class="TileImageLoader">
                             <div class="imageLoading-color color-1"></div>
@@ -42,7 +43,7 @@
                         </div>
                         <img id="TileImage" scroll-loaded-image="" src="/img/library/<%=idx%>.jpg" alt="">
                     </div>
-                <h4 name="TileText" class="ng-binding ng-scope"><%=libraryTitle[idx-1]%></h4>
+                    <h3 name="TileText" class="ng-binding ng-scope"><%=libraryDesc[idx-1]%></h3>
                 </div>
             </tile>
         </a>

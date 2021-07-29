@@ -25,6 +25,7 @@ function initRoute(app) {
     // app.get('/thumbnail', adminController().thumbnail)
     app.post('/reset', adminController().passwordChange)
     app.post('/libraryTitleUpdate', adminController().titleUpdate)
+    app.post('/libraryDescUpdate', adminController().titleDescUpdate)
     app.post('/login', adminController().login)
     app.post('/add_product', adminController().addProduct)
     app.post('/update_product', adminController().updateProduct)

@@ -1,6 +1,7 @@
 const products = require('../../methods/products');
 const users = require('../../methods/users');
 const { getTitles} = require('../../globaldata');
+const { getDescs} = require('../../globaldata');
 const fs = require('fs');
 
 function photoController(){
@@ -29,6 +30,7 @@ function photoController(){
             else
                 resData['isSubscribed'] = false;
             resData['libraryTitle'] = getTitles();
+            resData['libraryDesc'] = getDescs();
             // res.setHeader('Cache-Control', 'public, max-age=86400');
             return res.render('photo', resData);
         },
@@ -69,6 +71,7 @@ function photoController(){
             resData['isAdmin'] = false;
             resData['isSubscribed'] = true;
             resData['libraryTitle'] = getTitles();
+            resData['libraryDesc'] = getDescs();
             // res.setHeader('Cache-Control', 'public, max-age=86400');
             return res.render('photo', resData);
         }, 

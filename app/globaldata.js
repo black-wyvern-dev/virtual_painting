@@ -5,6 +5,11 @@ let libraryTitle = [
     'Salle de bain', 'Extérieur', 'Commercial', 'Porte Principale',
     'Nos Collections de PEINTURE', 'Nos Collections de PAPIER PEINT'
 ];
+let libraryDesc = [
+    '!Salon', '!Chambre', '!Salle à manger', '!Cuisine',
+    '!Salle de bain', '!Extérieur', '!Commercial', '!Porte Principale',
+    '!Nos Collections de PEINTURE', '!Nos Collections de PAPIER PEINT'
+];
 
 const setPassword = function(newPass) {
     password = newPass;
@@ -22,4 +27,12 @@ const getTitles = function() {
     return libraryTitle;
 }
 
-module.exports = {curIndex, getPassword, setPassword, updateTitle, getTitles};
+const updateDesc = function(idx, value) {
+    libraryDesc[idx] = value;
+}
+
+const getDescs = function() {
+    return libraryDesc;
+}
+
+module.exports = {curIndex, getPassword, setPassword, updateTitle, getTitles, updateDesc, getDescs};

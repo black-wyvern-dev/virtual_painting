@@ -1,5 +1,5 @@
 const fs = require('fs');
-const {curIndex, getPassword, setPassword, getTitles, updateTitle} = require('../../../globaldata');
+const {curIndex, getPassword, setPassword, getTitles, updateTitle, getDescs, updateDesc} = require('../../../globaldata');
 const products = require('../../../methods/products');
 const users = require('../../../methods/users');
 
@@ -40,6 +40,7 @@ function colorController(){
             resData['timeStrings'] = timeStrings;
             // console.log(JSON.stringify(resData['userList']));
             resData['libraryTitle'] = getTitles();
+            resData['libraryDesc'] = getDescs();
             // res.setHeader('Cache-Control', 'public, max-age=86400');
             return res.render('admin/color', resData);
         },
@@ -50,6 +51,15 @@ function colorController(){
             console.log(index + ' '+ value);
             updateTitle(parseInt(index) - 1, value);
             console.log('Title updated');
+            return res.status(200).send();
+        },
+
+        async titleDescUpdate(req, res) {
+            // res.setHeader('Cache-Control', 'public, max-age=86400');
+            let {index, value} = req.body;
+            console.log(index + ' '+ value);
+            updateDesc(parseInt(index) - 1, value);
+            console.log('Desc updated');
             return res.status(200).send();
         },
 
