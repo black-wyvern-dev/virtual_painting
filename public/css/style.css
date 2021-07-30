@@ -739,6 +739,7 @@ input[type=password], select {
 #ThumbnailChooser .TileText, #ThumbnailChooser .TileDesc{
     margin-left: 25px;
     margin-right: 12px;
+    margin-bottom: 5px;
     width: -webkit-fill-available;
 }
 #ThumbnailChooser .TileItem{
@@ -1060,12 +1061,14 @@ input[type=password], select {
 
 #TileCell h4 {
     padding: 12px 5% 5px 5%;
+    text-align: center;
 }
 
 #TileCell h3 {
     padding: 12px 5% 16px 5%;
     font-size: 80%;
     overflow-wrap: break-word;
+    min-height: 90px;
 }
 
 @media (min-width: 750px) {
@@ -1075,5 +1078,6 @@ input[type=password], select {
 
     #TileCell h3 {
         padding: 13px 5% 16px 5%;
+        min-height: 75px;
     }
 }

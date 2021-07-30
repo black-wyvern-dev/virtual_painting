@@ -6,9 +6,8 @@ let libraryTitle = [
     'Nos Collections de PEINTURE', 'Nos Collections de PAPIER PEINT'
 ];
 let libraryDesc = [
-    '!Salon', '!Chambre', '!Salle à manger', '!Cuisine',
-    '!Salle de bain', '!Extérieur', '!Commercial', '!Porte Principale',
-    '!Nos Collections de PEINTURE', '!Nos Collections de PAPIER PEINT'
+    'appartement privé Paris 16ème', 'catalogue Yves Delorme, photographe Romain Ricard', 'réalisation Les Causeuses, photo Julie Ansiau', 'appartement privé, Paris',
+    'appartement privé, Paris', 'devanture showroom MÉRIGUET-CARRÈRE PARIS, Paris 6ème', 'Secret Gallery, photo Michael Benard', 'réalisation Estelle Quilici, photo Cécile Molie'
 ];
 
 const setPassword = function(newPass) {
