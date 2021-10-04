@@ -514,7 +514,7 @@ function (Layer/*, segmentation*/, morph, Domtoimage, Detection) {
     }
 
     if (!isExist) {
-      region = this.detection.getPoints(pos, 10);
+      region = this.detection.getPoints(pos, 14);
       var newRegion = [],
         cntRegion = this.regions.length
         ;
